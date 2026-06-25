@@ -1,0 +1,5 @@
+<nav class="social-links" aria-label="Personal links">
+  {% for item in site.data.social_links %}
+    <a href="{{ item.url }}" rel="me noopener noreferrer" target="_blank">{{ item.label }}</a>
+  {% endfor %}
+</nav>

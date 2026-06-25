@@ -6,6 +6,8 @@ permalink: /articles/
 
 # Articles
 
+Notes, project writeups, and longer reflections collected in one place.
+
 <ul class="article-list">
   <li>
     <h2><a href="{{ '/articles/s26-airp/' | relative_url }}">Spring 2026 AI Research Prototype Portfolio</a></h2>

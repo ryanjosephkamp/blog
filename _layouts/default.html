@@ -10,7 +10,10 @@
   <body>
     <header class="site-header">
       <div class="wrap">
-        <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <a class="site-title" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} home">
+          <span class="site-mark" aria-hidden="true">RK</span>
+          <span>{{ site.title }}</span>
+        </a>
         <nav class="site-nav" aria-label="Primary navigation">
           <a href="{{ '/' | relative_url }}">Home</a>
           <a href="{{ '/articles/' | relative_url }}">Articles</a>
@@ -24,7 +27,10 @@
 
     <footer class="site-footer">
       <div class="wrap">
-        <p>{{ site.description }}</p>
+        <div>
+          <p>{{ site.description }}</p>
+        </div>
+        {% include social-links.html %}
       </div>
     </footer>
   </body>
