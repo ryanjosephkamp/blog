@@ -1,0 +1,16 @@
+title: Ryan Kamp
+description: Notes, projects, and research-software prototypes
+url: ""
+baseurl: "/blog"
+
+markdown: kramdown
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - .ai/
+  - README.md
