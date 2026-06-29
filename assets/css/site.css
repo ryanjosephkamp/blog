@@ -282,6 +282,12 @@ blockquote {
   color: var(--muted);
 }
 
+hr {
+  margin: 3.75rem 0 2.35rem;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
 code {
   padding: 0.12em 0.28em;
   background: color-mix(in srgb, var(--line) 38%, transparent);
@@ -562,8 +568,7 @@ th {
   gap: 1.75rem;
 }
 
-.inspector,
-.activity {
+.inspector {
   border-top: 1px solid var(--line);
   padding-top: 1rem;
 }
@@ -572,8 +577,7 @@ th {
   outline: none;
 }
 
-.inspector h2,
-.activity h2 {
+.inspector h2 {
   margin-bottom: 0.45rem;
   font-size: 1rem;
   line-height: 1.25;
@@ -599,41 +603,6 @@ th {
   margin: 0;
   color: var(--ink);
   overflow-wrap: anywhere;
-}
-
-.repo-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1rem;
-  margin-top: 1rem;
-}
-
-.activity-bars {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(6px, 1fr));
-  gap: 0.35rem;
-  min-height: 76px;
-  align-items: end;
-  margin: 1rem 0 0.75rem;
-}
-
-.activity-bar {
-  min-height: 18px;
-  border: 0;
-  border-bottom: 1px solid var(--ink);
-  background: var(--ink);
-  cursor: help;
-  opacity: 0.72;
-  padding: 0;
-}
-
-.activity-bar:hover,
-.activity-bar:focus-visible {
-  opacity: 1;
-}
-
-.activity-detail {
-  min-height: 1.5em;
 }
 
 .repo-index {

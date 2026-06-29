@@ -267,8 +267,6 @@ const els = {
   listNote: document.querySelector("#repo-list-note"),
   listSortControls: document.querySelector("#repo-sort-controls"),
   listLimitControls: document.querySelector("#list-limit-controls"),
-  activity: document.querySelector("#activity-bars"),
-  activityDetail: document.querySelector("#activity-detail"),
   hint: document.querySelector("#graph-hint"),
   filterSummary: document.querySelector("#filter-summary"),
   graphModeControls: document.querySelector("#graph-mode"),
@@ -432,7 +430,6 @@ function applyRepositoryData(repos) {
     state.nodes.find((node) => node.repo.id === selectedId) || null;
   state.hovered = null;
   renderClusters();
-  renderActivity();
   renderSortControls();
   renderListControls();
   renderGraphModeControls();
@@ -2626,22 +2623,22 @@ function renderInspector(repo) {
   const appStatus = appUrl
     ? `<a href="${appUrl}" target="_blank" rel="noreferrer">Open app</a>`
     : `<span>${escapeHtml(repo.s26_app_status || "No app link")}</span>`;
+  const repositoryLink = repoUrl
+    ? `<a href="${repoUrl}" target="_blank" rel="noreferrer">Open repository</a>`
+    : `<span>Unavailable</span>`;
   els.inspector.innerHTML = `
     <h2>${escapeHtml(repo.name)}</h2>
     <p>${escapeHtml(description)}</p>
     <p class="small-note">S26 AIRP repository: AI-assisted research software prototype. Scientific and domain-specific content is provisional and not presented as validated scientific claims.</p>
     <dl>
       <div><dt>Type</dt><dd>${escapeHtml(repositoryType)}</dd></div>
+      <div><dt>Repo</dt><dd>${repositoryLink}</dd></div>
       <div><dt>Cluster</dt><dd>${escapeHtml(repo.cluster_label || "Repository")}</dd></div>
       <div><dt>Language</dt><dd>${escapeHtml(repo.language || "Unspecified")}</dd></div>
       <div><dt>Updated</dt><dd>${pushed}</dd></div>
       <div><dt>Tags</dt><dd>${tags.length ? tags.map(escapeHtml).join(", ") : "None listed"}</dd></div>
       <div><dt>App</dt><dd>${appStatus}</dd></div>
     </dl>
-    <div class="repo-actions">
-      ${repoUrl ? `<a href="${repoUrl}" target="_blank" rel="noreferrer">Open repository</a>` : ""}
-      ${appUrl ? `<a href="${appUrl}" target="_blank" rel="noreferrer">Open app</a>` : ""}
-    </div>
   `;
 }
 
@@ -2782,48 +2779,6 @@ function sortRepositories(repos) {
     return dateB - dateA || a.name.localeCompare(b.name);
   });
   return sorted;
-}
-
-function renderActivity() {
-  const now = new Date();
-  const weeks = Array.from({ length: 12 }, (_, index) => {
-    const end = new Date(now);
-    end.setDate(now.getDate() - (11 - index) * 7);
-    return { end, count: 0 };
-  });
-  for (const repo of state.repos) {
-    const date = new Date(repo.pushed_at || repo.updated_at || repo.created_at);
-    if (Number.isNaN(date.getTime())) continue;
-    const diff = Math.floor((now - date) / (1000 * 60 * 60 * 24 * 7));
-    const index = 11 - diff;
-    if (index >= 0 && index < weeks.length) {
-      weeks[index].count += 1;
-    }
-  }
-  const max = Math.max(1, ...weeks.map((week) => week.count));
-  els.activity.innerHTML = "";
-  const describeWeek = (week) => {
-    const start = new Date(week.end);
-    start.setDate(week.end.getDate() - 6);
-    const noun = week.count === 1 ? "repository" : "repositories";
-    return `${week.count} S26 AIRP ${noun} updated from ${formatDate(start)} to ${formatDate(week.end)}.`;
-  };
-  const updateDetail = (week) => {
-    if (els.activityDetail) els.activityDetail.textContent = describeWeek(week);
-  };
-  for (const week of weeks) {
-    const bar = document.createElement("button");
-    bar.type = "button";
-    bar.className = "activity-bar";
-    bar.style.height = `${4 + (week.count / max) * 68}px`;
-    bar.title = describeWeek(week);
-    bar.setAttribute("aria-label", describeWeek(week));
-    bar.addEventListener("focus", () => updateDetail(week));
-    bar.addEventListener("mouseenter", () => updateDetail(week));
-    bar.addEventListener("click", () => updateDetail(week));
-    els.activity.append(bar);
-  }
-  updateDetail(weeks.at(-1));
 }
 
 function renderListControls() {
