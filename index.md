@@ -1,18 +1,17 @@
 ---
-title: Home
-description: Notes, projects, and research-software prototypes
+title: Blog
+description: Writing and project notes by Ryan Kamp
 ---
 
 <section class="intro">
-  <h1>Ryan Kamp</h1>
-  <p>Notes, projects, research-software prototypes, and the occasional working thought made presentable.</p>
-  {% include social-links.html %}
+  <h1>Blog</h1>
+  <p>Project notes, portfolio writing, and longer reflections from Ryan Kamp.</p>
 </section>
 
 <section aria-labelledby="recent-articles">
   <div class="section-heading">
-    <h2 id="recent-articles">Latest writing</h2>
-    <p>One polished shelf for posts, project notes, and longer reflections.</p>
+    <h2 id="recent-articles">Writing</h2>
+    <p>A small index of current public posts.</p>
   </div>
   <ul class="article-list">
     <li>

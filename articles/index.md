@@ -6,7 +6,7 @@ permalink: /articles/
 
 # Articles
 
-Notes, project writeups, and longer reflections collected in one place.
+Project notes, portfolio writing, and longer reflections collected in one place.
 
 <ul class="article-list">
   <li>
