@@ -11,6 +11,14 @@ const SORT_OPTIONS = [
   { id: "name", label: "name" },
   { id: "type", label: "type" },
 ];
+const S26_REFINED_CLUSTER_IDS = new Set([
+  "physics-numerical",
+  "molecular-chemistry",
+  "molecular-dynamics",
+  "protein-ai",
+  "bio-systems",
+  "paper-pipelines",
+]);
 const finePointer = window.matchMedia("(pointer: fine)");
 const reducedMotionQuery = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
@@ -735,6 +743,12 @@ function clusterFieldCandidates(focusedNode, visible) {
 function clusterAnchor(cluster, index) {
   const known = {
     "s26-airp": { x: -0.04, y: -0.08 },
+    "physics-numerical": { x: -0.38, y: -0.18 },
+    "molecular-chemistry": { x: -0.3, y: 0.2 },
+    "molecular-dynamics": { x: 0.02, y: 0.26 },
+    "protein-ai": { x: 0.36, y: -0.02 },
+    "bio-systems": { x: 0.04, y: -0.28 },
+    "paper-pipelines": { x: 0.34, y: 0.28 },
     "ai-ml": { x: 0.36, y: -0.16 },
     games: { x: -0.42, y: 0.18 },
     "data-tooling": { x: 0.24, y: 0.3 },
@@ -843,7 +857,7 @@ function makeNodes(repos, clusters) {
     const rankAngle = rank * 2.399963 + local * 0.35;
     const angle =
       rankAngle * 0.54 + keyAngle * 0.22 + Math.atan2(axisY, axisX) * 0.24;
-    const spread = repo.cluster === "s26-airp" ? 0.33 : 0.17;
+    const spread = isS26Repo(repo) ? 0.22 : 0.17;
     const semanticSpread =
       0.07 + Math.min(0.12, Math.hypot(axisX, axisY) * 0.16);
     const radius =
@@ -2578,6 +2592,8 @@ function selectNode(node, focus = false) {
 function isS26Repo(repo) {
   return (
     repo.cluster === "s26-airp" ||
+    S26_REFINED_CLUSTER_IDS.has(repo.cluster) ||
+    Boolean(repo.s26_order || repo.s26_source || repo.s26_type) ||
     /S26 AIRP/i.test(
       [repo.cluster_label, repo.description].filter(Boolean).join(" "),
     )
@@ -2664,10 +2680,9 @@ function renderClusterInspector(clusterId) {
         day: "numeric",
       })
     : "Unknown";
-  const s26 =
-    cluster.id === "s26-airp"
-      ? `<p class="small-note">S26 AIRP cluster: AI-assisted research software prototypes. Scientific and domain-specific content is provisional and not presented as validated scientific claims.</p>`
-      : "";
+  const s26 = repos.some(isS26Repo)
+    ? `<p class="small-note">S26 AIRP cluster: AI-assisted research software prototypes. Scientific and domain-specific content is provisional and not presented as validated scientific claims.</p>`
+    : "";
 
   els.inspector.innerHTML = `
     <h2>${escapeHtml(cluster.label)}</h2>
