@@ -1,40 +1,32 @@
-# Blog Post Template
+# Blog Post Templates
 
-Use this as a starting point for future posts. Replace the placeholder values, keep the scope honest, and remove any sections that do not fit the post.
+Use these templates as starting points for future public posts. Copy the most
+appropriate template into `articles/new-slug.md`, replace all bracketed
+prompts, remove sections that do not fit, and review the disclosure checklist
+before asking Codex to publish.
 
-```markdown
----
-title: "Post title"
-description: "One-sentence summary of the post"
-permalink: /articles/post-slug/
----
-# Post title
+## Templates
 
-Opening paragraph that says what the post is about and why it matters.
+- `templates/standard-article-template.md`: essays, reflections, project notes,
+  and public updates.
+- `templates/project-portfolio-article-template.md`: longer posts about a
+  project, repository group, portfolio item, or interactive artifact.
+- `templates/technical-note-template.md`: focused implementation notes,
+  workflow notes, debugging summaries, and small engineering writeups.
 
-## Context
+## Companion Checklist
 
-Brief background, project setting, or motivation.
-
-## Main Notes
-
-- First useful point.
-- Second useful point.
-- Third useful point.
-
-## What I Learned
-
-Short reflection on the practical takeaway.
-
-## Links
-
-- [Related resource](https://example.com/)
-```
+- `docs/blog-authoring-checklist.md`: practical draft, review, and publish
+  steps.
+- `docs/blog-disclosure-framing-checklist.md`: claim-safety, AI-assistance,
+  provider-guardrail, and domain-sensitive framing checks.
 
 ## Quick Rules
 
 - Keep the post readable without assuming deep prior context.
 - Separate facts from interpretation.
 - Use links for source material when the post depends on external references.
-- Avoid overstating unfinished, exploratory, or provisional work.
-- Preview the page before publishing when the post includes tables, images, or long links.
+- Avoid overstating unfinished, exploratory, provisional, or AI-assisted work.
+- Remove all bracketed prompts and private notes before publishing.
+- Preview the page before publishing when the post includes tables, images,
+  code blocks, or long links.
