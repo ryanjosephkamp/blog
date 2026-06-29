@@ -58,7 +58,9 @@
           <a href="https://ryanjosephkamp.github.io/v2/repositories/"
             >Repositories</a
           >
+          {% unless page.url == "/" %}
           <a href="{{ '/' | relative_url }}">Blog</a>
+          {% endunless %}
           <a href="https://github.com/ryanjosephkamp">GitHub</a>
           <a
             href="https://drive.google.com/file/d/1sOmKOi1vm_A7cPvQ5TMvhWqf-2mdXLcu/view?usp=drive_link"

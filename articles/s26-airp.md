@@ -3,7 +3,9 @@ title: "Spring 2026 AI Research Prototype Portfolio"
 description: "AI-assisted research software prototyping in practice"
 permalink: /articles/s26-airp/
 ---
-# Spring 2026 AI Research Prototype Portfolio: AI-Assisted Research Software Prototyping in Practice
+# Spring 2026 AI Research Prototype Portfolio
+
+<p class="article-subtitle">AI-Assisted Research Software Prototyping in Practice</p>
 
 In spring 2026, I built the **Spring 2026 AI Research Prototype Portfolio (S26 AIRP)**: a 67-repository portfolio of AI-assisted research software prototypes.
 
