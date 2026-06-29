@@ -92,6 +92,8 @@ The explorer below provides a complete index of the 67 S26 AIRP repositories. Gi
 
 <!-- S26-AIRP-PORTFOLIO-INDEX:START -->
 
+{::nomarkdown}
+
 <section
   class="s26-repo-explorer"
   data-s26-repo-explorer
@@ -204,6 +206,8 @@ The explorer below provides a complete index of the 67 S26 AIRP repositories. Gi
     <div class="repo-list" id="repo-list"></div>
   </section>
 </section>
+
+{:/nomarkdown}
 
 <!-- S26-AIRP-PORTFOLIO-INDEX:END -->
 
