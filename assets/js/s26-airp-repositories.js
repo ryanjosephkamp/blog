@@ -3,7 +3,7 @@ const DATA_URL =
   explorerRoot?.dataset.repositoriesUrl ||
   "/blog/assets/data/s26-airp-repositories.json";
 const EXCLUDED_PATTERN = /\b(grok|grokedex|grokédex|xai|x\.ai)\b/i;
-const DEFAULT_LIST_LIMIT = "all";
+const DEFAULT_LIST_LIMIT = 25;
 const LIST_LIMITS = [25, 50, 100, "all"];
 const SORT_OPTIONS = [
   { id: "article", label: "index" },
