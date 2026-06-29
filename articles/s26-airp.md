@@ -2,7 +2,10 @@
 title: "Spring 2026 AI Research Prototype Portfolio"
 description: "AI-assisted research software prototyping in practice"
 permalink: /articles/s26-airp/
+scripts:
+  - /assets/js/s26-airp-repositories.js
 ---
+
 # Spring 2026 AI Research Prototype Portfolio
 
 <p class="article-subtitle">AI-Assisted Research Software Prototyping in Practice</p>
@@ -85,79 +88,122 @@ In other words, the portfolio is best read as:
 
 ## Portfolio index
 
-The table below provides a complete index of the 67 S26 AIRP repositories. GitHub links are included for every repository. Streamlit app links are included where applicable; the four paper-to-tool repositories do not have Streamlit apps and are marked accordingly. Some repository descriptions include additional caution language where the topic is especially domain-sensitive.
+The explorer below provides a complete index of the 67 S26 AIRP repositories. GitHub links are included for every repository. Streamlit app links are included where applicable; the four paper-to-tool repositories do not have Streamlit apps and are marked accordingly. Some repository descriptions include additional caution language where the topic is especially domain-sensitive.
 
 <!-- S26-AIRP-PORTFOLIO-INDEX:START -->
 
-| Type                     | Repository                                                                                     | Streamlit app                                                                |
-| ------------------------ | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| Streamlit prototype      | [`the-1d-atom`](https://github.com/ryanjosephkamp/the-1d-atom)                                         | [`Open app`](https://1d-atom.streamlit.app/)                                 |
-| Streamlit prototype      | [`the-alkane-assembler`](https://github.com/ryanjosephkamp/the-alkane-assembler)                       | [`Open app`](https://alkane-asmblr.streamlit.app/)                           |
-| Streamlit prototype      | [`the-audible-integrator`](https://github.com/ryanjosephkamp/the-audible-integrator)                   | [`Open app`](https://audible-integrator.streamlit.app/)                      |
-| Streamlit prototype      | [`the-blind-climber`](https://github.com/ryanjosephkamp/the-blind-climber)                             | [`Open app`](https://blind-climber.streamlit.app/)                           |
-| Streamlit prototype      | [`the-cip-solver`](https://github.com/ryanjosephkamp/the-cip-solver)                                   | [`Open app`](https://cip-solver.streamlit.app/)                              |
-| Streamlit prototype      | [`the-digital-skin`](https://github.com/ryanjosephkamp/the-digital-skin)                               | [`Open app`](https://digital-skin.streamlit.app/)                            |
-| Streamlit prototype      | [`the-fingerprint-of-liquids`](https://github.com/ryanjosephkamp/the-fingerprint-of-liquids)           | [`Open app`](https://fingerprint-of-liquids.streamlit.app/)                  |
-| Streamlit prototype      | [`the-functional-group-hunter`](https://github.com/ryanjosephkamp/the-functional-group-hunter)         | [`Open app`](https://functional-group-hunter.streamlit.app/)                 |
-| Streamlit prototype      | [`the-interactive-newman`](https://github.com/ryanjosephkamp/the-interactive-newman)                   | [`Open app`](https://interactive-newman.streamlit.app/)                      |
-| Streamlit prototype      | [`the-iupac-parser`](https://github.com/ryanjosephkamp/the-iupac-parser)                               | [`Open app`](https://iupac-parser.streamlit.app/)                            |
-| Streamlit prototype      | [`the-mirror-test`](https://github.com/ryanjosephkamp/the-mirror-test)                                 | [`Open app`](https://mirror-test.streamlit.app/)                             |
-| Streamlit prototype      | [`the-pac-man-thermodynamics`](https://github.com/ryanjosephkamp/the-pac-man-thermodynamics)           | [`Open app`](https://pac-man-thermodynamics.streamlit.app/)                  |
-| Streamlit prototype      | [`the-phase-transition-canvas`](https://github.com/ryanjosephkamp/the-phase-transition-canvas)         | [`Open app`](https://phase-transition-canvas.streamlit.app/)                 |
-| Streamlit prototype      | [`the-pi-system-solver`](https://github.com/ryanjosephkamp/the-pi-system-solver)                       | [`Open app`](https://pi-system-solver.streamlit.app/)                        |
-| Paper-to-tool repository | [`the-protein-ebm-dsm-egnn-ald`](https://github.com/ryanjosephkamp/the-protein-ebm-dsm-egnn-ald)       | N/A — paper-to-tool repository                                               |
-| Streamlit prototype      | [`the-quadtree-composer`](https://github.com/ryanjosephkamp/the-quadtree-composer)                     | [`Open app`](https://quadtree-composer.streamlit.app/)                       |
-| Paper-to-tool repository | [`the-spink7-klk5-md-pipeline`](https://github.com/ryanjosephkamp/the-spink7-klk5-md-pipeline)         | N/A — paper-to-tool repository                                               |
-| Paper-to-tool repository | [`the-spink7-klk5-md-pipeline-v2`](https://github.com/ryanjosephkamp/the-spink7-klk5-md-pipeline-v2)   | N/A — paper-to-tool repository                                               |
-| Paper-to-tool repository | [`the-spink7-klk5-md-pipeline-v3`](https://github.com/ryanjosephkamp/the-spink7-klk5-md-pipeline-v3)   | N/A — paper-to-tool repository                                               |
-| Streamlit prototype      | [`the-stochastic-heater`](https://github.com/ryanjosephkamp/the-stochastic-heater)                     | [`Open app`](https://stochastic-heater.streamlit.app/)                       |
-| Streamlit prototype      | [`the-survival-of-the-fittest`](https://github.com/ryanjosephkamp/the-survival-of-the-fittest)         | [`Open app`](https://survival-of-the-fittest.streamlit.app/)                 |
-| Streamlit prototype      | [`the-affinity-decoder`](https://github.com/ryanjosephkamp/the-affinity-decoder)               | [`Open app`](https://the-affinity-decoder.streamlit.app/)                    |
-| Streamlit prototype      | [`the-alphabet-of-life`](https://github.com/ryanjosephkamp/the-alphabet-of-life)               | [`Open app`](https://the-alphabet-of-life.streamlit.app/)                    |
-| Streamlit prototype      | [`the-allosteric-switch`](https://github.com/ryanjosephkamp/the-allosteric-switch)             | [`Open app`](https://the-allosteric-switch.streamlit.app/)                   |
-| Streamlit prototype      | [`the-antibiotic-generator`](https://github.com/ryanjosephkamp/the-antibiotic-generator)       | [`Open app`](https://the-antibiotic-generator.streamlit.app/)                |
-| Streamlit prototype      | [`the-attention-lens`](https://github.com/ryanjosephkamp/the-attention-lens)                   | [`Open app`](https://the-attention-lens.streamlit.app/)                      |
-| Streamlit prototype      | [`the-backbone-validator`](https://github.com/ryanjosephkamp/the-backbone-validator)           | [`Open app`](https://the-backbone-validator.streamlit.app/)                  |
-| Streamlit prototype      | [`the-cells-budget`](https://github.com/ryanjosephkamp/the-cells-budget)                       | [`Open app`](https://the-cells-budget.streamlit.app/)                        |
-| Streamlit prototype      | [`the-chemical-gps`](https://github.com/ryanjosephkamp/the-chemical-gps)                       | [`Open app`](https://the-chemical-gps.streamlit.app/)                        |
-| Streamlit prototype      | [`the-dance-of-atoms`](https://github.com/ryanjosephkamp/the-dance-of-atoms)                   | [`Open app`](https://the-dance-of-atoms.streamlit.app/)                      |
-| Streamlit prototype      | [`the-deep-dreamer`](https://github.com/ryanjosephkamp/the-deep-dreamer)                       | [`Open app`](https://the-deep-dreamer.streamlit.app/)                        |
-| Streamlit prototype      | [`the-digital-mutator`](https://github.com/ryanjosephkamp/the-digital-mutator)                 | [`Open app`](https://the-digital-mutator.streamlit.app/)                     |
-| Streamlit prototype      | [`the-evolution-of-affinity`](https://github.com/ryanjosephkamp/the-evolution-of-affinity)     | [`Open app`](https://the-evolution-of-affinity.streamlit.app/)               |
-| Streamlit prototype      | [`the-evolutionary-wormhole`](https://github.com/ryanjosephkamp/the-evolutionary-wormhole)     | [`Open app`](https://the-evolutionary-wormhole.streamlit.app/)               |
-| Streamlit prototype      | [`the-field-generator`](https://github.com/ryanjosephkamp/the-field-generator)                 | [`Open app`](https://the-field-generator.streamlit.app/)                     |
-| Streamlit prototype      | [`the-force-field-engine`](https://github.com/ryanjosephkamp/the-force-field-engine)           | [`Open app`](https://the-force-field-engine.streamlit.app/)                  |
-| Streamlit prototype      | [`the-golden-sphere`](https://github.com/ryanjosephkamp/the-golden-sphere)                     | [`Open app`](https://the-golden-sphere.streamlit.app/)                       |
-| Streamlit prototype      | [`the-grand-sum`](https://github.com/ryanjosephkamp/the-grand-sum)                             | [`Open app`](https://the-grand-sum.streamlit.app/)                           |
-| Streamlit prototype      | [`the-graph-weaver`](https://github.com/ryanjosephkamp/the-graph-weaver)                       | [`Open app`](https://the-graph-weaver.streamlit.app/)                        |
-| Streamlit prototype      | [`the-heat-spike`](https://github.com/ryanjosephkamp/the-heat-spike)                           | [`Open app`](https://the-heat-spike.streamlit.app/)                          |
-| Streamlit prototype      | [`the-iso-surface-explorer`](https://github.com/ryanjosephkamp/the-iso-surface-explorer)       | [`Open app`](https://the-iso-surface-explorer.streamlit.app/)                |
-| Streamlit prototype      | [`the-jiggling-gel`](https://github.com/ryanjosephkamp/the-jiggling-gel)                       | [`Open app`](https://the-jiggling-gel.streamlit.app/)                        |
-| Streamlit prototype      | [`the-lattice-folder`](https://github.com/ryanjosephkamp/the-lattice-folder)                   | [`Open app`](https://the-lattice-folder.streamlit.app/)                      |
-| Streamlit prototype      | [`the-lock-and-key`](https://github.com/ryanjosephkamp/the-lock-and-key)                       | [`Open app`](https://the-lock-and-key.streamlit.app/)                        |
-| Streamlit prototype      | [`the-logic-of-life`](https://github.com/ryanjosephkamp/the-logic-of-life)                     | [`Open app`](https://the-logic-of-life.streamlit.app/)                       |
-| Streamlit prototype      | [`the-melting-pot`](https://github.com/ryanjosephkamp/the-melting-pot)                         | [`Open app`](https://the-melting-pot.streamlit.app/)                         |
-| Streamlit prototype      | [`the-mini-fold`](https://github.com/ryanjosephkamp/the-mini-fold)                             | [`Open app`](https://the-mini-fold.streamlit.app/)                           |
-| Streamlit prototype      | [`the-molecular-origami`](https://github.com/ryanjosephkamp/the-molecular-origami)             | [`Open app`](https://the-molecular-origami.streamlit.app/)                   |
-| Streamlit prototype      | [`the-motif-sculptor`](https://github.com/ryanjosephkamp/the-motif-sculptor)                   | [`Open app`](https://the-motif-sculptor.streamlit.app/)                      |
-| Streamlit prototype      | [`the-noise-of-life`](https://github.com/ryanjosephkamp/the-noise-of-life)                     | [`Open app`](https://the-noise-of-life.streamlit.app/)                       |
-| Streamlit prototype      | [`the-oil-and-water-simulator`](https://github.com/ryanjosephkamp/the-oil-and-water-simulator) | [`Open app`](https://the-oil-and-water-simulator.streamlit.app/)             |
-| Streamlit prototype      | [`the-phase-retriever`](https://github.com/ryanjosephkamp/the-phase-retriever)                 | [`Open app`](https://the-phase-retriever.streamlit.app/)                     |
-| Streamlit prototype      | [`the-pocket-finder`](https://github.com/ryanjosephkamp/the-pocket-finder)                     | [`Open app`](https://the-pocket-finder.streamlit.app/)                       |
-| Streamlit prototype      | [`the-reciprocal-eye`](https://github.com/ryanjosephkamp/the-reciprocal-eye)                   | [`Open app`](https://the-reciprocal-eye.streamlit.app/)                      |
-| Streamlit prototype      | [`the-relaxation-therapy`](https://github.com/ryanjosephkamp/the-relaxation-therapy)           | [`Open app`](https://the-relaxation-therapy.streamlit.app/)                  |
-| Streamlit prototype      | [`the-rotation-proof-network`](https://github.com/ryanjosephkamp/the-rotation-proof-network)   | [`Open app`](https://the-rotation-proof-network.streamlit.app/)              |
-| Streamlit prototype      | [`the-rubber-protein`](https://github.com/ryanjosephkamp/the-rubber-protein)                   | [`Open app`](https://the-rubber-protein.streamlit.app/)                      |
-| Streamlit prototype      | [`the-secondary-translator`](https://github.com/ryanjosephkamp/the-secondary-translator)       | [`Open app`](https://the-secondary-translator.streamlit.app/)                |
-| Streamlit prototype      | [`the-sequence-whisperer`](https://github.com/ryanjosephkamp/the-sequence-whisperer)           | [`Open app`](https://the-sequence-whisperer.streamlit.app/)                  |
-| Streamlit prototype      | [`the-shape-index`](https://github.com/ryanjosephkamp/the-shape-index)                         | [`Open app`](https://the-shape-index.streamlit.app/)                         |
-| Streamlit prototype      | [`the-structural-qr-code`](https://github.com/ryanjosephkamp/the-structural-qr-code)           | [`Open app`](https://the-structural-qr-code.streamlit.app/)                  |
-| Streamlit prototype      | [`the-symmetry-engine`](https://github.com/ryanjosephkamp/the-symmetry-engine)                 | [`Open app`](https://the-symmetry-engine.streamlit.app/)                     |
-| Streamlit prototype      | [`the-virtual-fermenter`](https://github.com/ryanjosephkamp/the-virtual-fermenter)             | [`Open app`](https://the-virtual-fermenter.streamlit.app/)                   |
-| Streamlit prototype      | [`the-voxelizer`](https://github.com/ryanjosephkamp/the-voxelizer)                             | [`Open app`](https://the-voxelizer.streamlit.app/)                           |
-| Streamlit prototype      | [`the-time-reversibility-paradox`](https://github.com/ryanjosephkamp/the-time-reversibility-paradox)   | [`Open app`](https://time-reversibility-paradox.streamlit.app/)              |
-| Streamlit prototype      | [`the-unbreakable-bond`](https://github.com/ryanjosephkamp/the-unbreakable-bond)                       | [`Open app`](https://unbreakable-bond.streamlit.app/) |
-| Streamlit prototype      | [`the-vibrating-string`](https://github.com/ryanjosephkamp/the-vibrating-string)                       | [`Open app`](https://vibrating-string.streamlit.app/)                        |
+<section
+  class="s26-repo-explorer"
+  data-s26-repo-explorer
+  data-repositories-url="{{ '/assets/data/s26-airp-repositories.json' | relative_url }}"
+  aria-label="S26 AIRP repository explorer"
+>
+  <div class="repo-layout">
+    <section class="graph-panel" aria-label="S26 AIRP repository graph">
+      <div class="graph-controls">
+        <label class="search-field" for="repo-search">
+          <span>Search</span>
+          <input
+            id="repo-search"
+            type="search"
+            autocomplete="off"
+            placeholder="name, language, topic, type"
+          />
+        </label>
+        <div class="graph-actions">
+          <div class="graph-mode" id="graph-mode" aria-label="Graph view mode">
+            <span>View</span>
+            <button type="button" data-graph-mode="2d" aria-pressed="true">2D</button>
+            <button type="button" data-graph-mode="3d" aria-pressed="false">3D</button>
+          </div>
+          <button class="text-button" id="reset-view" type="button">Reset</button>
+          <div class="graph-help-list" aria-label="Graph explanation">
+            <span class="graph-help">
+              <button
+                class="graph-help-trigger"
+                type="button"
+                aria-expanded="false"
+                aria-describedby="graph-help-connections"
+              >
+                Connections <span aria-hidden="true">?</span>
+              </button>
+              <span class="graph-tooltip" id="graph-help-connections" role="tooltip" hidden>
+                Lines connect nearby S26 repositories with shared language, topics, tags,
+                descriptions, or metadata terms. Selected repositories show the strongest semantic
+                neighbors.
+              </span>
+            </span>
+            <span class="graph-help">
+              <button
+                class="graph-help-trigger"
+                type="button"
+                aria-expanded="false"
+                aria-describedby="graph-help-data"
+              >
+                Data <span aria-hidden="true">?</span>
+              </button>
+              <span class="graph-tooltip" id="graph-help-data" role="tooltip" hidden>
+                This article view uses a static S26 AIRP repository snapshot reconciled against the
+                original Portfolio Index table.
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="cluster-row" id="cluster-row" aria-label="S26 repository filters"></div>
+      <p class="filter-summary" id="filter-summary" aria-live="polite">
+        Showing S26 AIRP repositories.
+      </p>
+      <div class="canvas-wrap" id="canvas-wrap">
+        <canvas id="repo-canvas" aria-hidden="true"></canvas>
+        <p class="graph-hint" id="graph-hint">Select a repository to view details.</p>
+      </div>
+      <p class="small-note">
+        In 2D, drag to pan. In 3D, drag to rotate. Scroll or pinch to zoom.
+      </p>
+    </section>
+
+    <aside class="repo-side" aria-label="S26 repository details and activity">
+      <section class="inspector" id="repo-inspector" tabindex="-1" aria-live="polite">
+        <h2>Select a repository</h2>
+        <p>
+          Choose an S26 AIRP repository to see its public description, language, update date, tags,
+          and links.
+        </p>
+      </section>
+      <section class="activity" aria-labelledby="activity-title">
+        <h2 id="activity-title">S26 repo activity</h2>
+        <div
+          class="activity-bars"
+          id="activity-bars"
+          aria-label="Recent S26 AIRP repository update activity"
+        ></div>
+        <p class="activity-detail small-note" id="activity-detail" aria-live="polite">
+          Focus a bar to read the week count.
+        </p>
+        <p class="small-note">
+          Approximate view based on public repository timestamps, not GitHub's contribution
+          calendar.
+        </p>
+      </section>
+    </aside>
+
+  </div>
+
+  <section class="repo-index" aria-labelledby="repo-index-title">
+    <div class="section-heading split-head">
+      <div>
+        <h3 id="repo-index-title">Repositories</h3>
+      </div>
+      <div class="list-tools" aria-label="Repository list controls">
+        <span class="small-note" id="repo-list-note">Showing the current filtered set.</span>
+        <div class="sort-controls" id="repo-sort-controls" aria-label="Sort repositories"></div>
+        <div class="limit-controls" id="list-limit-controls" aria-label="Rows to show"></div>
+      </div>
+    </div>
+    <div class="repo-list" id="repo-list"></div>
+  </section>
+</section>
 
 <!-- S26-AIRP-PORTFOLIO-INDEX:END -->
 
