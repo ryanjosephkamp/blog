@@ -5,6 +5,7 @@ permalink: /articles/reword-nerd/
 robots: "noindex, nofollow"
 sitemap: false
 unlisted: true
+storage_free: true
 ---
 
 <div class="film-review">
@@ -32,6 +33,7 @@ unlisted: true
       playsinline
       preload="metadata"
       poster="{{ '/assets/media/reword-nerd/2026-08-14-r1/reword-nerd-combined-quick-guide-r04-poster.webp' | relative_url }}"
+      aria-labelledby="combined-title"
       aria-describedby="combined-description"
     >
       <source src="{{ '/assets/media/reword-nerd/2026-08-14-r1/reword-nerd-combined-quick-guide-r04-review.mp4' | relative_url }}" type="video/mp4" />
@@ -51,6 +53,7 @@ unlisted: true
       playsinline
       preload="metadata"
       poster="{{ '/assets/media/reword-nerd/2026-08-14-r1/reword-nerd-marketing-30-r04-poster.webp' | relative_url }}"
+      aria-labelledby="marketing-30-title"
       aria-describedby="marketing-30-description"
     >
       <source src="{{ '/assets/media/reword-nerd/2026-08-14-r1/reword-nerd-marketing-30-r04-review.mp4' | relative_url }}" type="video/mp4" />
@@ -70,6 +73,7 @@ unlisted: true
       playsinline
       preload="metadata"
       poster="{{ '/assets/media/reword-nerd/2026-08-14-r1/reword-nerd-marketing-60-r04-poster.webp' | relative_url }}"
+      aria-labelledby="marketing-60-title"
       aria-describedby="marketing-60-description"
     >
       <source src="{{ '/assets/media/reword-nerd/2026-08-14-r1/reword-nerd-marketing-60-r04-review.mp4' | relative_url }}" type="video/mp4" />
