@@ -369,6 +369,52 @@ test("renders three accessibly named same-origin films in the required order", (
   }
 });
 
+test("publishes the approved films inside a complete personal project article", () => {
+  const article = readRequired(articleRelativePath);
+  const essayBlocks = [
+    ...article.matchAll(
+      /<section class="film-review__essay" aria-labelledby="([^"]+)">([\s\S]*?)<\/section>/g,
+    ),
+  ];
+
+  assert.deepEqual(
+    essayBlocks.map(([, id]) => id),
+    [
+      "why-i-built-it",
+      "what-reword-nerd-does",
+      "the-text-workbench",
+      "the-image-companion",
+      "why-the-package-matters",
+      "building-with-ai",
+      "what-i-learned",
+      "what-comes-next",
+    ],
+  );
+
+  for (const [, id, contents] of essayBlocks) {
+    assert.match(contents, new RegExp(`<h2 id="${escapeRegExp(id)}">[^<]+<\\/h2>`));
+    assert.ok(
+      (contents.match(/<p(?:\s[^>]*)?>/g) ?? []).length >= 2,
+      `${id} must contain at least two paragraphs`,
+    );
+  }
+
+  assert.match(
+    article,
+    /<p class="article-subtitle">A local-first browser workbench for inspectable AI handoffs<\/p>/,
+  );
+  assert.ok(
+    article.indexOf('aria-labelledby="why-i-built-it"') <
+      article.indexOf("Combined Quick Guide"),
+    "The personal introduction must precede the combined guide",
+  );
+  assert.ok(
+    article.indexOf('aria-labelledby="what-comes-next"') <
+      article.indexOf("YouTube tutorial"),
+    "The forward-looking essay section must precede the tutorial placeholder",
+  );
+});
+
 test("selects a storage-free effective layout only for the review route", () => {
   const layout = readRequired("_layouts/default.html");
   const reviewArticle = readRequired(articleRelativePath);
