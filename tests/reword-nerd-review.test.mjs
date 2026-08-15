@@ -245,17 +245,19 @@ function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-test("publishes the exact unlisted front matter and conditional escaped robots metadata", () => {
+test("publishes discoverable article front matter without review-only indexing directives", () => {
   const article = readRequired(articleRelativePath);
   assert.deepEqual(frontMatter(article), [
     'title: "reword_nerd: Local prompt packages for text and images"',
     'description: "Review the reword_nerd quick guide and product films for its local Text and Image prompt-package workflow."',
     "permalink: /articles/reword-nerd/",
-    'robots: "noindex, nofollow"',
-    "sitemap: false",
-    "unlisted: true",
     "storage_free: true",
   ]);
+
+  assert.doesNotMatch(
+    article,
+    /film-review__notice|Review-only link|unlisted|not access control/i,
+  );
 
   const layout = readRequired("_layouts/default.html");
   assert.match(
@@ -265,10 +267,23 @@ test("publishes the exact unlisted front matter and conditional escaped robots m
   assert.equal((layout.match(/name="robots"/g) ?? []).length, 1);
 });
 
-test("keeps the review route out of indexes, sitemaps, and published test files", () => {
+test("lists reword_nerd as the newest of exactly two official blog posts", () => {
+  const expectedLink =
+    '<a href="{{ \'/articles/reword-nerd/\' | relative_url }}">reword_nerd: Local prompt packages for text and images</a>';
+
   for (const indexPath of ["index.md", "articles/index.md"]) {
     const index = readRequired(indexPath);
-    assert.doesNotMatch(index, /reword[-_]nerd|\/articles\/reword-nerd\//i);
+    assert.equal((index.match(/<li>/g) ?? []).length, 2, `${indexPath} must list two posts`);
+    assert.equal(
+      (index.match(/\/articles\/reword-nerd\//g) ?? []).length,
+      1,
+      `${indexPath} must link reword_nerd exactly once`,
+    );
+    assert.match(index, new RegExp(escapeRegExp(expectedLink)));
+    assert.ok(
+      index.indexOf("/articles/reword-nerd/") < index.indexOf("/articles/s26-airp/"),
+      `${indexPath} must show the newest post first`,
+    );
   }
 
   const config = readRequired("_config.yml");
