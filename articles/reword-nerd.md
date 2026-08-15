@@ -1,6 +1,6 @@
 ---
 title: "reword_nerd: Local prompt packages for text and images"
-description: "Review the ReWord Nerd quick guide and product films for its local Text and Image prompt-package workflow."
+description: "Review the reword_nerd quick guide and product films for its local Text and Image prompt-package workflow."
 permalink: /articles/reword-nerd/
 robots: "noindex, nofollow"
 sitemap: false
@@ -11,12 +11,44 @@ storage_free: true
 <div class="film-review">
   <header class="film-review__intro">
     <h1>reword_nerd: Local prompt packages for text and images</h1>
-    <p class="article-subtitle">A local-first browser workbench for inspectable AI handoffs</p>
+    <p class="article-subtitle">A local-first browser workbench for text rewording and image regeneration prompt packages</p>
+    <details class="film-review__brand-mark" open>
+      <summary>Animated reword_nerd icon (toggle visibility)</summary>
+      <img
+        src="{{ '/assets/images/reword-nerd-icon.gif' | relative_url }}"
+        alt="Animated teal reword_nerd pyramid icon"
+        width="960"
+        height="960"
+        loading="lazy"
+        decoding="async"
+      />
+    </details>
     <p>
-      I built ReWord Nerd to make the preparation around an AI task easier to inspect. It turns
-      reviewed Text and Image inputs into model-tailored prompt packages without calling a model,
-      requesting provider credentials, or uploading the selected source material.
+      These days, there are some legitimate reasons for wanting to reword text or regenerate
+      images with AI. For text, one might want to explore a different writing style, or to change
+      the statistical structural word distribution. For images, perhaps the goal is to make
+      precise edits to a picture, or to remove hidden pixel content. Regardless of why someone
+      would try to do this, the process can be divided into human work and AI work: The human
+      provides the context and instructions, and reviews the result from the model; and the AI does
+      the hard rewording/regeneration work.
     </p>
+    <p>On the human side of this pipeline, there are two main challenges:</p>
+    <ol class="film-review__challenges">
+      <li>Preparing and submitting everything to the model, i.e., context/prompt engineering.</li>
+      <li>Evaluating the performance of the model and correcting its mistakes.</li>
+    </ol>
+    <p>
+      Challenge (2) depends on the specifics of the problem, the selected model, the chosen
+      harness, and countless other variables. This process could be automated (e.g., LLM-as-judge),
+      but doing so carries its own risks. Especially for important rewording or regeneration tasks,
+      human review should still occur at some point.
+    </p>
+    <p>
+      But Challenge (1) is predictable: create prompt packages designed for a given model, and use
+      them in the preferred harness. While this is straightforward in principle, it is tedious in
+      practice.
+    </p>
+    <p><strong>reword_nerd solves that problem.</strong></p>
     <p class="film-review__notice" role="note">
       <strong>Review-only link.</strong> This public-by-link page is unlisted and asks search
       engines not to index it; that is not access control.
@@ -38,7 +70,7 @@ storage_free: true
       </p>
     </blockquote>
     <p>
-      ReWord Nerd grew out of that question. I wanted the source, settings, warnings, prompts, and
+      reword_nerd grew out of that question. I wanted the source, settings, warnings, prompts, and
       run instructions to stay visible long enough for a person to make deliberate choices. The
       result is not an automated rewriting or image-generation service. It is a browser workbench
       for preparing a portable package that can be used in a separate model interface.
@@ -66,7 +98,7 @@ storage_free: true
   </figure>
 
   <section class="film-review__essay" aria-labelledby="what-reword-nerd-does">
-    <h2 id="what-reword-nerd-does">What ReWord Nerd does</h2>
+    <h2 id="what-reword-nerd-does">What reword_nerd does</h2>
     <p>
       The site has two isolated companion portals. The teal Text portal is the default workspace
       for documents and safe text projects. The orange Image portal prepares reference-image
@@ -138,26 +170,26 @@ storage_free: true
   <section class="film-review__essay" aria-labelledby="why-the-package-matters">
     <h2 id="why-the-package-matters">Why the package matters</h2>
     <p>
-      I came to think of the package as the real product. A useful handoff needs more than a prompt
-      copied into a text file. It needs enough context to explain what the source is, which choices
-      were made, what should remain stable, how to run the task, and what a human should verify
-      afterward. ReWord Nerd packages that context into deterministic ZIPs and Night Terminal HTML
-      companions that remain usable after extraction and offline.
+      A useful handoff needs more than a prompt copied into a text file. It needs enough context to
+      explain what the source is, which choices were made, what should remain stable, how to run the
+      task, and what a human should verify afterward. reword_nerd packages that context into
+      deterministic ZIPs and Night Terminal HTML companions that remain usable after extraction and
+      offline.
     </p>
     <p>
       The HTML workbooks are deliberately practical. They keep prompts, instructions, provenance,
       and fallbacks together; the Image workbook also keeps each source beside its exact prompt and
       run card. The package can be inspected before it is shared, moved between machines, or used
-      with a chosen provider. ReWord Nerd prepares that handoff, but the user remains responsible
+      with a chosen provider. reword_nerd prepares that handoff, but the user remains responsible
       for deciding where it goes next.
     </p>
     <h3>Boundaries and limitations</h3>
     <p>
-      Local processing does not make extraction infallible. Documents, OCR, source images, and
-      generated prompts still require human review. Image-model output is stochastic, and faces,
-      visible text, logos, fine geometry, and structured layouts can drift. Exact retained image
-      bytes may also contain EXIF or location metadata, so an exported package should be reviewed
-      before it is shared.
+      Local processing does not make extraction infallible. <strong>Documents, OCR, source images,
+      and generated prompts still require human review.</strong> Image-model output is stochastic,
+      and faces, visible text, logos, fine geometry, and structured layouts can drift. Exact retained
+      image bytes may also contain EXIF or location metadata, so <strong>an exported package should
+      be reviewed before it is shared</strong>.
     </p>
   </section>
 
@@ -173,7 +205,7 @@ storage_free: true
       In practice, the work depended on checkpoints, test-first changes, deterministic fixtures,
       privacy scans, visual comparisons, focused accessibility reviews, and staged release gates.
       AI increased the speed at which alternatives could be explored; it also increased the value
-      of explicit boundaries. The process behind ReWord Nerd ended up reflecting the product
+      of explicit boundaries. The process behind reword_nerd ended up reflecting the product
       itself: intermediate state should be visible, important transitions should be deliberate,
       and the final artifact should be independently inspectable.
     </p>
@@ -199,28 +231,6 @@ storage_free: true
     <p class="film-review__transcript"><a href="{{ '/assets/media/reword-nerd/2026-08-14-r1/reword-nerd-marketing-60-r04-transcript.txt' | relative_url }}">Plain-text transcript</a></p>
   </figure>
 
-  <section class="film-review__essay" aria-labelledby="what-i-learned">
-    <h2 id="what-i-learned">What I learned</h2>
-    <p>
-      The first lesson was that source review is not preliminary polish; it is part of prompt
-      quality. A strong prompt cannot compensate for the wrong pages, an unreviewed extraction, a
-      missing image, or an instruction that quietly overwrote a detail the user meant to preserve.
-      Showing those decisions makes the workflow slower in a useful way.
-    </p>
-    <p>
-      The second lesson was that small interface distinctions carry real meaning. Focus is not the
-      same as bulk selection. Inclusion is not the same as either one. Build is not Download. A
-      package preview is not merely decoration. Keeping those concepts separate made the workbench
-      easier to reason about and made stale or accidental output easier to prevent.
-    </p>
-    <p>
-      I also learned how much presentation matters after export. An offline HTML file can be a
-      disposable dump, or it can be the clearest explanation of what a package contains and how to
-      use it. Treating those files as real interfaces turned the export from a collection of parts
-      into something approachable.
-    </p>
-  </section>
-
   <section class="film-review__essay" aria-labelledby="what-comes-next">
     <h2 id="what-comes-next">What comes next</h2>
     <p>
@@ -228,12 +238,6 @@ storage_free: true
       both portals and carry example Text and Image packages into a real model interface so the
       handoff itself is visible, not just the package-building step. The placeholder below will be
       replaced when that video is ready.
-    </p>
-    <p>
-      Beyond that tutorial, I want to keep exploring the boundary between AI assistance and
-      inspectable human control. ReWord Nerd is one answer: keep preparation local, make the
-      important choices visible, and export an artifact that can be reviewed before another system
-      receives it.
     </p>
   </section>
 
@@ -246,11 +250,11 @@ storage_free: true
   <section class="film-review__links" aria-labelledby="project-links">
     <h2 id="project-links">Project links</h2>
     <ul>
-      <li><a href="https://ryanjosephkamp.github.io/reword-nerd/">ReWord Nerd Text portal</a></li>
-      <li><a href="https://ryanjosephkamp.github.io/reword-nerd/image/">ReWord Nerd Image portal</a></li>
-      <li><a href="https://ryanjosephkamp.github.io/reword-nerd/updates/">ReWord Nerd Updates archive</a></li>
-      <li><a href="https://ryanjosephkamp.github.io/reword-nerd/updates/v0-8-0/">ReWord Nerd v0.8 post</a></li>
-      <li><a href="https://github.com/ryanjosephkamp/reword-nerd">ReWord Nerd on GitHub</a></li>
+      <li><a href="https://ryanjosephkamp.github.io/reword-nerd/">reword_nerd Text portal</a></li>
+      <li><a href="https://ryanjosephkamp.github.io/reword-nerd/image/">reword_nerd Image portal</a></li>
+      <li><a href="https://ryanjosephkamp.github.io/reword-nerd/updates/">reword_nerd Updates archive</a></li>
+      <li><a href="https://ryanjosephkamp.github.io/reword-nerd/updates/v0-8-0/">reword_nerd v0.8 post</a></li>
+      <li><a href="https://github.com/ryanjosephkamp/reword-nerd">reword_nerd on GitHub</a></li>
     </ul>
   </section>
 </div>

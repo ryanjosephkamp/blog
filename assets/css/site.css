@@ -724,6 +724,35 @@ th {
   margin-bottom: 2.5rem;
 }
 
+.film-review__brand-mark {
+  max-width: min(15rem, 62vw);
+  margin: 1.5rem auto 2rem;
+}
+
+.film-review__brand-mark summary {
+  margin-top: 0.65rem;
+  color: var(--faint);
+  cursor: pointer;
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+.film-review__brand-mark img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 18%;
+}
+
+.film-review__challenges {
+  margin-bottom: 1.25rem;
+}
+
+.film-review__challenges li + li {
+  margin-top: 0.45rem;
+}
+
 .film-review__notice {
   margin: 1.5rem 0 0;
   padding: 0.9rem 1rem;
@@ -802,6 +831,12 @@ th {
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-review__brand-mark img {
+    display: none;
+  }
 }
 
 .social-links {
