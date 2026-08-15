@@ -122,6 +122,44 @@ const projectLinks = [
   ["ReWord Nerd on GitHub", "https://github.com/ryanjosephkamp/reword-nerd"],
 ];
 
+const expectedLightTheme = {
+  "--page": "#ffffff",
+  "--ink": "#111111",
+  "--muted": "#3f3f3f",
+  "--faint": "#525252",
+  "--line": "#dddddd",
+  "--line-strong": "#8c8c8c",
+  "--accent": "#0b4f9c",
+  "--accent-soft": "#f4f7fb",
+  "--paper": "#ffffff",
+  "--node-0": "#111111",
+  "--node-1": "#444444",
+  "--node-2": "#626262",
+  "--node-3": "#2d2d2d",
+  "--node-4": "#737373",
+  "--node-5": "#505050",
+  "--node-6": "#858585",
+};
+
+const expectedDarkTheme = {
+  "--page": "#101010",
+  "--ink": "#f2f2f2",
+  "--muted": "#d0d0d0",
+  "--faint": "#b9b9b9",
+  "--line": "#363636",
+  "--line-strong": "#8d8d8d",
+  "--accent": "#b8ccff",
+  "--accent-soft": "#171717",
+  "--paper": "#101010",
+  "--node-0": "#f2f2f2",
+  "--node-1": "#d6d6d6",
+  "--node-2": "#bfbfbf",
+  "--node-3": "#e7e7e7",
+  "--node-4": "#a8a8a8",
+  "--node-5": "#cccccc",
+  "--node-6": "#999999",
+};
+
 function absolutePath(relativePath) {
   return join(repositoryRoot, relativePath);
 }
@@ -154,6 +192,10 @@ function frontMatterValues(document) {
 
 function traceEffectiveLayout(layout, page) {
   let html = layout.replace(
+    /{% if page\.storage_free %}([\s\S]*?){% endif %}/g,
+    page.storage_free ? "$1" : "",
+  );
+  html = html.replace(
     /{% unless page\.storage_free %}([\s\S]*?){% endunless %}/g,
     page.storage_free ? "" : "$1",
   );
@@ -169,6 +211,21 @@ function traceEffectiveLayout(layout, page) {
     ),
     themeControls: [...html.matchAll(/<fieldset class="theme-switcher"[\s\S]*?<\/fieldset>/g)],
   };
+}
+
+function themeProperties(block) {
+  const declarations = Object.fromEntries(
+    [...block.matchAll(/(--[a-z0-9-]+):\s*([^;]+);/g)].map(([, name, value]) => [
+      name,
+      value.trim(),
+    ]),
+  );
+  return Object.fromEntries(
+    Object.keys(expectedLightTheme).map((name) => {
+      assert.ok(declarations[name], `Missing theme property ${name}`);
+      return [name, declarations[name]];
+    }),
+  );
 }
 
 function sha256(path) {
@@ -323,6 +380,7 @@ test("selects a storage-free effective layout only for the review route", () => 
   assert.equal(ordinaryPage.storage_free, undefined);
 
   const reviewLayout = traceEffectiveLayout(layout, reviewPage);
+  assert.match(reviewLayout.html, /<html lang="en" data-storage-free-theme="system">/);
   assert.deepEqual(reviewLayout.scriptSources, []);
   assert.equal(reviewLayout.themeControls.length, 0);
   assert.doesNotMatch(reviewLayout.html, /assets\/js\/theme\.js|name="theme"/);
@@ -330,6 +388,7 @@ test("selects a storage-free effective layout only for the review route", () => 
   assert.doesNotMatch(reviewArticle, /<script\b|localStorage|sessionStorage/i);
 
   const ordinaryLayout = traceEffectiveLayout(layout, ordinaryPage);
+  assert.doesNotMatch(ordinaryLayout.html, /data-storage-free-theme=/);
   assert.deepEqual(ordinaryLayout.scriptSources, [
     "{{ '/assets/js/theme.js' | relative_url }}",
   ]);
@@ -340,6 +399,24 @@ test("selects a storage-free effective layout only for the review route", () => 
     ),
     ["light", "dark", "system"],
   );
+});
+
+test("resolves the storage-free system theme to light and the existing dark tokens", () => {
+  const css = readRequired("assets/css/site.css");
+  const lightBlock = css.match(/^:root \{([\s\S]*?)\n}/)?.[1];
+  const existingDarkBlock = css.match(
+    /:root\[data-resolved-theme="dark"\] \{([\s\S]*?)\n}/,
+  )?.[1];
+  const storageFreeDarkBlock = css.match(
+    /@media \(prefers-color-scheme: dark\) \{\s*:root\[data-storage-free-theme="system"\] \{([\s\S]*?)\n  }\s*}/,
+  )?.[1];
+
+  assert.ok(lightBlock, "Missing default light theme");
+  assert.ok(existingDarkBlock, "Missing existing dark theme");
+  assert.ok(storageFreeDarkBlock, "Missing storage-free system-dark theme");
+  assert.deepEqual(themeProperties(lightBlock), expectedLightTheme);
+  assert.deepEqual(themeProperties(existingDarkBlock), expectedDarkTheme);
+  assert.deepEqual(themeProperties(storageFreeDarkBlock), expectedDarkTheme);
 });
 
 test("uses a request-free tutorial placeholder, exact project links, and exact final CTA", () => {
