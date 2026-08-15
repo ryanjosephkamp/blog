@@ -42,6 +42,27 @@
   --node-6: #999999;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root[data-storage-free-theme="system"] {
+    --page: #101010;
+    --ink: #f2f2f2;
+    --muted: #d0d0d0;
+    --faint: #b9b9b9;
+    --line: #363636;
+    --line-strong: #8d8d8d;
+    --accent: #b8ccff;
+    --accent-soft: #171717;
+    --paper: #101010;
+    --node-0: #f2f2f2;
+    --node-1: #d6d6d6;
+    --node-2: #bfbfbf;
+    --node-3: #e7e7e7;
+    --node-4: #a8a8a8;
+    --node-5: #cccccc;
+    --node-6: #999999;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
