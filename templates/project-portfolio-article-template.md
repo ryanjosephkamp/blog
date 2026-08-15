@@ -10,9 +10,12 @@ project does not support.
 title: "[Project or portfolio title]"
 description: "[One direct sentence describing the project or portfolio item]"
 permalink: /articles/[post-slug]/
+date: "[YYYY-MM-DD]"
 ---
 
 # [Project or portfolio title]
+
+{% include article-date.html %}
 
 <p class="article-subtitle">[Optional subtitle. Remove this line if it is not useful.]</p>
 

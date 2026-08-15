@@ -2,12 +2,14 @@
 title: "reword_nerd: Local prompt packages for text and images"
 description: "Review the reword_nerd quick guide and product films for its local Text and Image prompt-package workflow."
 permalink: /articles/reword-nerd/
+date: 2026-08-15
 storage_free: true
 ---
 
 <div class="film-review">
   <header class="film-review__intro">
     <h1>reword_nerd: Local prompt packages for text and images</h1>
+    {% include article-date.html %}
     <p class="article-subtitle">A local-first browser workbench for text rewording and image regeneration prompt packages</p>
     <details class="film-review__brand-mark" open>
       <summary>Animated reword_nerd icon (toggle visibility)</summary>

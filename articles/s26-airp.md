@@ -2,11 +2,14 @@
 title: "Spring 2026 AI Research Prototype Portfolio"
 description: "AI-assisted research software prototyping in practice"
 permalink: /articles/s26-airp/
+date: 2026-06-24
 scripts:
   - /assets/js/s26-airp-repositories.js
 ---
 
 # Spring 2026 AI Research Prototype Portfolio
+
+{% include article-date.html %}
 
 <p class="article-subtitle">AI-Assisted Research Software Prototyping in Practice</p>
 

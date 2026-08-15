@@ -9,9 +9,12 @@ bracketed prompt, and remove sections that do not fit the post.
 title: "[Clear post title]"
 description: "[One direct sentence describing the post]"
 permalink: /articles/[post-slug]/
+date: "[YYYY-MM-DD]"
 ---
 
 # [Clear post title]
+
+{% include article-date.html %}
 
 [Opening paragraph that says what this post is about, why it exists, and what
 the reader should expect. Keep this direct and specific.]
