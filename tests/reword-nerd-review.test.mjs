@@ -138,6 +138,39 @@ function frontMatter(document) {
   return match[1].split("\n");
 }
 
+function frontMatterValues(document) {
+  return Object.fromEntries(
+    frontMatter(document).map((line) => {
+      const separator = line.indexOf(":");
+      assert.ok(separator > 0, `Invalid front-matter line: ${line}`);
+      const key = line.slice(0, separator);
+      const rawValue = line.slice(separator + 1).trim();
+      if (rawValue === "true") return [key, true];
+      if (rawValue === "false") return [key, false];
+      return [key, rawValue.replace(/^"|"$/g, "")];
+    }),
+  );
+}
+
+function traceEffectiveLayout(layout, page) {
+  let html = layout.replace(
+    /{% unless page\.storage_free %}([\s\S]*?){% endunless %}/g,
+    page.storage_free ? "" : "$1",
+  );
+  html = html.replace(
+    /{% if page\.scripts %}([\s\S]*?){% endif %}/g,
+    page.scripts ? "$1" : "",
+  );
+
+  return {
+    html,
+    scriptSources: [...html.matchAll(/<script\s+src="([^"]+)"[^>]*><\/script>/g)].map(
+      ([, source]) => source,
+    ),
+    themeControls: [...html.matchAll(/<fieldset class="theme-switcher"[\s\S]*?<\/fieldset>/g)],
+  };
+}
+
 function sha256(path) {
   return createHash("sha256").update(readFileSync(path)).digest("hex");
 }
@@ -159,6 +192,7 @@ test("publishes the exact unlisted front matter and conditional escaped robots m
     'robots: "noindex, nofollow"',
     "sitemap: false",
     "unlisted: true",
+    "storage_free: true",
   ]);
 
   const layout = readRequired("_layouts/default.html");
@@ -209,7 +243,7 @@ test("publishes only the exact attested r04 public derivative allowlist under 40
   );
 });
 
-test("renders three accessible same-origin films in the required order", () => {
+test("renders three accessibly named same-origin films in the required order", () => {
   const article = readRequired(articleRelativePath);
   const expectedOrder = [
     "Combined Quick Guide",
@@ -228,6 +262,18 @@ test("renders three accessible same-origin films in the required order", () => {
 
   const figureBlocks = [...article.matchAll(/<figure class="film-review__film">([\s\S]*?)<\/figure>/g)];
   assert.equal(figureBlocks.length, 3);
+  const allIds = [...article.matchAll(/\sid="([^"]+)"/g)].map(([, id]) => id);
+  assert.equal(new Set(allIds).size, allIds.length, "Article IDs must be unique");
+  const filmHeadingIds = figureBlocks.map(([, figure]) => {
+    const heading = figure.match(/<h2 id="([^"]+)">/);
+    assert.ok(heading, "Each film must have a heading ID");
+    return heading[1];
+  });
+  assert.deepEqual(filmHeadingIds, [
+    "combined-title",
+    "marketing-30-title",
+    "marketing-60-title",
+  ]);
 
   for (const [index, film] of films.entries()) {
     const figure = figureBlocks[index][1];
@@ -240,6 +286,7 @@ test("renders three accessible same-origin films in the required order", () => {
     assert.match(attributes, /(?:^|\s)controls(?:\s|$)/);
     assert.match(attributes, /(?:^|\s)playsinline(?:\s|$)/);
     assert.match(attributes, /preload="metadata"/);
+    assert.match(attributes, new RegExp(`aria-labelledby="${film.key}-title"`));
     assert.match(attributes, new RegExp(`aria-describedby="${film.descriptionId}"`));
 
     const poster = expectedMedia.find((media) => media.film === film.key && media.role === "poster");
@@ -263,6 +310,36 @@ test("renders three accessible same-origin films in the required order", () => {
       new RegExp(`<a href="${escapeRegExp(liquidMediaUrl(transcript.file))}">Plain-text transcript</a>`),
     );
   }
+});
+
+test("selects a storage-free effective layout only for the review route", () => {
+  const layout = readRequired("_layouts/default.html");
+  const reviewArticle = readRequired(articleRelativePath);
+  const ordinaryArticle = readRequired("index.md");
+  const reviewPage = frontMatterValues(reviewArticle);
+  const ordinaryPage = frontMatterValues(ordinaryArticle);
+
+  assert.equal(reviewPage.storage_free, true);
+  assert.equal(ordinaryPage.storage_free, undefined);
+
+  const reviewLayout = traceEffectiveLayout(layout, reviewPage);
+  assert.deepEqual(reviewLayout.scriptSources, []);
+  assert.equal(reviewLayout.themeControls.length, 0);
+  assert.doesNotMatch(reviewLayout.html, /assets\/js\/theme\.js|name="theme"/);
+  assert.doesNotMatch(reviewLayout.html, /localStorage|sessionStorage/i);
+  assert.doesNotMatch(reviewArticle, /<script\b|localStorage|sessionStorage/i);
+
+  const ordinaryLayout = traceEffectiveLayout(layout, ordinaryPage);
+  assert.deepEqual(ordinaryLayout.scriptSources, [
+    "{{ '/assets/js/theme.js' | relative_url }}",
+  ]);
+  assert.equal(ordinaryLayout.themeControls.length, 1);
+  assert.deepEqual(
+    [...ordinaryLayout.themeControls[0][0].matchAll(/name="theme" value="([^"]+)"/g)].map(
+      ([, value]) => value,
+    ),
+    ["light", "dark", "system"],
+  );
 });
 
 test("uses a request-free tutorial placeholder, exact project links, and exact final CTA", () => {
