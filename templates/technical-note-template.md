@@ -9,9 +9,12 @@ not a broad claim about a tool, method, or field.
 title: "[Technical note title]"
 description: "[One direct sentence describing the note]"
 permalink: /articles/[post-slug]/
+date: "[YYYY-MM-DD]"
 ---
 
 # [Technical note title]
+
+{% include article-date.html %}
 
 [Opening paragraph that states the problem, context, and scope of the note.]
 

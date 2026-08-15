@@ -14,6 +14,21 @@ const expectedIcon = {
   sha256: "539b3a7cef5e08e23e7c9491f431154c6bff2d6c6336662fd2c068e545bb4462",
 };
 
+const publishedArticles = [
+  {
+    path: "articles/reword-nerd.md",
+    href: "/articles/reword-nerd/",
+    title: "reword_nerd: Local prompt packages for text and images",
+    date: "2026-08-15",
+  },
+  {
+    path: "articles/s26-airp.md",
+    href: "/articles/s26-airp/",
+    title: "Spring 2026 AI Research Prototype Portfolio",
+    date: "2026-06-24",
+  },
+];
+
 const expectedMedia = [
   {
     film: "combined",
@@ -251,6 +266,7 @@ test("publishes discoverable article front matter without review-only indexing d
     'title: "reword_nerd: Local prompt packages for text and images"',
     'description: "Review the reword_nerd quick guide and product films for its local Text and Image prompt-package workflow."',
     "permalink: /articles/reword-nerd/",
+    "date: 2026-08-15",
     "storage_free: true",
   ]);
 
@@ -289,6 +305,91 @@ test("lists reword_nerd as the newest of exactly two official blog posts", () =>
   const config = readRequired("_config.yml");
   assert.match(config, /^exclude:\n(?:  - .+\n)*  - tests\/$/m);
   assert.equal(existsSync(absolutePath("robots.txt")), false);
+});
+
+test("renders one semantic publication date near the top of every current article", () => {
+  const include = readRequired("_includes/article-date.html");
+  assert.equal(
+    include.trim(),
+    '<p class="article-date">Published <time datetime="{{ page.date | date: \'%Y-%m-%d\' }}">{{ page.date | date: "%Y-%m-%d" }}</time></p>',
+  );
+
+  for (const articleContract of publishedArticles) {
+    const article = readRequired(articleContract.path);
+    const titleIndex = Math.max(
+      article.indexOf(`<h1>${articleContract.title}</h1>`),
+      article.indexOf(`# ${articleContract.title}`),
+    );
+    assert.ok(titleIndex >= 0, `${articleContract.path} title is missing`);
+    assert.ok(
+      frontMatter(article).includes(`date: ${articleContract.date}`),
+      `${articleContract.path} date drifted`,
+    );
+    assert.equal(
+      (article.match(/{% include article-date\.html %}/g) ?? []).length,
+      1,
+      `${articleContract.path} must render one date`,
+    );
+    assert.ok(
+      article.indexOf("{% include article-date.html %}") > titleIndex,
+      `${articleContract.path} date must follow its title`,
+    );
+    assert.ok(
+      article.indexOf("{% include article-date.html %}") < article.indexOf("article-subtitle"),
+      `${articleContract.path} date must precede its subtitle`,
+    );
+  }
+
+  const css = readRequired("assets/css/site.css");
+  assert.match(
+    css,
+    /\.article-date\s*{[\s\S]*?color: var\(--faint\);[\s\S]*?font-size:[\s\S]*?}/,
+  );
+  assert.match(
+    css,
+    /\.article-list \.article-date\s*{\s*margin: 0 0 0\.3rem;/,
+    "Index dates must not inherit the article header's negative top margin",
+  );
+});
+
+test("shows matching semantic publication dates in both public post indexes", () => {
+  for (const indexPath of ["index.md", "articles/index.md"]) {
+    const index = readRequired(indexPath);
+    const entries = [...index.matchAll(/<li>([\s\S]*?)<\/li>/g)].map(([, entry]) => entry);
+    assert.equal(entries.length, publishedArticles.length);
+
+    for (const [position, articleContract] of publishedArticles.entries()) {
+      const entry = entries[position];
+      assert.match(entry, new RegExp(escapeRegExp(articleContract.href)));
+      assert.match(entry, new RegExp(escapeRegExp(articleContract.title)));
+      assert.match(
+        entry,
+        new RegExp(
+          `<p class="article-date">Published <time datetime="${articleContract.date}">${articleContract.date}<\\/time><\\/p>`,
+        ),
+      );
+    }
+  }
+});
+
+test("requires the same publication-date field and placement in every post template", () => {
+  for (const templatePath of [
+    "templates/standard-article-template.md",
+    "templates/project-portfolio-article-template.md",
+    "templates/technical-note-template.md",
+  ]) {
+    const template = readRequired(templatePath);
+    assert.match(template, /^date: "\[YYYY-MM-DD\]"$/m, `${templatePath} must request a date`);
+    assert.equal(
+      (template.match(/{% include article-date\.html %}/g) ?? []).length,
+      1,
+      `${templatePath} must render one date`,
+    );
+    assert.ok(
+      template.indexOf("{% include article-date.html %}") > template.indexOf("# ["),
+      `${templatePath} date must follow its title`,
+    );
+  }
 });
 
 test("publishes only the exact attested r04 public derivative allowlist under 40 MiB", () => {

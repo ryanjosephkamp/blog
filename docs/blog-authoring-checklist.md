@@ -18,6 +18,7 @@ Use this checklist before publishing or asking Codex to publish a new post.
 
 - Choose a clear title and URL slug.
 - Decide whether the post belongs under `/articles/`.
+- Add the publication date in `YYYY-MM-DD` format.
 - Write a one-sentence description for the front matter.
 - Keep the post focused on one main idea, project, note, or update.
 - Replace every bracketed prompt from the template.
