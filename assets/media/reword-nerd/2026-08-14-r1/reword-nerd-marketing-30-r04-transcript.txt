@@ -1,0 +1,7 @@
+reword_nerd
+TEXT + IMAGE
+Files stay local in your browser.
+Build model-tailored prompt packages.
+Export deterministic offline HTML + ZIP artifacts.
+No credentials. No model call. No upload.
+Try reword_nerd.
