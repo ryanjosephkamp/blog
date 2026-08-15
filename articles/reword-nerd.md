@@ -2,9 +2,6 @@
 title: "reword_nerd: Local prompt packages for text and images"
 description: "Review the reword_nerd quick guide and product films for its local Text and Image prompt-package workflow."
 permalink: /articles/reword-nerd/
-robots: "noindex, nofollow"
-sitemap: false
-unlisted: true
 storage_free: true
 ---
 
@@ -49,10 +46,6 @@ storage_free: true
       practice.
     </p>
     <p><strong>reword_nerd solves that problem.</strong></p>
-    <p class="film-review__notice" role="note">
-      <strong>Review-only link.</strong> This public-by-link page is unlisted and asks search
-      engines not to index it; that is not access control.
-    </p>
   </header>
 
   <section class="film-review__essay" aria-labelledby="why-i-built-it">

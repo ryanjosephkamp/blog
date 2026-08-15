@@ -15,6 +15,10 @@ description: Writing and project notes by Ryan Kamp
   </div>
   <ul class="article-list">
     <li>
+      <h3><a href="{{ '/articles/reword-nerd/' | relative_url }}">reword_nerd: Local prompt packages for text and images</a></h3>
+      <p>A local-first browser workbench for text rewording and image regeneration prompt packages.</p>
+    </li>
+    <li>
       <h3><a href="{{ '/articles/s26-airp/' | relative_url }}">Spring 2026 AI Research Prototype Portfolio</a></h3>
       <p>A portfolio-scale reflection on AI-assisted research software prototyping, disclosure, and non-overclaiming.</p>
     </li>

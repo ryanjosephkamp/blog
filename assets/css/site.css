@@ -753,13 +753,6 @@ th {
   margin-top: 0.45rem;
 }
 
-.film-review__notice {
-  margin: 1.5rem 0 0;
-  padding: 0.9rem 1rem;
-  border-left: 2px solid var(--line-strong);
-  background: var(--accent-soft);
-}
-
 .film-review__film {
   max-width: 820px;
   margin: 0 0 2rem;
