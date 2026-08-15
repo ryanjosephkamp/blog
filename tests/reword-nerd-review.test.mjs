@@ -8,6 +8,11 @@ import { fileURLToPath } from "node:url";
 const repositoryRoot = dirname(dirname(fileURLToPath(import.meta.url)));
 const articleRelativePath = "articles/reword-nerd.md";
 const mediaRelativeDirectory = "assets/media/reword-nerd/2026-08-14-r1";
+const iconRelativePath = "assets/images/reword-nerd-icon.gif";
+const expectedIcon = {
+  bytes: 14_799_188,
+  sha256: "539b3a7cef5e08e23e7c9491f431154c6bff2d6c6336662fd2c068e545bb4462",
+};
 
 const expectedMedia = [
   {
@@ -115,11 +120,11 @@ const films = [
 ];
 
 const projectLinks = [
-  ["ReWord Nerd Text portal", "https://ryanjosephkamp.github.io/reword-nerd/"],
-  ["ReWord Nerd Image portal", "https://ryanjosephkamp.github.io/reword-nerd/image/"],
-  ["ReWord Nerd Updates archive", "https://ryanjosephkamp.github.io/reword-nerd/updates/"],
-  ["ReWord Nerd v0.8 post", "https://ryanjosephkamp.github.io/reword-nerd/updates/v0-8-0/"],
-  ["ReWord Nerd on GitHub", "https://github.com/ryanjosephkamp/reword-nerd"],
+  ["reword_nerd Text portal", "https://ryanjosephkamp.github.io/reword-nerd/"],
+  ["reword_nerd Image portal", "https://ryanjosephkamp.github.io/reword-nerd/image/"],
+  ["reword_nerd Updates archive", "https://ryanjosephkamp.github.io/reword-nerd/updates/"],
+  ["reword_nerd v0.8 post", "https://ryanjosephkamp.github.io/reword-nerd/updates/v0-8-0/"],
+  ["reword_nerd on GitHub", "https://github.com/ryanjosephkamp/reword-nerd"],
 ];
 
 const expectedLightTheme = {
@@ -244,7 +249,7 @@ test("publishes the exact unlisted front matter and conditional escaped robots m
   const article = readRequired(articleRelativePath);
   assert.deepEqual(frontMatter(article), [
     'title: "reword_nerd: Local prompt packages for text and images"',
-    'description: "Review the ReWord Nerd quick guide and product films for its local Text and Image prompt-package workflow."',
+    'description: "Review the reword_nerd quick guide and product films for its local Text and Image prompt-package workflow."',
     "permalink: /articles/reword-nerd/",
     'robots: "noindex, nofollow"',
     "sitemap: false",
@@ -386,23 +391,38 @@ test("publishes the approved films inside a complete personal project article", 
       "the-image-companion",
       "why-the-package-matters",
       "building-with-ai",
-      "what-i-learned",
       "what-comes-next",
     ],
   );
 
   for (const [, id, contents] of essayBlocks) {
     assert.match(contents, new RegExp(`<h2 id="${escapeRegExp(id)}">[^<]+<\\/h2>`));
+    const minimumParagraphs = id === "what-comes-next" ? 1 : 2;
     assert.ok(
-      (contents.match(/<p(?:\s[^>]*)?>/g) ?? []).length >= 2,
-      `${id} must contain at least two paragraphs`,
+      (contents.match(/<p(?:\s[^>]*)?>/g) ?? []).length >= minimumParagraphs,
+      `${id} must contain at least ${minimumParagraphs} paragraph(s)`,
     );
   }
 
   assert.match(
     article,
-    /<p class="article-subtitle">A local-first browser workbench for inspectable AI handoffs<\/p>/,
+    /<p class="article-subtitle">A local-first browser workbench for text rewording and image regeneration prompt packages<\/p>/,
   );
+  assert.match(
+    article,
+    /<ol class="film-review__challenges">[\s\S]*?<li>Preparing and submitting everything to the model, i\.e\., context\/prompt engineering\.<\/li>[\s\S]*?<li>Evaluating the performance of the model and correcting its mistakes\.<\/li>[\s\S]*?<\/ol>/,
+  );
+  assert.match(article, /<strong>reword_nerd solves that problem\.<\/strong>/);
+  assert.match(
+    article,
+    /<strong>Documents, OCR, source images,\s+and generated prompts still require human review\.<\/strong>/,
+  );
+  assert.match(
+    article,
+    /<strong>an exported package should\s+be reviewed before it is shared<\/strong>/,
+  );
+  assert.doesNotMatch(article, /ReWord Nerd/);
+  assert.doesNotMatch(article, /aria-labelledby="what-i-learned"|id="what-i-learned"/);
   assert.ok(
     article.indexOf('aria-labelledby="why-i-built-it"') <
       article.indexOf("Combined Quick Guide"),
@@ -412,6 +432,42 @@ test("publishes the approved films inside a complete personal project article", 
     article.indexOf('aria-labelledby="what-comes-next"') <
       article.indexOf("YouTube tutorial"),
     "The forward-looking essay section must precede the tutorial placeholder",
+  );
+});
+
+test("embeds the exact animated reword_nerd icon with responsive motion controls", () => {
+  const article = readRequired(articleRelativePath);
+  const css = readRequired("assets/css/site.css");
+  const iconPath = absolutePath(iconRelativePath);
+
+  assert.ok(existsSync(iconPath), `Missing required file: ${iconRelativePath}`);
+  assert.equal(statSync(iconPath).size, expectedIcon.bytes, "Icon byte count drifted");
+  assert.equal(sha256(iconPath), expectedIcon.sha256, "Icon SHA-256 drifted");
+
+  const iconMarkup = article.match(
+    /<details class="film-review__brand-mark" open>([\s\S]*?)<\/details>/,
+  )?.[1];
+  assert.ok(iconMarkup, "Missing collapsible animated icon near the introduction");
+  assert.match(iconMarkup, /<summary>Animated reword_nerd icon \(toggle visibility\)<\/summary>/);
+  assert.match(
+    iconMarkup,
+    /<img\s+[\s\S]*?src="{{ '\/assets\/images\/reword-nerd-icon\.gif' \| relative_url }}"[\s\S]*?alt="Animated teal reword_nerd pyramid icon"[\s\S]*?width="960"[\s\S]*?height="960"[\s\S]*?loading="lazy"[\s\S]*?decoding="async"[\s\S]*?\/>/,
+  );
+
+  const subtitleIndex = article.indexOf("film-review__brand-mark");
+  assert.ok(article.indexOf("article-subtitle") < subtitleIndex);
+  assert.ok(subtitleIndex < article.indexOf("On the human side of this pipeline"));
+  assert.match(
+    css,
+    /\.film-review__brand-mark\s*{[\s\S]*?max-width:[\s\S]*?margin:[\s\S]*?}/,
+  );
+  assert.match(
+    css,
+    /\.film-review__brand-mark img\s*{[\s\S]*?display: block;[\s\S]*?width: 100%;[\s\S]*?height: auto;[\s\S]*?}/,
+  );
+  assert.match(
+    css,
+    /@media \(prefers-reduced-motion: reduce\)\s*{[\s\S]*?\.film-review__brand-mark img\s*{[\s\S]*?display: none;[\s\S]*?}/,
   );
 });
 
@@ -513,6 +569,7 @@ test("contains film media responsively with styles scoped to this review", () =>
 
 test("runs only the contract test on pull requests with pinned Node and actions", () => {
   const workflow = readRequired(".github/workflows/reword-nerd-review.yml");
+  assert.match(workflow, /^name: reword_nerd review contract$/m);
   assert.match(workflow, /^on:\n  pull_request:\s*$/m);
   assert.match(workflow, /^permissions:\n  contents: read\s*$/m);
   assert.match(workflow, /uses: actions\/checkout@[a-f0-9]{40}/);

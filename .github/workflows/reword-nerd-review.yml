@@ -1,4 +1,4 @@
-name: ReWord Nerd review contract
+name: reword_nerd review contract
 
 on:
   pull_request:
