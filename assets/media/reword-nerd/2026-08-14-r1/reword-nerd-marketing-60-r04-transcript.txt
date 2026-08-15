@@ -1,0 +1,9 @@
+reword_nerd
+Two portals. One local-first workbench.
+TEXT — review source text, choose a model profile, build inspectable prompts.
+Runbook, One-shot, or four-stage Manual workflow.
+IMAGE — confirm images, apply shared settings, review optional local OCR.
+Build one source-image + prompt pair per included image.
+Deterministic ZIPs and offline HTML stay reviewable.
+No credentials. No model call. No upload.
+Try reword_nerd.

@@ -14,3 +14,4 @@ defaults:
 exclude:
   - .ai/
   - README.md
+  - tests/

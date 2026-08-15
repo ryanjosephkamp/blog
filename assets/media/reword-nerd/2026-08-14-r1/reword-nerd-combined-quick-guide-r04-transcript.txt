@@ -1,0 +1,15 @@
+reword_nerd — Combined Quick Guide
+Choose the model profile and rewrite settings that match the chat interface you plan to use.
+Add a supported document. Extraction and optional image or OCR processing happen locally in the browser.
+Review the extracted text and visual assets, then confirm the document.
+Build the package and choose the Runbook, One-shot, or Manual workflow.
+Copy prompts into your selected model, or download the ZIP and continue from the standalone workbook.
+From TEXT to IMAGE.
+Enter the Image portal from the TEXT / IMAGE switch.
+Add images or a folder, then click or activate an image card to focus it.
+Apply shared settings to selected images using Defaults or Selected.
+Review warnings and optional local OCR before accepting any visible text.
+Confirm the image set and build the confirmed package in memory.
+Review the prompt pairs and download the timestamped ZIP only when ready.
+No model runs and nothing uploads; the session stays local in this browser.
+Try reword_nerd.
