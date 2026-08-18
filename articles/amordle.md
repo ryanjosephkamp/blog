@@ -293,6 +293,7 @@ scripts:
       A new rating starts at 1200 and is marked provisional until you have played ten games in
       that pool, during which it moves further and faster so it can find your level quickly.
     </p>
+  </section>
 
   <section class="film-review__essay" aria-labelledby="scoring">
     <h2 id="scoring">Transparent scoring</h2>
