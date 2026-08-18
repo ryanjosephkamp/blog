@@ -1,0 +1,42 @@
+Amordle — how it plays
+Scored explainer, 62 seconds. Every claim in the video appears on screen as text;
+this transcript repeats that text in order and describes what the gameplay shows.
+
+[Title]
+Amordle
+the Wordle–Hurdle hybrid that plays like online chess
+no ads · no paywalls · free forever
+
+[OG]
+Wordle, upgraded. Green is the right letter in the right place; amber is the right
+letter somewhere else.
+A five-letter board plays through: guesses land one row at a time, each letter marked
+green, amber or dark, until the answer is solved.
+
+[GO]
+Hurdle, upgraded. A chain of puzzles where every answer you solve carries forward as
+evidence in the next one.
+The board moves on to the next puzzle in the chain. The answer just solved appears at
+the top as a seeded row, already marked against the new answer, and further guesses
+build on it. This repeats into the puzzle after it.
+
+[Any word, any length]
+2 to 35 letters, three difficulties, optional Hard Mode. Nothing is off-limits.
+A two-letter board and a four-letter board are shown side by side.
+
+[COMBAT]
+Play other people. You share one board and take turns, and you both read the same
+evidence as it appears.
+Two players, Nova and Rook, each with their own keyboard either side of a single shared
+board. Turns alternate: the player on move types, their own keys light as they press
+them, and their guess lands on the board marked for both players to read. The opponent's
+keyboard stays still while they wait. The match runs past the sixth row, and Rook wins
+on row eight.
+
+[Ranked]
+Win rated matches and your Elo moves. Forty separate pools, so like plays like.
+A rating panel counts up from 1200 to 1284, labelled ranked practice · OG · 5 letters.
+
+[Closing]
+amordle.vercel.app
+amordle · free forever

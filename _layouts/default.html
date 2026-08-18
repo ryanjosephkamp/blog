@@ -16,6 +16,9 @@
     <meta name="robots" content="{{ page.robots | escape }}" />
     {% endif %}
     <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}" />
+    {% if page.styles %} {% for style in page.styles %}
+    <link rel="stylesheet" href="{{ style | relative_url }}" />
+    {% endfor %} {% endif %}
     {% unless page.storage_free %}
     <script src="{{ '/assets/js/theme.js' | relative_url }}" defer></script>
     {% endunless %}
