@@ -13,11 +13,6 @@ scripts:
   - /assets/js/amordle-video-expand.js
 ---
 
-<span
-  hidden
-  data-figures-url="{{ '/assets/data/amordle-help-figures.json' | relative_url }}"
-></span>
-
 <style>
   /* The demo's tiles are the game's own .tile markup, painted by the exported
      figure stylesheet, so only layout belongs here. */
@@ -57,7 +52,7 @@ scripts:
   .amordle-chart__table th, .amordle-chart__table td { border: 1px solid currentColor; padding: 0.3rem 0.6rem; text-align: right; }
 </style>
 
-<div class="film-review">
+<div class="film-review" data-figures-url="{{ '/assets/data/amordle-help-figures.json' | relative_url }}">
   <header class="film-review__intro">
     <h1>Amordle: the Lichess of Wordle</h1>
     {% include article-date.html %}
