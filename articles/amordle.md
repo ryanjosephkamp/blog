@@ -417,7 +417,9 @@ scripts:
     <p>
       Updates get written up as they ship, with a short video when the change is something you
       can see, in the
-      <a href="https://ryanjosephkamp.github.io/amordle-updates/">Amordle changelog</a>.
+      <a href="https://ryanjosephkamp.github.io/amordle-updates/">Amordle changelog</a>. Bugs and
+      feature requests go to
+      <a href="https://github.com/ryanjosephkamp/amordle/issues/new">GitHub issues</a>.
     </p>
   </section>
 
@@ -444,6 +446,7 @@ scripts:
       <li><a href="https://amordle.vercel.app/help">How to play</a></li>
       <li><a href="https://amordle.vercel.app/methodology">How scoring works</a></li>
       <li><a href="https://ryanjosephkamp.github.io/amordle-updates/">Amordle changelog</a></li>
+      <li><a href="https://github.com/ryanjosephkamp/amordle">Amordle on GitHub</a></li>
       <li><a href="https://english-openlist.pages.dev/">English OpenList</a></li>
     </ul>
   </section>
