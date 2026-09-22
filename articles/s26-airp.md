@@ -1,6 +1,6 @@
 ---
 title: "Spring 2026 AI Research Prototype Portfolio"
-description: "AI-assisted research software prototyping in practice"
+description: "A collection of 67 AI-driven case studies I used to explore how far LLM assistance can (and can't) go in scientific research."
 permalink: /articles/s26-airp/
 date: 2026-06-24
 scripts:
@@ -11,13 +11,13 @@ scripts:
 
 {% include article-date.html %}
 
-<p class="article-subtitle">AI-Assisted Research Software Prototyping in Practice</p>
+<p class="article-subtitle">What happens when you hand the whole research process to an AI, 67 times</p>
 
-In spring 2026, I built the **Spring 2026 AI Research Prototype Portfolio (S26 AIRP)**: a 67-repository portfolio of AI-assisted research software prototypes.
+In spring 2026, I built the **Spring 2026 AI Research Prototype Portfolio (S26 AIRP)**: 67 repositories of research-flavored apps, simulations, and papers, made mostly by AI under my direction.
 
-The portfolio explores **AI-assisted research software prototyping** and **LLM-assisted scientific software development**. Most of the repositories are research-themed Streamlit prototypes, while four are paper-to-tool repositories built around academic-literature-inspired workflows. Across the portfolio, scientific and technical themes are used as challenging testbeds for software development, interface design, documentation, report generation, and AI-assisted workflow design.
+Most of the repositories are research-themed Streamlit prototypes. Four are paper-to-tool projects that turn an idea from the academic literature into a working pipeline. All of them were case studies in the same question: how much of the scientific research process can a language model carry, and where does it fall down?
 
-The most important framing is also the simplest: **these repositories are not presented as validated scientific research**. They are software-engineering, workflow-design, interface-development, documentation, and AI-methodology artifacts. Scientific and domain-specific content in the repositories is provisional and has not been independently validated by domain experts.
+One thing up front: **none of this is validated science, and most of it was made by AI.** The PDFs look like IEEE papers and the apps look like lab tools, but nothing here has been checked by a domain expert, and I'm not claiming otherwise. I built the portfolio to teach myself how research is done and to find out how much of it a model can do on its own. That was the whole point, and it's why the AI's role isn't hidden anywhere in these repositories.
 
 ## Repository graph
 
@@ -113,13 +113,17 @@ The graph below provides a visual entry point into the 67 S26 AIRP repositories.
 
 ## Why I built this portfolio
 
-I created S26 AIRP to explore what modern AI tools can and cannot do in a rapid research-software prototyping workflow.
+Short version: I had no research experience, I wasn't in a lab, and I needed to learn how research actually works. So I had an AI do it, over and over, and watched closely.
 
-The goal was not to produce validated biology, chemistry, biophysics, molecular simulation, or protein-design research. Instead, I wanted to study a practical question from a computer-science and AI perspective:
+Longer version: somewhere in undergrad I figured out that the only thing that really gets me going is a problem nobody has a clean answer to yet. Deriving a result for myself, even one that had been known for a century, felt better than anything else I did in school. Discovering something new, or inventing something useful that nobody had thought of, was the only kind of work I could imagine wanting for a career.
 
-> What happens when LLM-assisted development tools are used to rapidly prototype research-themed software systems, documentation, interfaces, reports, and workflows?
+I didn't take a straight path there. I started college in computer science, then walked away from it in 2018 or 2019, well before ChatGPT, because I was convinced the software jobs I was training for wouldn't last long enough for me to have a full career in them. I took a year off, came back, and wandered my way to a BS in neuroscience and a BA in math. By the end, two things were clear: I wanted to spend my life discovering things, and AI was going to become the tool every field discovers things with. So I applied to a master's program in computer science with no research experience, no industry experience, and the wrong undergraduate degrees. To my surprise, I got in.
 
-Scientific themes gave the projects structure. They forced the prototypes to deal with visualizations, simulations, notation, domain vocabulary, mathematical objects, documentation challenges, and citation-like workflows. That made them useful testbeds for studying AI-assisted software development.
+After my first semester, I took stock of what I was missing. I could handle the coursework. What I couldn't do was run a study from start to finish: plan it, survey the literature, design an experiment, choose sensible metrics, analyze the results, write them up, and say honestly what the limitations were. I also couldn't reliably read a paper critically, and I couldn't build the software a real study needs. Nobody was going to teach me any of that, because I wasn't in a lab.
+
+S26 AIRP was my answer. For each project I picked a research-flavored topic, often in a field I knew almost nothing about, and guided a language model through the entire publication lifecycle: literature review, hypothesis, code, experiments, figures, write-up, limitations. Then I studied what happened. Which tools did it reach for? Which decisions did it make on its own, and which did it need me for? Where did it hallucinate, and did a different harness, prompt, or context strategy make that better or worse? Along the way I picked up the current state of the art in building software with AI, from vibe coding and multi-agent systems to prompt, context, loop, and graph engineering, because there was no other way to get through 67 of these.
+
+So the goal was never to produce real biology, chemistry, biophysics, or protein-design research. The goal was to learn the process, learn the tools, and find out how much of the process the tools can carry. The scientific themes gave the projects structure and forced them to deal with everything a real paper has to deal with: notation, domain vocabulary, simulations, mathematical objects, figures, citations, and the constant temptation to overclaim.
 
 ## What the portfolio contains
 
@@ -127,17 +131,15 @@ S26 AIRP contains 67 public GitHub repositories.
 
 Most are Streamlit-linked exploratory prototypes. These include visual simulations, interface experiments, chemistry and physics demonstrations, molecular or protein-themed prototypes, AI/ML architecture demonstrations, and documentation-heavy research-style artifacts.
 
-Four repositories are paper-to-tool prototypes. These are not Streamlit simulations. They are closer to exploratory research-tool or pipeline prototypes inspired by academic literature and should be read with especially clear attention to the portfolio’s disclosure language.
+Four repositories are paper-to-tool prototypes. These are not Streamlit simulations. They are closer to exploratory research-tool or pipeline prototypes inspired by academic literature and should be read with especially clear attention to the portfolio's disclosure language.
 
 Each repository includes a top-level README notice and a root-level `AI_DISCLOSURE.md` file explaining the project context, the role of AI assistance, the provisional status of scientific/domain-specific content, intended use, non-use, and the relationship between the repository and the broader S26 AIRP portfolio.
 
 ## How AI assistance fit into the workflow
 
-The repositories were developed with substantial AI assistance.
+The repositories were made mostly by AI. I chose the topics, set the goals and constraints, steered, reviewed, and rewrote when something was wrong. The models did the bulk of the code, debugging, interfaces, documentation, reports, LaTeX, and figures. The prompt engineering, context engineering, and harness design were mine, and they were a large part of what I was there to learn.
 
-AI tools were used for activities such as software prototyping, code generation, debugging support, interface iteration, documentation, report drafting, LaTeX formatting, prompt engineering, and context engineering. This makes the portfolio an AI-assisted artifact rather than a conventionally authored research portfolio.
-
-That AI-assisted origin is not hidden. It is central to the project. One of the lessons of the portfolio is that AI tools can accelerate ambitious software prototyping, but they can also produce polished artifacts whose scientific appearance may exceed their actual validation status. S26 AIRP is partly an exploration of that tension.
+This is not a conventionally authored research portfolio, and it isn't trying to be one. None of that is hidden; it's the point. One lesson of the portfolio is that these tools can produce polished, official-looking artifacts far faster than anyone can validate them, and the gap between how a result looks and how much it has actually been checked is exactly what I wanted to see up close.
 
 ## What the scientific themes are doing here
 
@@ -159,6 +161,7 @@ The scientific content should be treated as provisional. The repositories are no
 
 The portfolio is most useful as evidence of technical and methodological work around:
 
+- the research process itself, practiced end to end dozens of times: planning, literature review, experiment design, metrics, analysis, write-up, and limitations,
 - AI-assisted software prototyping,
 - Streamlit interface development,
 - research-themed application design,
@@ -181,17 +184,25 @@ In other words, the portfolio is best read as:
 
 > an AI-assisted research software prototyping experiment using scientific themes as testbeds, not as validated domain research.
 
+## Why it's public
+
+Two reasons. The visualizations are genuinely cool, and I wanted people to be able to play with them. And I think it's worth seeing, concretely, that you don't need to know anything about biophysics or computational biology to produce a portfolio of AI research slop that looks like this. That's a fact about the tools, and it's better demonstrated than described. Read the repositories the way you'd read anything that was mostly written by a model: with interest, and without trusting it.
+
 ## What I learned
 
-S26 AIRP taught me that AI-assisted development can make ambitious prototypes possible quickly, but it also increases the need for deliberate framing.
+S26 AIRP taught me the nuts and bolts of building things with AI, gave me real fluency in the scientific method, and made me a much more critical reader of papers, including AI-generated ones. It also left me with a few opinions.
 
-The same workflow that can generate code, interfaces, diagrams, and reports can also create artifacts that look more authoritative than they are. That is especially important when scientific language, citations, or publication-style formatting are involved.
+**Some of the research process can be delegated, and some of it can't.** Boilerplate code, plotting, LaTeX, refactoring, first-draft summaries of a literature, and the hundred small tasks that used to eat a day each: hand them to a model. Deciding what question is worth asking, judging whether a result is real, and catching a confident, well-formatted mistake: those are still yours. Working out where that line sits, and how much responsibility and credit you should take for work you delegated across it, turned out to be one of the most interesting parts of the whole exercise.
 
-For me, the main lesson is not that AI tools should be avoided. It is that AI-assisted technical work needs careful context management, clear disclosure, and honest boundaries around validation.
+**Hallucination doesn't go away with better engineering.** I tried a lot of scaffolding: carefully engineered prompts and contexts, multi-agent setups, loops where one model audited and reconciled another's work, even audits across different model providers. Some of it helped a lot, some of it hurt, and none of it made the output trustworthy without a human reading it critically. Humans make mistakes too, and maybe one day the models will be close to perfect, but today none of this is a paper-writing engine. The scientist still has to do a lot of the science.
+
+**Ideas are expensive now, and execution is cheap.** It used to be the other way around: anyone could have a great idea, and what mattered was being able to build it. When someone who knows nothing about a field can build almost anything they can describe, that flips. What the models still can't do well is generate a genuinely good research question, recognize a good idea when they see one, or tell which of a dozen directions is worth pursuing. Taste is the biggest gap I saw, bigger than hallucination, and I suspect it's the last hurdle before the systems people mean when they say AGI. It also means the people who spent their careers mastering technical execution are watching machines learn their trade, while people who have spent their lives on ideas without the skills to execute them can suddenly build what they imagine. That's a real shift in what's valuable, in industry and, I think, in academia. I haven't seen many people write about it, and it has become something like a guiding philosophy for how I work.
+
+**People will stop judging work by how well it's made.** When almost everything is implemented by AI, implementation quality stops being a signal. Any well-written paragraph gets assumed to be AI-written; any polished website gets assumed to be AI-designed; before long the same will be true of papers and books. I don't think that's good or bad, just a sign of the times, the way any well-researched article written after Google was assumed to have used the internet. Most of the market will prefer the AI-made version, because it will be better in every way you can measure. But there will be a market for what you can't measure, the human touch, in products, in art, and maybe in research too. This portfolio is not that. It's the opposite: a public record of how easy research-shaped output is to generate now, and a reminder to read everything, including this post, critically.
 
 ## Future directions
 
-S26 AIRP provides a foundation for more deliberate work on AI-assisted software development, research-tool prototyping, interface design, documentation workflows, and project-scale transparency. The most useful follow-on writing will be practical: what worked, what failed, how AI-assisted workflows can be made more legible, and where current AI systems still require human judgment, validation, and restraint.
+S26 AIRP was a training ground, and it did its job. What I learned from it now goes into the work I actually care about: my thesis, the research tooling I'm building, and the writing I want to do about doing research with these models in the loop. The most useful posts I could write next are practical ones: which parts of the process I now hand to a model without a second thought, which parts I never will, and what a research workflow looks like when the human's job is mostly ideas and judgment.
 
 ---
 

@@ -16,6 +16,12 @@ const expectedIcon = {
 
 const publishedArticles = [
   {
+    path: "articles/amordle.md",
+    href: "/articles/amordle/",
+    title: "Amordle: the Lichess of Wordle",
+    date: "2026-08-17",
+  },
+  {
     path: "articles/reword-nerd.md",
     href: "/articles/reword-nerd/",
     title: "reword_nerd: Local prompt packages for text and images",
@@ -283,13 +289,17 @@ test("publishes discoverable article front matter without review-only indexing d
   assert.equal((layout.match(/name="robots"/g) ?? []).length, 1);
 });
 
-test("lists reword_nerd as the newest of exactly two official blog posts", () => {
+test("lists reword_nerd among exactly three official blog posts, newest first", () => {
   const expectedLink =
     '<a href="{{ \'/articles/reword-nerd/\' | relative_url }}">reword_nerd: Local prompt packages for text and images</a>';
 
   for (const indexPath of ["index.md", "articles/index.md"]) {
     const index = readRequired(indexPath);
-    assert.equal((index.match(/<li>/g) ?? []).length, 2, `${indexPath} must list two posts`);
+    assert.equal(
+      (index.match(/<li>/g) ?? []).length,
+      publishedArticles.length,
+      `${indexPath} must list ${publishedArticles.length} posts`,
+    );
     assert.equal(
       (index.match(/\/articles\/reword-nerd\//g) ?? []).length,
       1,
@@ -297,7 +307,8 @@ test("lists reword_nerd as the newest of exactly two official blog posts", () =>
     );
     assert.match(index, new RegExp(escapeRegExp(expectedLink)));
     assert.ok(
-      index.indexOf("/articles/reword-nerd/") < index.indexOf("/articles/s26-airp/"),
+      index.indexOf("/articles/amordle/") < index.indexOf("/articles/reword-nerd/") &&
+        index.indexOf("/articles/reword-nerd/") < index.indexOf("/articles/s26-airp/"),
       `${indexPath} must show the newest post first`,
     );
   }
