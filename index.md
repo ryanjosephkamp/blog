@@ -5,7 +5,7 @@ description: Writing and project notes by Ryan Kamp
 
 <section class="intro">
   <h1>Blog</h1>
-  <p>Project notes, portfolio writing, and longer reflections from Ryan Kamp.</p>
+  <p>Featured projects and other non-AI slop.</p>
 </section>
 
 <section aria-labelledby="recent-articles">
