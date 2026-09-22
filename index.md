@@ -27,7 +27,7 @@ description: Writing and project notes by Ryan Kamp
     <li>
       <h3><a href="{{ '/articles/s26-airp/' | relative_url }}">Spring 2026 AI Research Prototype Portfolio</a></h3>
       <p class="article-date">Published <time datetime="2026-06-24">2026-06-24</time></p>
-      <p>A portfolio-scale reflection on AI-assisted research software prototyping, disclosure, and non-overclaiming.</p>
+      <p>A collection of 67 AI-driven case studies I used to explore how far LLM assistance can (and can't) go in scientific research.</p>
     </li>
   </ul>
 </section>
