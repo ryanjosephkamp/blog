@@ -40,8 +40,8 @@ the repository, then open a demo link if available.]
 ## Boundaries
 
 [State what the project does not claim. If work is exploratory, provisional,
-AI-assisted, domain-sensitive, incomplete, or not independently validated, say
-that plainly.]
+domain-sensitive, incomplete, or not independently validated, say that
+plainly.]
 
 ## Links
 
@@ -52,10 +52,9 @@ that plainly.]
 ## Review Before Publishing
 
 - Remove the subtitle line if the post does not need it.
-- Do not add an interactive graph, table, script, or data file unless a future
-  task explicitly authorizes the data model, implementation, and QA.
+- Keep an interactive figure's script in `assets/js/` and its data in
+  `assets/data/`, and check it at phone width and in both themes.
 - Keep repository, demo, and article links factual.
 - Do not imply validation, peer review, experimental support, production
   readiness, or scientific correctness unless separately reviewed and sourced.
-- Run the disclosure/framing checklist for any AI-assisted, research-themed, or
-  domain-sensitive project.
+- Run `docs/blog-authoring-checklist.md`.

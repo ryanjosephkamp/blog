@@ -2,8 +2,8 @@
 
 Use these templates as starting points for future public posts. Copy the most
 appropriate template into `articles/new-slug.md`, replace all bracketed
-prompts, remove sections that do not fit, and review the disclosure checklist
-before asking Codex to publish.
+placeholders, remove sections that do not fit, and run the authoring checklist
+before publishing.
 
 ## Templates
 
@@ -16,17 +16,15 @@ before asking Codex to publish.
 
 ## Companion Checklist
 
-- `docs/blog-authoring-checklist.md`: practical draft, review, and publish
-  steps.
-- `docs/blog-disclosure-framing-checklist.md`: claim-safety, AI-assistance,
-  provider-guardrail, and domain-sensitive framing checks.
+- `docs/blog-authoring-checklist.md`: draft, style, claims, links, layout, and
+  publish checks.
 
 ## Quick Rules
 
 - Keep the post readable without assuming deep prior context.
 - Separate facts from interpretation.
 - Use links for source material when the post depends on external references.
-- Avoid overstating unfinished, exploratory, provisional, or AI-assisted work.
-- Remove all bracketed prompts and private notes before publishing.
+- Avoid overstating unfinished, exploratory, or provisional work.
+- Remove all bracketed placeholders and private notes before publishing.
 - Preview the page before publishing when the post includes tables, images,
   code blocks, or long links.
