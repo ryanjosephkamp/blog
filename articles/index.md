@@ -10,6 +10,11 @@ Project notes, portfolio writing, and longer reflections collected in one place.
 
 <ul class="article-list">
   <li>
+    <h2><a href="{{ '/articles/aqrobat/' | relative_url }}">Aqrobat: QR codes, in character</a></h2>
+    <p class="article-date">Published <time datetime="2026-10-31">2026-10-31</time></p>
+    <p>A free generator that draws working QR codes with emoji and text, then shapes each copy for the app you paste it into.</p>
+  </li>
+  <li>
     <h2><a href="{{ '/articles/amordle/' | relative_url }}">Amordle: the Lichess of Wordle</a></h2>
     <p class="article-date">Published <time datetime="2026-08-17">2026-08-17</time></p>
     <p>A free Wordle–Hurdle hybrid with ranked multiplayer, any word length from 2 to 35, and no ads.</p>

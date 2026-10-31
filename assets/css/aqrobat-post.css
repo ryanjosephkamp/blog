@@ -1,0 +1,364 @@
+/* The Aqrobat post: the recording, the two demos, the prose figure, and
+   tables that stack on phones. Colors come from the site's tokens; a code is
+   always black on white, in both themes, because that is what a camera reads
+   and what a pasted code looks like in a light app. */
+:root {
+  --aqrobat-good: #1d6b39;
+  --aqrobat-good-soft: #e9f4ec;
+  --aqrobat-bad: #9a3412;
+  --aqrobat-bad-soft: #fbeee7;
+  --aqrobat-paper: #ffffff;
+  --aqrobat-ink: #000000;
+  --aqrobat-ink-muted: #3f3f3f;
+  --aqrobat-emoji:
+    "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+:root[data-resolved-theme="dark"] {
+  --aqrobat-good: #8fd3a3;
+  --aqrobat-good-soft: #12211a;
+  --aqrobat-bad: #f4ab88;
+  --aqrobat-bad-soft: #26160f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-storage-free-theme="system"] {
+    --aqrobat-good: #8fd3a3;
+    --aqrobat-good-soft: #12211a;
+    --aqrobat-bad: #f4ab88;
+    --aqrobat-bad-soft: #26160f;
+  }
+}
+
+.aqrobat-post li + li {
+  margin-top: 0.35rem;
+}
+
+.aqrobat-post li {
+  color: var(--muted);
+}
+
+.aqrobat-post pre {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  background: var(--accent-soft);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.aqrobat-post pre code {
+  padding: 0;
+  background: none;
+}
+
+.aqrobat-post table {
+  margin: 1.2rem 0;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.aqrobat-post td {
+  min-width: 9rem;
+  color: var(--muted);
+}
+
+/* On phones, each table row becomes a short stack: its first cell as a
+   heading, the rest labeled from the table's header row. */
+@media (max-width: 560px) {
+  .aqrobat-post table {
+    border-bottom: 0;
+  }
+
+  .aqrobat-post thead {
+    display: none;
+  }
+
+  .aqrobat-post tbody,
+  .aqrobat-post tr {
+    display: block;
+  }
+
+  .aqrobat-post tr {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .aqrobat-post td {
+    display: block;
+    min-width: 0;
+    padding: 0.12rem 0;
+    border: 0;
+  }
+
+  .aqrobat-post td:first-child {
+    color: var(--ink);
+    font-weight: 650;
+  }
+
+  .aqrobat-post td[data-label]:not(:first-child)::before {
+    content: attr(data-label) ": ";
+    color: var(--faint);
+    font-weight: 650;
+  }
+}
+
+.aqrobat-film,
+.aqrobat-figure img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--line-strong);
+  background: var(--aqrobat-paper);
+}
+
+.aqrobat-film {
+  margin-top: 1rem;
+}
+
+.aqrobat-figure {
+  max-width: 560px;
+  margin: 1.5rem 0 2rem;
+}
+
+.aqrobat-figure figcaption {
+  margin-top: 0.6rem;
+  color: var(--faint);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* The demos sit in the same bordered box as the recording. */
+.aqrobat-demo {
+  margin: 1.5rem 0 2rem;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  border: 1px solid var(--line);
+  background: var(--accent-soft);
+}
+
+.aqrobat-demo__fallback {
+  margin: 0;
+}
+
+.aqrobat-demo__title {
+  margin: 0 0 0.9rem;
+  color: var(--faint);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.aqrobat-demo label,
+.aqrobat-demo legend {
+  display: block;
+  margin: 0 0 0.35rem;
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+
+.aqrobat-demo fieldset {
+  margin: 1rem 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.aqrobat-demo input[type="text"] {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: var(--page);
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
+}
+
+.aqrobat-demo__meta {
+  margin: 0.4rem 0 0;
+  color: var(--faint);
+  font-size: 0.86rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.aqrobat-demo__meta.is-error {
+  color: var(--aqrobat-bad);
+}
+
+.aqrobat-demo__note {
+  margin: 1rem 0 0;
+  color: var(--faint);
+  font-size: 0.9rem;
+}
+
+.aqrobat-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.aqrobat-chip,
+.aqrobat-button {
+  min-height: 2.75rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: var(--page);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.aqrobat-chip {
+  min-width: 2.9rem;
+}
+
+.aqrobat-chip:hover,
+.aqrobat-button:hover {
+  border-color: var(--accent);
+}
+
+.aqrobat-chip[aria-pressed="true"] {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.aqrobat-glyph {
+  font-family: var(--aqrobat-emoji);
+  font-size: 1.15rem;
+}
+
+.aqrobat-custom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+  margin-top: 0.6rem;
+}
+
+.aqrobat-demo .aqrobat-custom label {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.aqrobat-demo .aqrobat-custom input[type="text"] {
+  width: 9rem;
+}
+
+.aqrobat-paper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.1rem;
+  padding: 14px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  background: var(--aqrobat-paper);
+}
+
+.aqrobat-code {
+  flex: none;
+  display: inline-block;
+  margin: 0;
+  color: var(--aqrobat-ink);
+  letter-spacing: 0;
+  white-space: pre;
+}
+
+.aqrobat-code-error {
+  margin: 0;
+  padding: 2rem 0.5rem;
+  color: var(--aqrobat-ink-muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.aqrobat-evidence {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.6rem;
+  align-items: baseline;
+  margin: 0.8rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.aqrobat-pill {
+  padding: 0.1rem 0.5rem;
+  border: 1px solid currentColor;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.aqrobat-pill.is-good {
+  border-color: var(--aqrobat-good);
+  background: var(--aqrobat-good-soft);
+  color: var(--aqrobat-good);
+}
+
+.aqrobat-pill.is-bad {
+  border-color: var(--aqrobat-bad);
+  background: var(--aqrobat-bad-soft);
+  color: var(--aqrobat-bad);
+}
+
+.aqrobat-pill.is-sim {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.aqrobat-pill.is-untested {
+  color: var(--faint);
+}
+
+.aqrobat-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.9rem;
+  align-items: center;
+  margin-top: 0.9rem;
+}
+
+.aqrobat-actions span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.aqrobat-pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 1.2rem;
+  margin-top: 0.4rem;
+}
+
+.aqrobat-pair figure {
+  margin: 0;
+}
+
+.aqrobat-pair figcaption {
+  margin-top: 1rem;
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+
+.aqrobat-pair .aqrobat-paper {
+  justify-content: flex-start;
+  margin-top: 0.4rem;
+}
+
+.aqrobat-verdict {
+  margin: 0.6rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}

@@ -16,6 +16,12 @@ const expectedIcon = {
 
 const publishedArticles = [
   {
+    path: "articles/aqrobat.md",
+    href: "/articles/aqrobat/",
+    title: "Aqrobat: QR codes, in character",
+    date: "2026-10-31",
+  },
+  {
     path: "articles/amordle.md",
     href: "/articles/amordle/",
     title: "Amordle: the Lichess of Wordle",
@@ -289,7 +295,7 @@ test("publishes discoverable article front matter without review-only indexing d
   assert.equal((layout.match(/name="robots"/g) ?? []).length, 1);
 });
 
-test("lists reword_nerd among exactly three official blog posts, newest first", () => {
+test("lists reword_nerd among exactly four official blog posts, newest first", () => {
   const expectedLink =
     '<a href="{{ \'/articles/reword-nerd/\' | relative_url }}">reword_nerd: Local prompt packages for text and images</a>';
 
@@ -307,7 +313,8 @@ test("lists reword_nerd among exactly three official blog posts, newest first", 
     );
     assert.match(index, new RegExp(escapeRegExp(expectedLink)));
     assert.ok(
-      index.indexOf("/articles/amordle/") < index.indexOf("/articles/reword-nerd/") &&
+      index.indexOf("/articles/aqrobat/") < index.indexOf("/articles/amordle/") &&
+        index.indexOf("/articles/amordle/") < index.indexOf("/articles/reword-nerd/") &&
         index.indexOf("/articles/reword-nerd/") < index.indexOf("/articles/s26-airp/"),
       `${indexPath} must show the newest post first`,
     );

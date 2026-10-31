@@ -15,6 +15,11 @@ description: Writing and project notes by Ryan Kamp
   </div>
   <ul class="article-list">
     <li>
+      <h3><a href="{{ '/articles/aqrobat/' | relative_url }}">Aqrobat: QR codes, in character</a></h3>
+      <p class="article-date">Published <time datetime="2026-10-31">2026-10-31</time></p>
+      <p>A free generator that draws working QR codes with emoji and text, then shapes each copy for the app you paste it into.</p>
+    </li>
+    <li>
       <h3><a href="{{ '/articles/amordle/' | relative_url }}">Amordle: the Lichess of Wordle</a></h3>
       <p class="article-date">Published <time datetime="2026-08-17">2026-08-17</time></p>
       <p>A free Wordle&ndash;Hurdle hybrid with ranked multiplayer, any word length from 2 to 35, and no ads.</p>
