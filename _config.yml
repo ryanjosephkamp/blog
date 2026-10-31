@@ -12,6 +12,7 @@ defaults:
       layout: default
 
 exclude:
-  - .ai/
   - README.md
+  - docs/
+  - templates/
   - tests/

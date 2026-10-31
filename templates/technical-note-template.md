@@ -50,7 +50,7 @@ the result different elsewhere.]
 
 ## Review Before Publishing
 
-- Replace every bracketed prompt and remove unused optional sections.
+- Replace every bracketed placeholder and remove unused optional sections.
 - Verify command examples do not include secrets, tokens, local-only private
   paths, or destructive operations.
 - Keep results scoped to the tested environment.

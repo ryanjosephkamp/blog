@@ -2,7 +2,7 @@
 
 Use this template for essays, reflections, project notes, and public updates.
 Copy the markdown block into a new file under `articles/`, replace every
-bracketed prompt, and remove sections that do not fit the post.
+bracketed placeholder, and remove sections that do not fit the post.
 
 ```markdown
 ---
@@ -44,9 +44,9 @@ you infer from it.]
 
 ## Review Before Publishing
 
-- Replace every bracketed prompt.
+- Replace every bracketed placeholder.
 - Remove `## Links` if the post does not depend on external resources.
 - Check that claims are supported by the post itself or linked sources.
-- Mark provisional, unfinished, or AI-assisted work clearly.
+- Mark provisional or unfinished work clearly.
 - Confirm the article is added to `index.md` and `articles/index.md` only when
   it should be public and discoverable.
