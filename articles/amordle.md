@@ -423,22 +423,6 @@ scripts:
     </p>
   </section>
 
-  <section class="film-review__essay" aria-labelledby="whats-next">
-    <h2 id="whats-next">What comes next</h2>
-    <p>
-      The next companion piece will be a longer, manually recorded tutorial: a full game of each
-      mode start to finish, a ranked COMBAT match against a real opponent, and a walk through the
-      methodology page so the rating math is visible rather than described. The placeholder below
-      will be replaced when that video is ready.
-    </p>
-  </section>
-
-  <section class="film-review__placeholder" aria-labelledby="youtube-tutorial">
-    <h2 id="youtube-tutorial">YouTube tutorial</h2>
-    <p><strong>Coming soon</strong></p>
-    <p>The longer tutorial is planned. This text-only placeholder embeds nothing and makes no request.</p>
-  </section>
-
   <section class="film-review__links" aria-labelledby="project-links">
     <h2 id="project-links">Project links</h2>
     <ul>
