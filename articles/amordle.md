@@ -75,8 +75,8 @@ scripts:
       </li>
       <li>
         <strong>Comprehensive word lists:</strong> Solutions come from the
-        <a href="https://english-openlist.pages.dev/">English OpenList</a>, the world&rsquo;s
-        largest list of Scrabble-compatible (and Wordle-compatible) English words. No valid
+        <a href="https://english-openlist.pages.dev/">English OpenList</a>, a free list of over
+        345,000 English words, checked against dictionaries every night. No valid
         English word is off-limits.
       </li>
       <li>
@@ -385,14 +385,15 @@ scripts:
     <h2 id="words">Where the words come from</h2>
     <p>
       Every word comes from the
-      <a href="https://english-openlist.pages.dev/">English OpenList</a>, an open dataset of all
-      Scrabble-valid (and Wordle-valid) English words that I also built. It is published in full,
-      so the vocabulary this game draws on can be inspected rather than simply taken on trust.
+      <a href="https://english-openlist.pages.dev/">English OpenList</a>, an open dataset of over
+      345,000 English words that I also built. It is published in full, so the vocabulary this game
+      draws on can be inspected rather than simply taken on trust. I wrote about it in
+      <a href="{{ '/articles/english-openlist/' | relative_url }}">its own post</a>.
     </p>
     <p>
       It is also the reason the game can offer 2 to 35 letters at all. Most word games ship a
       hand-curated list of a few thousand five-letter words, and that list is the ceiling. Start
-      from the largest Scrabble-compatible English word list instead, and no valid English word is
+      from a list of over 345,000 English words instead, and no valid English word is
       off-limits — the game can just ask for a 19-letter answer at standard difficulty and get
       one.
     </p>
