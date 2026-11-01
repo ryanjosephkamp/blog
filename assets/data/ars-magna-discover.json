@@ -1,0 +1,266 @@
+[
+ {
+  "slug": "dormitory-phrases-dirty-room",
+  "input": "dormitory",
+  "anagram": "dirty room",
+  "why": "A dormitory is a room students share, and a dirty one is the standing joke about student life.",
+  "section": "greatest",
+  "category": "phrases"
+ },
+ {
+  "slug": "astronomer-phrases-moon-starer",
+  "input": "astronomer",
+  "anagram": "moon starer",
+  "why": "An astronomer is, quite literally, someone who stares at the moon.",
+  "section": "greatest",
+  "category": "phrases"
+ },
+ {
+  "slug": "theeyes-phrases-see-they",
+  "input": "the eyes",
+  "anagram": "they see",
+  "why": "Eyes are what see, so the anagram says what the input does.",
+  "section": "greatest",
+  "category": "phrases"
+ },
+ {
+  "slug": "debitcard-phrases-bad-credit",
+  "input": "debit card",
+  "anagram": "bad credit",
+  "why": "A debit card is the card people rely on when they have no credit, or bad credit.",
+  "section": "greatest",
+  "category": "phrases"
+ },
+ {
+  "slug": "funeral-phrases-fun-real",
+  "input": "Funeral",
+  "anagram": "real fun",
+  "why": "A funeral is the opposite of real fun, which is what makes the rearrangement a joke.",
+  "section": "greatest",
+  "category": "phrases"
+ },
+ {
+  "slug": "clinteastwood-people-action-old-west",
+  "input": "Clint Eastwood",
+  "anagram": "Old West action",
+  "why": "These are the words of the classic anagram Old West action, describing Eastwood's fame as the star of western action films like Unforgiven.",
+  "section": "greatest",
+  "category": "people"
+ },
+ {
+  "slug": "lunaterrasol-products-loser-natural",
+  "input": "Luna Terra Sol",
+  "anagram": "natural loser",
+  "why": "Sol, Terra and Luna are the three GPT-5.6 models OpenAI announced in July 2026, and their names together rearrange into a put-down of the whole line-up.",
+  "section": "greatest",
+  "category": "products"
+ },
+ {
+  "slug": "alecguinness-people-class-genuine",
+  "input": "Alec Guinness",
+  "anagram": "genuine class",
+  "why": "Sir Alec Guinness, a knighted Oscar winner famed for refined performances, is the subject of this classic, widely cited anagram 'genuine class'.",
+  "section": "greatest",
+  "category": "people"
+ },
+ {
+  "slug": "doctorwho-titles-torchwood",
+  "input": "Doctor Who",
+  "anagram": "Torchwood",
+  "why": "Torchwood is the name of Doctor Who's own spin-off series, itself coined as an anagram of the show's title.",
+  "section": "greatest",
+  "category": "titles"
+ },
+ {
+  "slug": "breakingbad-titles-baking-bread",
+  "input": "Breaking Bad",
+  "anagram": "baking bread",
+  "why": "Walter White and Jesse Pinkman cook meth for money, and baking bread puts that in kitchen terms, with bread as slang for cash.",
+  "section": "greatest",
+  "category": "titles"
+ },
+ {
+  "slug": "elevenplustwo-phrases-one-plus-twelve",
+  "input": "Eleven plus two",
+  "anagram": "one plus twelve",
+  "why": "Eleven plus two and one plus twelve both equal thirteen, and each phrase is an anagram of the other.",
+  "section": "greatest",
+  "category": "phrases"
+ },
+ {
+  "slug": "themorsecode-phrases-come-dots-here",
+  "input": "The Morse code",
+  "anagram": "here come dots",
+  "why": "Morse code is sent as dots and dashes, so 'here come dots' describes a Morse message coming in.",
+  "section": "greatest",
+  "category": "phrases"
+ },
+ {
+  "slug": "roomba-products-a-broom",
+  "input": "Roomba",
+  "anagram": "a broom",
+  "why": "A Roomba is a robot floor cleaner, and a broom is the classic floor-sweeping tool it replaces.",
+  "section": "greatest",
+  "category": "products"
+ },
+ {
+  "slug": "texas-places-taxes",
+  "input": "Texas",
+  "anagram": "taxes",
+  "why": "Texas is well known for having no state income tax, so turning it into taxes is an ironic reversal.",
+  "section": "greatest",
+  "category": "places"
+ },
+ {
+  "slug": "atelescope-phrases-place-see-to",
+  "input": "A telescope",
+  "anagram": "place to see",
+  "why": "A telescope is where you put your eye to see what is too far away, so its letters make a place to see.",
+  "section": "greatest",
+  "category": "phrases"
+ },
+ {
+  "slug": "listen-phrases-silent",
+  "input": "Listen",
+  "anagram": "silent",
+  "why": "Listening requires being silent; listen and silent are a famously quoted anagram pair.",
+  "section": "greatest",
+  "category": "phrases"
+ },
+ {
+  "slug": "thesilenceofthelambs-titles-be-can-lifeless-moth-the",
+  "input": "The Silence of the Lambs",
+  "anagram": "the moth can be lifeless",
+  "why": "The film's emblem is the death's-head moth, whose cocoons the killer leaves in his victims' throats, so its title turns into a moth that can be lifeless.",
+  "section": "greatest",
+  "category": "titles"
+ },
+ {
+  "slug": "slowhorses-titles-losers-show",
+  "input": "Slow Horses",
+  "anagram": "losers show",
+  "why": "The \"slow horses\" are MI5's disgraced washouts, literally making it a show about intelligence-service losers.",
+  "section": "greatest",
+  "category": "titles"
+ },
+ {
+  "slug": "schoolmaster-phrases-classroom-the",
+  "input": "schoolmaster",
+  "anagram": "the classroom",
+  "why": "A schoolmaster works in the classroom, so the letters spell the job’s own setting.",
+  "section": "greatest",
+  "category": "phrases"
+ },
+ {
+  "slug": "butterfly-phrases-by-flutter",
+  "input": "Butterfly",
+  "anagram": "flutter by",
+  "why": "Butterflies flutter by; 'flutterby' is a well-known playful spoonerism of the word butterfly.",
+  "section": "greatest",
+  "category": "phrases"
+ },
+ {
+  "slug": "agentleman-phrases-elegant-man",
+  "input": "A gentleman",
+  "anagram": "elegant man",
+  "why": "A gentleman is, by definition, a refined and elegant man.",
+  "section": "greatest",
+  "category": "phrases"
+ },
+ {
+  "slug": "alberteinstein-people-innate-its-rebel",
+  "input": "Albert Einstein",
+  "anagram": "its innate rebel",
+  "why": "Einstein is famously remembered as a nonconformist who defied authority and scientific convention, often described as a born rebel.",
+  "section": "interesting",
+  "category": "people"
+ },
+ {
+  "slug": "titanic-titles-i-intact",
+  "input": "Titanic",
+  "anagram": "I, intact",
+  "why": "The Titanic was billed as practically unsinkable and broke in two as it sank, so the ship declaring itself intact is a bitter irony.",
+  "section": "interesting",
+  "category": "titles"
+ },
+ {
+  "slug": "brucespringsteen-people-bursting-presence",
+  "input": "Bruce Springsteen",
+  "anagram": "bursting presence",
+  "why": "Springsteen is famous for his high-energy stage presence and marathon three-hour-plus concerts with the E Street Band.",
+  "section": "interesting",
+  "category": "people"
+ },
+ {
+  "slug": "saharadesert-places-areas-hardest",
+  "input": "Sahara Desert",
+  "anagram": "hardest areas",
+  "why": "The Sahara, the largest hot desert, is among the hardest areas on Earth to survive in or cross.",
+  "section": "interesting",
+  "category": "places"
+ },
+ {
+  "slug": "lionelmessi-people-millions-see",
+  "input": "Lionel Messi",
+  "anagram": "millions see",
+  "why": "Lionel Messi is one of the most watched footballers in the world, with millions tuning in to see him play.",
+  "section": "interesting",
+  "category": "people"
+ },
+ {
+  "slug": "photoshop-products-photo-posh",
+  "input": "Photoshop",
+  "anagram": "posh photo",
+  "why": "Photoshop is the image editor used to polish photos into glossy, upscale-looking pictures.",
+  "section": "interesting",
+  "category": "products"
+ },
+ {
+  "slug": "thegreatgatsby-titles-betrays-egg-that",
+  "input": "The Great Gatsby",
+  "anagram": "betrays that egg",
+  "why": "Gatsby of West Egg is betrayed by Daisy and Tom of East Egg, so \"betrays that Egg\" fits the plot.",
+  "section": "interesting",
+  "category": "titles"
+ },
+ {
+  "slug": "doritos-products-its-odor",
+  "input": "Doritos",
+  "anagram": "its odor",
+  "why": "Doritos are notorious for their strong cheesy smell, the lingering 'Dorito breath' and fingers people joke about.",
+  "section": "stretch",
+  "category": "products"
+ },
+ {
+  "slug": "forrestgump-titles-forest-grump",
+  "input": "Forrest Gump",
+  "anagram": "forest grump",
+  "why": "Sounds almost exactly like 'Forrest Gump', and the famously sunny Forrest is the opposite of a grump.",
+  "section": "stretch",
+  "category": "titles"
+ },
+ {
+  "slug": "monopoly-products-mono-ploy",
+  "input": "Monopoly",
+  "anagram": "mono ploy",
+  "why": "A monopoly is one seller cornering a market, and the game rewards that scheme, so 'mono ploy' reads as a one-player ploy.",
+  "section": "stretch",
+  "category": "products"
+ },
+ {
+  "slug": "newyorkcity-places-icky-rent-yow",
+  "input": "New York City",
+  "anagram": "icky rent yow",
+  "why": "New York City is notorious for punishing rents, and the anagram recoils from the rent with 'icky' and 'yow'.",
+  "section": "stretch",
+  "category": "places"
+ },
+ {
+  "slug": "frankenstein-titles-frank-in-teens",
+  "input": "Frankenstein",
+  "anagram": "Frank in teens",
+  "why": "Mary Shelley began writing Frankenstein at eighteen, so the book was written in her teens.",
+  "section": "stretch",
+  "category": "titles"
+ }
+]

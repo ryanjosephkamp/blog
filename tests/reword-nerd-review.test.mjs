@@ -26,6 +26,12 @@ const publishedArticles = [
     date: "2026-11-01",
   },
   {
+    path: "articles/ars-magna.md",
+    href: "/articles/ars-magna/",
+    title: "Ars Magna: every anagram, exactly",
+    date: "2026-10-31",
+  },
+  {
     path: "articles/reword-nerd.md",
     href: "/articles/reword-nerd/",
     title: "reword_nerd: Rewrite anything with the model you already use",
