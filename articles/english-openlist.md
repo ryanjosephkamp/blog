@@ -32,9 +32,41 @@ scripts:
 </figure>
 
 <h2 id="why-i-built-it">Why I built it</h2>
-<p>I built the English OpenList as a free English word list for word games, and it now supplies <a href="https://amordle.vercel.app/">Amordle</a>, <a href="https://ars-magna.pages.dev/">Ars Magna</a>, and <a href="https://ryanjosephkamp.github.io/portfolios/anagram-tiles/">Anagram Tiles</a>.</p>
-<p>What a game needs from its list is simple. It has to be free to ship. It has to keep up, because English doesn&rsquo;t stop in 1998. And it has to show its work, because a list that can&rsquo;t say why a word is on it can&rsquo;t say whether to trust it.</p>
-<p><strong>So I built one that does all three.</strong> Every word carries a record of how it got on, and every night, a run checks new candidates against dictionaries and publishes the ones they recognize.</p>
+<p>I&rsquo;ve always been a word nerd. Growing up, solving the <a href="https://www.cincinnati.com/">Cincinnati Enquirer</a>&rsquo;s daily <a href="https://games.usatoday.com/games/amu-jumble">Jumble</a> (anagram puzzle) was one of my favorite little hobbies. For some reason (maybe I&rsquo;m a bit dyslexic), I am naturally gifted at letter rearrangement and can usually recognize the solution hidden in a jumbled word in under a second. I don&rsquo;t know how I do it, but I do it. It&rsquo;s such a trivial talent, like a party trick, and I never thought it would be useful for anything important.</p>
+<p>As an adult, I still play word games and enjoy anagram puzzles from time to time. In 2025, I wanted to make my own free, upgraded version of <a href="https://en.wikipedia.org/wiki/Wordle">Wordle</a> (and, eventually, I did: <a href="https://amordle.vercel.app/">Amordle</a>) and to explore some similar letter-rearrangement projects (e.g., <a href="https://ars-magna.pages.dev/">Ars Magna</a>, <a href="https://ryanjosephkamp.github.io/portfolios/anagram-tiles/">Anagram Tiles</a>).</p>
+<p>So I began at a natural starting point: <strong>finding a suitable English word list</strong>.</p>
+<p>But not just any ordinary list of English words would do: I wanted the <em>longest</em>, <em>most current</em> set of &ldquo;valid&rdquo; words that could be compatible with games like <a href="https://en.wikipedia.org/wiki/Scrabble">Scrabble</a> and Wordle. After searching far and wide on the web, I realized that this list just didn&rsquo;t exist.</p>
+<p>The closest ones to it all had serious problems, typically some combination of three things:</p>
+<ol>
+<li><strong>Completeness:</strong> Some were incomplete or seriously outdated (e.g., <a href="https://www.mit.edu/~ecprice/wordlist.10000">MIT 10,000</a>, <a href="https://github.com/first20hours/google-10000-english">Google 10,000</a>). These could be merged, but only a handful appear to be from credible sources, and none is maintained or updated frequently.</li>
+<li><strong>Cleanliness:</strong> Some were dirty, containing OCR errors and other incompatible non-word strings (e.g., <a href="https://registry.opendata.aws/google-ngrams/">Google Books Ngrams</a>). These text datasets would need to be cleaned/processed to remove the unwanted entries before putting them in an app or a game.</li>
+<li><strong>Cost:</strong> Some, especially the best ones, were paywalled (e.g., <a href="https://www.english-corpora.org/coca/">COCA</a>) or protected by a restrictive license (e.g., <a href="https://www.scrabbleplayers.org/w/Official_Tournament_and_Club_Word_List">NASPA</a>). These couldn&rsquo;t be used without forking over money to their creators, and their rules put hard limits on what you can do with them publicly even if you do purchase access to them.</li>
+</ol>
+<p>I planned to just combine what I could, clean a dirty dataset if necessary, and call it a day.</p>
+<p>But that third problem didn&rsquo;t sit well with me, and I couldn&rsquo;t stop thinking about it.</p>
+<p><strong>The English language is a public good, and English words themselves should never be locked behind a paywall.</strong></p>
+<p>Sure, particular definitions or content <em>using</em> the words could be proprietary, I suppose, but the mere words should be totally free. You shouldn&rsquo;t have to pay someone to learn which words are considered valid English.</p>
+<p>Rather than simply accepting this situation, I decided to fix it by making my own list, named the <strong>English OpenList (EOL)</strong>, which attempted to solve every major problem with the English word lists that came before it.</p>
+<p>To do this systematically, I chose to define English strings as <em>structurally</em> valid if their characters met the official Scrabble game rules (with one exception): only 1-grams (no spaces), only letters <code>a</code> to <code>z</code> (no special symbols, numbers, or other non-letter characters), and nothing shorter than two letters or longer than 15 letters. The exception: a maximum of 15 letters is extremely restrictive, so I loosened that rule to permit no more than 45 characters in the string.</p>
+<p>And after exploring a number of word validation strategies, I eventually decided, somewhat arbitrarily, to define my words as <em>semantically</em> valid if they could be found in Merriam-Webster&rsquo;s <a href="https://www.merriam-webster.com/collegiate-dictionary-twelfth-edition">Collegiate</a> or <a href="https://www.merriam-webster.com/medical">Medical</a> Dictionaries or on <a href="https://www.wordnik.com/">Wordnik</a>, and if they met the remaining higher-level Scrabble requirements:</p>
+<ul>
+<li>No exclusively proper terms or names, such as &ldquo;ryan&rdquo; (whose only standard usage is as a proper noun/name) but not &ldquo;robin&rdquo; (which is both a name and a type of bird).</li>
+<li>No exclusive acronyms or initialisms like &ldquo;USA&rdquo; (for &ldquo;United States of America&rdquo;), since &ldquo;usa&rdquo; is not a recognized word in lowercase, but not &ldquo;US,&rdquo; as &ldquo;us&rdquo; is a valid word in lowercase.</li>
+<li>And no exclusive abbreviations, e.g., &ldquo;prev&rdquo; for &ldquo;previous&rdquo; but not &ldquo;info&rdquo; for &ldquo;information,&rdquo; or slang.</li>
+</ul>
+<p>In January of 2026, I built the EOL through a long, meticulous process. First, I obtained a giant list of as many unique, structurally valid &ldquo;candidate&rdquo; words as I could find, using data mining, cleaning, and scraping, text extraction via OCR on real document scans, and structural string generation (some from rules, some with NLP). Then, I tried several approaches to validating these candidates:</p>
+<ul>
+<li><strong>From a source (176,222):</strong> It came from a word list, a dictionary, or a glossary of a field such as medicine. No language model or generator decided it.</li>
+<li><strong>Checked with a model (131,226):</strong> It passed a check of several steps, and a language model was one of the steps.</li>
+<li><strong>A model&rsquo;s call alone (6,471):</strong> A language model judged it a word, and no other check backs that.</li>
+<li><strong>Generated by rule (31,243):</strong> The synthetic engine made it by rule, for example by adding a prefix or a suffix to a word already on the list.</li>
+</ul>
+<p>Importantly, I also saved and documented the words that <em>failed</em> to be validated, not just the ones that succeeded.</p>
+<p>Later in 2026, I revisited the core choices behind the EOL and made two changes:</p>
+<ol>
+<li><strong>Expanding compatibility beyond Scrabble.</strong> Scrabble tournament lists understandably exclude one-letter words, like <code>a</code> and <code>i</code>, as well as strings beyond 15 characters, for reasons of fairness and practicality. But there are valid English words outside of that approved range, and outside of the 2&ndash;45 range that I had adopted, and some games with Scrabble-like rules (e.g., Wordle) might support them. So, the EOL was extended, and the Scrabble-compatible list (lengths 2 to 45) can be obtained by simply filtering out the shortest and longest entries, of which there are very few. I also noticed that some entries in the EOL had been duplicated or added by mistake, and I corrected the dataset accordingly.</li>
+<li><strong>Creating a version without <em>my</em> (arbitrary) definition of validity.</strong> What makes Merriam-Webster and Wordnik so special and credible? How many dictionaries, and which ones, should a word have to appear on to be considered &ldquo;valid&rdquo;? Should strings with spaces, hyphens, or other keyboard characters in them be considered valid English? What is the best algorithm for classifying an English candidate word as &ldquo;valid&rdquo;? Answers to questions like these are not simple, and there&rsquo;s no fundamental, universal law about the English language, a human invention, that you can derive to help you. But if someone does invent an English word validation method, then it might help to have a big dataset of word candidate strings, and to know which ones exist on which sources at a given time. As with the EOL, that dataset didn&rsquo;t freely exist when I looked for it, either. So, I took the EOL&rsquo;s valid and invalid lists and carefully loosened as many structural rules as I could, before combining them into a single list (called the &ldquo;universe&rdquo;) of over 10 million candidate (possibly valid) words. Then, I checked which mainstream lexical sources each entry appeared on, and used the data to construct what I call the <strong><a href="https://review.common-english-openlist.pages.dev/">Common English OpenList</a> (CEOL) Universe</strong>.</li>
+</ol>
 
 <h2 id="the-rule">The rule</h2>
 <p>The rule is short: an entry is lowercase a to z and nothing else, the pattern <code>^[a-z]+$</code>, with no length bound. No capitals, spaces, hyphens, apostrophes, digits, or accents.</p>
@@ -48,13 +80,7 @@ scripts:
 <p>Every one of them is queued to be checked again, because <strong>no word is ever off the list for good</strong>. A string absent from a dictionary today might be added to it tomorrow. But once a word enters the EOL, it never leaves, unless it was originally included by mistake.</p>
 
 <h2 id="what-decided-each-word">What decided each word</h2>
-<p>Not every word entered the EOL the same way. Each word&rsquo;s record says how it got on, sorted into four values:</p>
-<ul>
-<li><strong>From a source (176,222):</strong> It came from a word list, a dictionary, or a glossary of a field such as medicine. No language model or generator decided it.</li>
-<li><strong>Checked with a model (131,226):</strong> It passed a check of several steps, and a language model was one of the steps.</li>
-<li><strong>A model&rsquo;s call alone (6,471):</strong> A language model judged it a word, and no other check backs that.</li>
-<li><strong>Generated by rule (31,243):</strong> The synthetic engine made it by rule, for example by adding a prefix or a suffix to a word already on the list.</li>
-</ul>
+<p>Not every word entered the EOL the same way. Each word&rsquo;s record says how it got on, sorted into the four values above.</p>
 <p>If you&rsquo;d rather not ship words a model vouched for, or words a program made, leave them out. That&rsquo;s the point of keeping the record.</p>
 
 <div class="eol-demo" data-eol-demo="decided"><p class="eol-demo__fallback">This chart needs JavaScript. The English OpenList&rsquo;s <a href="https://english-openlist.pages.dev/charts/">charts</a> show the same counts.</p></div>
