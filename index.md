@@ -20,6 +20,11 @@ description: Writing and project notes by Ryan Kamp
       <p>A free list of 345,162 English words, lowercase a to z, with a record of how each word got on and a nightly run that checks new candidates against dictionaries.</p>
     </li>
     <li>
+      <h3><a href="{{ '/articles/ars-magna/' | relative_url }}">Ars Magna: every anagram, exactly</a></h3>
+      <p class="article-date">Published <time datetime="2026-10-31">2026-10-31</time></p>
+      <p>A free anagram search that finds every anagram of a text, counts them exactly, and explains the good ones.</p>
+    </li>
+    <li>
       <h3><a href="{{ '/articles/reword-nerd/' | relative_url }}">reword_nerd: Rewrite anything with the model you already use</a></h3>
       <p class="article-date">Published <time datetime="2026-10-31">2026-10-31</time></p>
       <p>A browser workbench that hands documents, projects, and images to the AI model you already use, in one paste, and brings the result back for review.</p>
