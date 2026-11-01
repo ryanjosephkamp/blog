@@ -1,0 +1,85 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Times-Roman /Encoding /WinAnsiEncoding /FirstChar 32 /LastChar 126 /Widths [250 333 408 500 500 833 778 180 333 333 500 564 250 333 250 278 500 500 500 500 500 500 500 500 500 500 278 278 564 564 564 444 921 722 667 667 722 611 556 722 722 333 389 722 611 889 722 722 556 722 667 556 611 722 722 944 722 722 611 333 278 333 469 500 333 444 500 444 500 444 333 500 500 278 278 500 278 778 500 500 500 500 333 389 278 500 500 722 500 500 444 480 200 480 541] >>
+endobj
+3 0 obj
+<< /Type /Pages /Kids [8 0 R 13 0 R] /Count 2 >>
+endobj
+4 0 obj
+<< /Type /Annot /Subtype /Link /Rect [184.32 589.58 290.48 602.58] /Border [0 0 0] /A << /S /URI /URI (https://data.example.org/canopy-40) >> >>
+endobj
+5 0 obj
+<< /Type /Annot /Subtype /Link /Rect [388.39 589.58 484.49 602.58] /Border [0 0 0] /A << /S /URI /URI (https://code.example.org/uhi-canopy) >> >>
+endobj
+6 0 obj
+<< /Type /Annot /Subtype /Link /Rect [87.19 571.58 157.31 584.58] /Border [0 0 0] /A << /S /URI /URI (https://maps.example.org/canopy-40) >> >>
+endobj
+7 0 obj
+<< /Length 1513 >>
+stream
+BT /Times 9 Tf 1 0 0 1 72.00 720 Tm [(Journal) -250.0 (of) -250.0 (Example) -250.0 (Climate) -250.0 (14) -250.0 (\(2024\)) -250.0 (142-151,) -250.0 (doi:10.5555/uhi.2024.0142)] TJ ET
+BT /Times 17 Tf 1 0 0 1 72.00 688 Tm [(Surface) -250.0 (temperature) -250.0 (and) -250.0 (tree) -250.0 (canopy) -250.0 (in) -250.0 (40) -250.0 (mid-sized) -250.0 (cities)] TJ ET
+BT /Times 11 Tf 1 0 0 1 72.00 661 Tm [(R.) -250.0 (Ortega) -250.0 (and) -250.0 (M.) -250.0 (Lin)] TJ ET
+BT /Times 11 Tf 1 0 0 1 72.00 629 Tm [(Abstract.) -250.0 (We) -250.0 (compare) -250.0 (afternoon) -250.0 (land) -250.0 (surface) -250.0 (temperature) -250.0 (with) -250.0 (tree) -250.0 (canopy) -250.0 (cover) -250.0 (in) -250.0 (40) -250.0 (mid-sized)] TJ ET
+BT /Times 11 Tf 1 0 0 1 72.00 611 Tm [(cities.) -250.0 (Each) -250.0 (ten) -250.0 (points) -250.0 (of) -250.0 (canopy) -250.0 (cover) -250.0 (lowered) -250.0 (the) -250.0 (surface) -250.0 (temperature) -250.0 (of) -250.0 (a) -250.0 (block) -250.0 (by) -250.0 (about) -250.0 (1.4) -250.0 (degrees.)] TJ ET
+BT /Times 11 Tf 1 0 0 1 72.00 593 Tm [(The) -250.0 (canopy) -250.0 (rasters) -250.0 (are) -250.0 (in) -250.0 (the) -250.0 (canopy) -250.0 (data) -250.0 (archive,) -250.0 (and) -250.0 (the) -250.0 (analysis) -250.0 (is) -250.0 (in) -250.0 (the) -250.0 (project) -250.0 (repository.)] TJ ET
+BT /Times 11 Tf 1 0 0 1 72.00 575 Tm [(An) -250.0 (interactive) -250.0 (map) -250.0 (shows) -250.0 (the) -250.0 (afternoon) -250.0 (temperature) -250.0 (of) -250.0 (every) -250.0 (block.)] TJ ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /Times 2 0 R >> >> /Contents 7 0 R /Annots [4 0 R 5 0 R 6 0 R] >>
+endobj
+9 0 obj
+<< /Type /Annot /Subtype /Link /Rect [125.7 691.8 285.17 703.8] /Border [0 0 0] /A << /S /URI /URI (https://doi.org/10.5555/roof.2022.0310) >> >>
+endobj
+10 0 obj
+<< /Type /Annot /Subtype /Link /Rect [191.8 675.8 436.82 687.8] /Border [0 0 0] /A << /S /URI /URI (https://doi.org/10.5555/roof.2019.0077) >> >>
+endobj
+11 0 obj
+<< /Type /Annot /Subtype /Link /Rect [132.93 643.8 280.73 655.8] /Border [0 0 0] /A << /S /URI /URI (https://doi.org/10.5555/roof.2018.0521) >> >>
+endobj
+12 0 obj
+<< /Length 900 >>
+stream
+BT /Times 13 Tf 1 0 0 1 72.00 720 Tm [(References)] TJ ET
+BT /Times 10 Tf 1 0 0 1 72.00 695 Tm [([1]) -250.0 (E.) -250.0 (Varga.) -250.0 (Cool) -250.0 (roofs:) -250.0 (a) -250.0 (ten-year) -250.0 (field) -250.0 (comparison.) -250.0 (Journal) -250.0 (of) -250.0 (Example) -250.0 (Climate,) -250.0 (2022.)] TJ ET
+BT /Times 10 Tf 1 0 0 1 72.00 679 Tm [([2]) -250.0 (K.) -250.0 (Mensah) -250.0 (and) -250.0 (L.) -250.0 (Duarte.) -250.0 (Reflective) -250.0 (coatings) -250.0 (and) -250.0 (indoor) -250.0 (temperature) -250.0 (in) -250.0 (social) -250.0 (housing.)] TJ ET
+BT /Times 10 Tf 1 0 0 1 86.00 663 Tm [(Example) -250.0 (Buildings) -250.0 (Review,) -250.0 (2019.)] TJ ET
+BT /Times 10 Tf 1 0 0 1 72.00 647 Tm [([3]) -250.0 (S.) -250.0 (Ivanova.) -250.0 (Albedo,) -250.0 (asphalt) -250.0 (and) -250.0 (afternoon) -250.0 (peaks.) -250.0 (Example) -250.0 (Urban) -250.0 (Studies,) -250.0 (2018.)] TJ ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /Times 2 0 R >> >> /Contents 12 0 R /Annots [9 0 R 10 0 R 11 0 R] >>
+endobj
+14 0 obj
+<< /Type /Catalog /Pages 3 0 R >>
+endobj
+15 0 obj
+<< /Title (Surface temperature and tree canopy in 40 mid-sized cities) /Author (R. Ortega; M. Lin) >>
+endobj
+xref
+0 16
+0000000000 65535 f 
+0000000009 00000 n 
+0000000104 00000 n 
+0000000621 00000 n 
+0000000685 00000 n 
+0000000845 00000 n 
+0000001006 00000 n 
+0000001165 00000 n 
+0000002729 00000 n 
+0000002896 00000 n 
+0000003057 00000 n 
+0000003219 00000 n 
+0000003382 00000 n 
+0000004333 00000 n 
+0000004504 00000 n 
+0000004554 00000 n 
+trailer
+<< /Size 16 /Root 14 0 R /Info 15 0 R >>
+startxref
+4672
+%%EOF
