@@ -1,0 +1,348 @@
+/* The English OpenList post: the site recording, the 4 demos, and the
+   comparison table. Colors come from the site's tokens; the 4 series colors
+   and the list's red follow the English OpenList's own site, in both themes. */
+:root {
+  --eol-red: #c8332f;
+  --eol-s1: #2a78d6;
+  --eol-s2: #eb6834;
+  --eol-s3: #1baf7a;
+  --eol-s4: #eda100;
+}
+
+:root[data-resolved-theme="dark"] {
+  --eol-red: #ff7b74;
+  --eol-s1: #3987e5;
+  --eol-s2: #d95926;
+  --eol-s3: #199e70;
+  --eol-s4: #c98500;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-storage-free-theme="system"] {
+    --eol-red: #ff7b74;
+    --eol-s1: #3987e5;
+    --eol-s2: #d95926;
+    --eol-s3: #199e70;
+    --eol-s4: #c98500;
+  }
+}
+
+.eol-post h1 {
+  max-width: 14ch;
+}
+
+.eol-post li {
+  color: var(--muted);
+}
+
+.eol-post li + li {
+  margin-top: 0.35rem;
+}
+
+.eol-post pre {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 1rem 0 1.4rem;
+  padding: 0.85rem 1rem;
+  border-left: 2px solid var(--line-strong);
+  background: color-mix(in srgb, var(--line) 28%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.eol-post pre code {
+  padding: 0;
+  background: none;
+  font-size: inherit;
+}
+
+.eol-post table {
+  font-size: 0.92rem;
+}
+
+.eol-post td.num,
+.eol-post th.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.eol-post .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* The site recording */
+.eol-film {
+  margin: 2rem 0 2.4rem;
+}
+
+.eol-film video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 960 / 470;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.eol-film figcaption {
+  max-width: 66ch;
+  margin-top: 0.6rem;
+  color: var(--faint);
+  font-size: 0.9rem;
+}
+
+/* The demos */
+.eol-demo {
+  margin: 2rem 0 2.6rem;
+  padding: 1.2rem 1.2rem 1.3rem;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.eol-demo,
+.eol-demo * {
+  min-width: 0;
+}
+
+.eol-demo__label {
+  margin: 0 0 0.25rem;
+  color: var(--faint);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.eol-demo h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.eol-demo__lede {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+}
+
+.eol-demo__note {
+  margin: 0.9rem 0 0;
+  color: var(--faint);
+  font-size: 0.86rem;
+}
+
+.eol-demo__fallback {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.eol-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 0.9rem;
+  padding: 0;
+  list-style: none;
+}
+
+.eol-post .eol-chips li + li {
+  margin-top: 0;
+}
+
+.eol-chip,
+.eol-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.1rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.92rem;
+}
+
+.eol-chip:hover,
+.eol-btn:hover {
+  border-color: var(--accent);
+}
+
+.eol-chip:focus-visible,
+.eol-btn:focus-visible,
+.eol-demo input:focus-visible,
+.eol-demo svg:focus-visible,
+.eol-demo rect:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.eol-chip[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.eol-btn--primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--page);
+  font-weight: 650;
+}
+
+.eol-btn:disabled {
+  cursor: progress;
+  opacity: 0.6;
+}
+
+.eol-chip svg {
+  flex: none;
+}
+
+.eol-swatch {
+  display: inline-block;
+  flex: none;
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.eol-readout {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.eol-readout strong {
+  font-size: 1.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.eol-input {
+  width: min(100%, 22rem);
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+}
+
+.eol-checks {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.eol-post .eol-checks li + li {
+  margin-top: 0;
+}
+
+.eol-checks li {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr);
+  gap: 0.4rem;
+  align-items: start;
+}
+
+.eol-checks .mark {
+  font-weight: 700;
+}
+
+.eol-checks .ok {
+  color: var(--eol-s3);
+}
+
+.eol-checks .no {
+  color: var(--eol-red);
+}
+
+.eol-bad {
+  background: color-mix(in srgb, var(--eol-red) 22%, transparent);
+  color: var(--ink);
+}
+
+.eol-chart-wrap {
+  position: relative;
+}
+
+.eol-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.eol-chart text {
+  fill: var(--faint);
+  font-family: var(--font-body);
+  font-size: 11px;
+}
+
+.eol-chart .axis {
+  stroke: var(--line-strong);
+  stroke-width: 1;
+}
+
+.eol-chart .grid {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.eol-tip {
+  position: absolute;
+  z-index: 5;
+  max-width: 15rem;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid var(--line-strong);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  pointer-events: none;
+}
+
+.eol-tip[hidden] {
+  display: none;
+}
+
+.eol-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.9rem;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+}
+
+.eol-post .eol-words li + li {
+  margin-top: 0;
+}
+
+.eol-words li {
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.eol-words mark {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eol-post * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

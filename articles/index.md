@@ -10,6 +10,11 @@ Project notes, portfolio writing, and longer reflections collected in one place.
 
 <ul class="article-list">
   <li>
+    <h2><a href="{{ '/articles/english-openlist/' | relative_url }}">The English OpenList: a word list that keeps itself up to date</a></h2>
+    <p class="article-date">Published <time datetime="2026-11-01">2026-11-01</time></p>
+    <p>A free list of 345,162 English words, lowercase a to z, with a record of how each word got on and a nightly run that checks new candidates against dictionaries.</p>
+  </li>
+  <li>
     <h2><a href="{{ '/articles/aqrobat/' | relative_url }}">Aqrobat: QR codes, in character</a></h2>
     <p class="article-date">Published <time datetime="2026-10-31">2026-10-31</time></p>
     <p>A free generator that draws working QR codes with emoji and text, then shapes each copy for the app you paste it into.</p>
