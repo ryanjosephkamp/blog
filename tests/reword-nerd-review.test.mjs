@@ -7,19 +7,29 @@ import { fileURLToPath } from "node:url";
 
 const repositoryRoot = dirname(dirname(fileURLToPath(import.meta.url)));
 const articleRelativePath = "articles/reword-nerd.md";
-const mediaRelativeDirectory = "assets/media/reword-nerd/2026-08-14-r1";
-const iconRelativePath = "assets/images/reword-nerd-icon.gif";
-const expectedIcon = {
-  bytes: 14_799_188,
-  sha256: "539b3a7cef5e08e23e7c9491f431154c6bff2d6c6336662fd2c068e545bb4462",
+const demosRelativeDirectory = "assets/reword-nerd-demos";
+const demosSourceDirectory = "tools/reword-nerd-demos";
+const demoScript = `<script type="module" src="{{ '/${demosRelativeDirectory}/demos.js' | relative_url }}"></script>`;
+const gifRelativePath = "assets/media/reword-nerd/2026-10-31/reword-nerd-demo.gif";
+const expectedGif = {
+  bytes: 3_478_877,
+  sha256: "d61c17b2777561786f6d50c7905212cc5f41896461d01e6cfc61289b287e8a44",
 };
+const retiredMedia = ["assets/media/reword-nerd/2026-08-14-r1", "assets/images/reword-nerd-icon.gif"];
 
+// Newest first, in the order both indexes list them.
 const publishedArticles = [
   {
     path: "articles/english-openlist.md",
     href: "/articles/english-openlist/",
     title: "The English OpenList: a word list that keeps itself up to date",
     date: "2026-11-01",
+  },
+  {
+    path: "articles/reword-nerd.md",
+    href: "/articles/reword-nerd/",
+    title: "reword_nerd: Rewrite anything with the model you already use",
+    date: "2026-10-31",
   },
   {
     path: "articles/aqrobat.md",
@@ -34,12 +44,6 @@ const publishedArticles = [
     date: "2026-08-17",
   },
   {
-    path: "articles/reword-nerd.md",
-    href: "/articles/reword-nerd/",
-    title: "reword_nerd: Local prompt packages for text and images",
-    date: "2026-08-15",
-  },
-  {
     path: "articles/s26-airp.md",
     href: "/articles/s26-airp/",
     title: "Spring 2026 AI Research Prototype Portfolio",
@@ -47,116 +51,28 @@ const publishedArticles = [
   },
 ];
 
-const expectedMedia = [
-  {
-    film: "combined",
-    role: "review-mp4",
-    file: "reword-nerd-combined-quick-guide-r04-review.mp4",
-    bytes: 1_254_760,
-    sha256: "2c7ce738cb59cda46b6dc3e0f92134ad67c5776e360cb12b95dec55d4aa09870",
-  },
-  {
-    film: "combined",
-    role: "review-webm",
-    file: "reword-nerd-combined-quick-guide-r04-review.webm",
-    bytes: 1_500_059,
-    sha256: "73694754e7673c3e8bfdd90331cd0d241ece6dbd1e64325600077affb1ec0bfd",
-  },
-  {
-    film: "combined",
-    role: "poster",
-    file: "reword-nerd-combined-quick-guide-r04-poster.webp",
-    bytes: 11_676,
-    sha256: "1d440147a6723bfa1db6714276e018b995eedd7f622037eba5976cfd13e78c79",
-  },
-  {
-    film: "combined",
-    role: "transcript",
-    file: "reword-nerd-combined-quick-guide-r04-transcript.txt",
-    bytes: 1_003,
-    sha256: "c25a7362e5e3f70716a08d53037b0ea433fa738983584e514f46a3374938ab58",
-  },
-  {
-    film: "marketing-30",
-    role: "review-mp4",
-    file: "reword-nerd-marketing-30-r04-review.mp4",
-    bytes: 782_263,
-    sha256: "23797b4b91e4d6590c9299a4d26fc87c33d73e1b0b72f130259c1e279cae3613",
-  },
-  {
-    film: "marketing-30",
-    role: "review-webm",
-    file: "reword-nerd-marketing-30-r04-review.webm",
-    bytes: 751_777,
-    sha256: "ac1cd5426fc687450f1fe334418c0ba9cd66b84049fa8ccf15c76ebdde09b398",
-  },
-  {
-    film: "marketing-30",
-    role: "poster",
-    file: "reword-nerd-marketing-30-r04-poster.webp",
-    bytes: 10_488,
-    sha256: "995c6c9b430045ef29a1ea09cb4b9f7823e0dee33e3318997947d28d7b64b784",
-  },
-  {
-    film: "marketing-30",
-    role: "transcript",
-    file: "reword-nerd-marketing-30-r04-transcript.txt",
-    bytes: 207,
-    sha256: "aae104ec49e55605374fd7724ee94e2b9dc16aa1b632db26045e08e6b6658877",
-  },
-  {
-    film: "marketing-60",
-    role: "review-mp4",
-    file: "reword-nerd-marketing-60-r04-review.mp4",
-    bytes: 1_567_864,
-    sha256: "a5af434afce005c6f372e1be54fbd07dd242a0b9f49efaaa01c76865cc8698a5",
-  },
-  {
-    film: "marketing-60",
-    role: "review-webm",
-    file: "reword-nerd-marketing-60-r04-review.webm",
-    bytes: 1_589_436,
-    sha256: "3c469f240e388318612aa18cd4964caae9303d7d46e6522d47fe438494463010",
-  },
-  {
-    film: "marketing-60",
-    role: "poster",
-    file: "reword-nerd-marketing-60-r04-poster.webp",
-    bytes: 10_462,
-    sha256: "ba7b473ef8eca389cb696a4352e17e9044390c29deb5127aa7cce02cf77e4f31",
-  },
-  {
-    film: "marketing-60",
-    role: "transcript",
-    file: "reword-nerd-marketing-60-r04-transcript.txt",
-    bytes: 427,
-    sha256: "d2587303fb20eb2fa9099f3fc9972a314d45608cfa6f27a195db8751d0d023a2",
-  },
+const essaySections = [
+  "why-i-built-it",
+  "what-reword-nerd-does",
+  "hand-it-off",
+  "the-method",
+  "projects",
+  "bring-it-back",
+  "no-model",
+  "images",
+  "how-it-compares",
+  "privacy",
+  "use-it",
 ];
 
-const films = [
-  {
-    key: "combined",
-    heading: "Combined Quick Guide",
-    descriptionId: "combined-description",
-  },
-  {
-    key: "marketing-30",
-    heading: "30-second product film",
-    descriptionId: "marketing-30-description",
-  },
-  {
-    key: "marketing-60",
-    heading: "60-second product film",
-    descriptionId: "marketing-60-description",
-  },
-];
+const demos = ["handoff", "project", "changes", "image"];
 
 const projectLinks = [
-  ["reword_nerd Text portal", "https://ryanjosephkamp.github.io/reword-nerd/"],
-  ["reword_nerd Image portal", "https://ryanjosephkamp.github.io/reword-nerd/image/"],
-  ["reword_nerd Updates archive", "https://ryanjosephkamp.github.io/reword-nerd/updates/"],
-  ["reword_nerd v0.8 post", "https://ryanjosephkamp.github.io/reword-nerd/updates/v0-8-0/"],
+  ["reword_nerd", "https://ryanjosephkamp.github.io/reword-nerd/"],
+  ["Rewrite text", "https://ryanjosephkamp.github.io/reword-nerd/app/"],
+  ["Regenerate images", "https://ryanjosephkamp.github.io/reword-nerd/app/?mode=images"],
+  ["Release 0.9 notes", "https://ryanjosephkamp.github.io/reword-nerd/updates/v0-9-0/"],
+  ["Updates", "https://ryanjosephkamp.github.io/reword-nerd/updates/"],
   ["reword_nerd on GitHub", "https://github.com/ryanjosephkamp/reword-nerd"],
 ];
 
@@ -215,17 +131,24 @@ function frontMatter(document) {
 }
 
 function frontMatterValues(document) {
-  return Object.fromEntries(
-    frontMatter(document).map((line) => {
-      const separator = line.indexOf(":");
-      assert.ok(separator > 0, `Invalid front-matter line: ${line}`);
-      const key = line.slice(0, separator);
-      const rawValue = line.slice(separator + 1).trim();
-      if (rawValue === "true") return [key, true];
-      if (rawValue === "false") return [key, false];
-      return [key, rawValue.replace(/^"|"$/g, "")];
-    }),
-  );
+  const values = {};
+  let listKey;
+  for (const line of frontMatter(document)) {
+    if (listKey && line.startsWith("  - ")) {
+      values[listKey].push(line.slice(4).trim());
+      continue;
+    }
+    const separator = line.indexOf(":");
+    assert.ok(separator > 0, `Invalid front-matter line: ${line}`);
+    const key = line.slice(0, separator);
+    const rawValue = line.slice(separator + 1).trim();
+    listKey = rawValue === "" ? key : undefined;
+    if (rawValue === "") values[key] = [];
+    else if (rawValue === "true") values[key] = true;
+    else if (rawValue === "false") values[key] = false;
+    else values[key] = rawValue.replace(/^"|"$/g, "");
+  }
+  return values;
 }
 
 function traceEffectiveLayout(layout, page) {
@@ -270,22 +193,24 @@ function sha256(path) {
   return createHash("sha256").update(readFileSync(path)).digest("hex");
 }
 
-function liquidMediaUrl(file) {
-  return `{{ '/${mediaRelativeDirectory}/${file}' | relative_url }}`;
-}
-
 function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-test("publishes discoverable article front matter without review-only indexing directives", () => {
+function bundleScripts() {
+  return readdirSync(absolutePath(demosRelativeDirectory)).filter((file) => file.endsWith(".js"));
+}
+
+test("publishes the reword_nerd post's front matter without indexing directives", () => {
   const article = readRequired(articleRelativePath);
   assert.deepEqual(frontMatter(article), [
-    'title: "reword_nerd: Local prompt packages for text and images"',
-    'description: "Review the reword_nerd quick guide and product films for its local Text and Image prompt-package workflow."',
+    'title: "reword_nerd: Rewrite anything with the model you already use"',
+    'description: "A browser workbench that hands documents, projects, and images to the AI model you already use, in one paste, and brings the result back for review."',
     "permalink: /articles/reword-nerd/",
-    "date: 2026-08-15",
+    "date: 2026-10-31",
     "storage_free: true",
+    "styles:",
+    `  - /${demosRelativeDirectory}/demos.css`,
   ]);
 
   assert.doesNotMatch(
@@ -301,10 +226,7 @@ test("publishes discoverable article front matter without review-only indexing d
   assert.equal((layout.match(/name="robots"/g) ?? []).length, 1);
 });
 
-test("lists reword_nerd among exactly five official blog posts, newest first", () => {
-  const expectedLink =
-    '<a href="{{ \'/articles/reword-nerd/\' | relative_url }}">reword_nerd: Local prompt packages for text and images</a>';
-
+test("lists every published post exactly once in both indexes, newest first", () => {
   for (const indexPath of ["index.md", "articles/index.md"]) {
     const index = readRequired(indexPath);
     assert.equal(
@@ -312,19 +234,22 @@ test("lists reword_nerd among exactly five official blog posts, newest first", (
       publishedArticles.length,
       `${indexPath} must list ${publishedArticles.length} posts`,
     );
-    assert.equal(
-      (index.match(/\/articles\/reword-nerd\//g) ?? []).length,
-      1,
-      `${indexPath} must link reword_nerd exactly once`,
-    );
-    assert.match(index, new RegExp(escapeRegExp(expectedLink)));
-    assert.ok(
-      index.indexOf("/articles/english-openlist/") < index.indexOf("/articles/aqrobat/") &&
-        index.indexOf("/articles/aqrobat/") < index.indexOf("/articles/amordle/") &&
-        index.indexOf("/articles/amordle/") < index.indexOf("/articles/reword-nerd/") &&
-        index.indexOf("/articles/reword-nerd/") < index.indexOf("/articles/s26-airp/"),
-      `${indexPath} must show the newest post first`,
-    );
+
+    let previousIndex = -1;
+    for (const { href, title } of publishedArticles) {
+      assert.equal(
+        (index.match(new RegExp(escapeRegExp(href), "g")) ?? []).length,
+        1,
+        `${indexPath} must link ${href} exactly once`,
+      );
+      assert.match(
+        index,
+        new RegExp(escapeRegExp(`<a href="{{ '${href}' | relative_url }}">${title}</a>`)),
+      );
+      const position = index.indexOf(href);
+      assert.ok(position > previousIndex, `${indexPath} must show the newest post first`);
+      previousIndex = position;
+    }
   }
 
   const config = readRequired("_config.yml");
@@ -417,137 +342,34 @@ test("requires the same publication-date field and placement in every post templ
   }
 });
 
-test("publishes only the exact attested r04 public derivative allowlist under 40 MiB", () => {
-  const mediaDirectory = absolutePath(mediaRelativeDirectory);
-  assert.ok(existsSync(mediaDirectory), `Missing media directory: ${mediaRelativeDirectory}`);
-  assert.deepEqual(
-    readdirSync(mediaDirectory).sort(),
-    expectedMedia.map(({ file }) => file).sort(),
-  );
-
-  let aggregateBytes = 0;
-  for (const media of expectedMedia) {
-    const path = join(mediaDirectory, media.file);
-    assert.equal(statSync(path).size, media.bytes, `${media.file} byte count drifted`);
-    assert.equal(sha256(path), media.sha256, `${media.file} SHA-256 drifted`);
-    aggregateBytes += media.bytes;
-  }
-
-  assert.equal(aggregateBytes, 7_480_422);
-  assert.ok(aggregateBytes <= 40 * 1024 * 1024);
-  assert.deepEqual(
-    Object.fromEntries(
-      ["review-mp4", "review-webm", "poster", "transcript"].map((role) => [
-        role,
-        expectedMedia.filter((media) => media.role === role).length,
-      ]),
-    ),
-    { "review-mp4": 3, "review-webm": 3, poster: 3, transcript: 3 },
-  );
-});
-
-test("renders three accessibly named same-origin films in the required order", () => {
+test("opens with the app's demo GIF and keeps the original introduction", () => {
   const article = readRequired(articleRelativePath);
-  const expectedOrder = [
-    "Combined Quick Guide",
-    "30-second product film",
-    "60-second product film",
-    "YouTube tutorial",
-    "Project links",
-    "Try reword_nerd.",
-  ];
-  let previousIndex = -1;
-  for (const marker of expectedOrder) {
-    const index = article.indexOf(marker);
-    assert.ok(index > previousIndex, `${marker} is missing or out of order`);
-    previousIndex = index;
-  }
+  const gifPath = absolutePath(gifRelativePath);
+  assert.ok(existsSync(gifPath), `Missing required file: ${gifRelativePath}`);
+  assert.equal(statSync(gifPath).size, expectedGif.bytes, "GIF byte count drifted");
+  assert.equal(sha256(gifPath), expectedGif.sha256, "GIF SHA-256 drifted");
 
-  const figureBlocks = [...article.matchAll(/<figure class="film-review__film">([\s\S]*?)<\/figure>/g)];
-  assert.equal(figureBlocks.length, 3);
-  const allIds = [...article.matchAll(/\sid="([^"]+)"/g)].map(([, id]) => id);
-  assert.equal(new Set(allIds).size, allIds.length, "Article IDs must be unique");
-  const filmHeadingIds = figureBlocks.map(([, figure]) => {
-    const heading = figure.match(/<h2 id="([^"]+)">/);
-    assert.ok(heading, "Each film must have a heading ID");
-    return heading[1];
-  });
-  assert.deepEqual(filmHeadingIds, [
-    "combined-title",
-    "marketing-30-title",
-    "marketing-60-title",
-  ]);
-
-  for (const [index, film] of films.entries()) {
-    const figure = figureBlocks[index][1];
-    assert.match(figure, new RegExp(`<h2 id="${film.key}-title">${escapeRegExp(film.heading)}</h2>`));
-    assert.match(figure, new RegExp(`<p id="${film.descriptionId}">[^<]+</p>`));
-
-    const videoMatch = figure.match(/<video\s+([\s\S]*?)>([\s\S]*?)<\/video>/);
-    assert.ok(videoMatch, `${film.key} must include a video`);
-    const attributes = videoMatch[1];
-    assert.match(attributes, /(?:^|\s)controls(?:\s|$)/);
-    assert.match(attributes, /(?:^|\s)playsinline(?:\s|$)/);
-    assert.match(attributes, /preload="metadata"/);
-    assert.match(attributes, new RegExp(`aria-labelledby="${film.key}-title"`));
-    assert.match(attributes, new RegExp(`aria-describedby="${film.descriptionId}"`));
-
-    const poster = expectedMedia.find((media) => media.film === film.key && media.role === "poster");
-    assert.match(attributes, new RegExp(`poster="${escapeRegExp(liquidMediaUrl(poster.file))}"`));
-
-    const sources = [...videoMatch[2].matchAll(/<source src="([^"]+)" type="([^"]+)"\s*\/>/g)].map(
-      ([, src, type]) => ({ src, type }),
-    );
-    const mp4 = expectedMedia.find((media) => media.film === film.key && media.role === "review-mp4");
-    const webm = expectedMedia.find((media) => media.film === film.key && media.role === "review-webm");
-    assert.deepEqual(sources, [
-      { src: liquidMediaUrl(mp4.file), type: "video/mp4" },
-      { src: liquidMediaUrl(webm.file), type: "video/webm" },
-    ]);
-
-    const transcript = expectedMedia.find(
-      (media) => media.film === film.key && media.role === "transcript",
-    );
-    assert.match(
-      figure,
-      new RegExp(`<a href="${escapeRegExp(liquidMediaUrl(transcript.file))}">Plain-text transcript</a>`),
-    );
-  }
-});
-
-test("publishes the approved films inside a complete personal project article", () => {
-  const article = readRequired(articleRelativePath);
-  const essayBlocks = [
-    ...article.matchAll(
-      /<section class="film-review__essay" aria-labelledby="([^"]+)">([\s\S]*?)<\/section>/g,
+  const figure = article.match(
+    /<figure class="film-review__film film-review__gif">([\s\S]*?)<\/figure>/,
+  )?.[1];
+  assert.ok(figure, "Missing the demo GIF figure");
+  assert.match(
+    figure,
+    new RegExp(
+      `<img\\s+src="${escapeRegExp(`{{ '/${gifRelativePath}' | relative_url }}`)}"\\s+alt="[^"]+"\\s+width="960"\\s+height="600"`,
     ),
-  ];
-
-  assert.deepEqual(
-    essayBlocks.map(([, id]) => id),
-    [
-      "why-i-built-it",
-      "what-reword-nerd-does",
-      "the-text-workbench",
-      "the-image-companion",
-      "why-the-package-matters",
-      "building-with-ai",
-      "what-comes-next",
-    ],
   );
-
-  for (const [, id, contents] of essayBlocks) {
-    assert.match(contents, new RegExp(`<h2 id="${escapeRegExp(id)}">[^<]+<\\/h2>`));
-    const minimumParagraphs = id === "what-comes-next" ? 1 : 2;
-    assert.ok(
-      (contents.match(/<p(?:\s[^>]*)?>/g) ?? []).length >= minimumParagraphs,
-      `${id} must contain at least ${minimumParagraphs} paragraph(s)`,
-    );
-  }
+  assert.match(figure, /<figcaption>[^<]*no model was called\.<\/figcaption>/);
 
   assert.match(
     article,
-    /<p class="article-subtitle">A local-first browser workbench for text rewording and image regeneration prompt packages<\/p>/,
+    /<p class="article-subtitle">A browser workbench that hands your documents, projects, and images to the AI model you already use, in one paste<\/p>/,
+  );
+  const figureIndex = article.indexOf('<figure class="film-review__film film-review__gif">');
+  assert.ok(article.indexOf('<p class="article-subtitle">') < figureIndex);
+  assert.ok(
+    figureIndex < article.indexOf("On the human side of this pipeline"),
+    "The GIF must come before the introduction",
   );
   assert.match(
     article,
@@ -558,61 +380,103 @@ test("publishes the approved films inside a complete personal project article", 
     article,
     /<strong>Documents, OCR, source images,\s+and generated prompts still require human review\.<\/strong>/,
   );
-  assert.match(
-    article,
-    /<strong>an exported package should\s+be reviewed before it is shared<\/strong>/,
-  );
   assert.doesNotMatch(article, /ReWord Nerd/);
-  assert.doesNotMatch(article, /aria-labelledby="what-i-learned"|id="what-i-learned"/);
-  assert.ok(
-    article.indexOf('aria-labelledby="why-i-built-it"') <
-      article.indexOf("Combined Quick Guide"),
-    "The personal introduction must precede the combined guide",
-  );
-  assert.ok(
-    article.indexOf('aria-labelledby="what-comes-next"') <
-      article.indexOf("YouTube tutorial"),
-    "The forward-looking essay section must precede the tutorial placeholder",
-  );
 });
 
-test("embeds the exact animated reword_nerd icon with responsive motion controls", () => {
+test("keeps the essay sections in order, each with a heading and prose", () => {
   const article = readRequired(articleRelativePath);
-  const css = readRequired("assets/css/site.css");
-  const iconPath = absolutePath(iconRelativePath);
-
-  assert.ok(existsSync(iconPath), `Missing required file: ${iconRelativePath}`);
-  assert.equal(statSync(iconPath).size, expectedIcon.bytes, "Icon byte count drifted");
-  assert.equal(sha256(iconPath), expectedIcon.sha256, "Icon SHA-256 drifted");
-
-  const iconMarkup = article.match(
-    /<details class="film-review__brand-mark" open>([\s\S]*?)<\/details>/,
-  )?.[1];
-  assert.ok(iconMarkup, "Missing collapsible animated icon near the introduction");
-  assert.match(iconMarkup, /<summary>Animated reword_nerd icon \(toggle visibility\)<\/summary>/);
-  assert.match(
-    iconMarkup,
-    /<img\s+[\s\S]*?src="{{ '\/assets\/images\/reword-nerd-icon\.gif' \| relative_url }}"[\s\S]*?alt="Animated teal reword_nerd pyramid icon"[\s\S]*?width="960"[\s\S]*?height="960"[\s\S]*?loading="lazy"[\s\S]*?decoding="async"[\s\S]*?\/>/,
+  const essayBlocks = [
+    ...article.matchAll(
+      /<section class="film-review__essay" aria-labelledby="([^"]+)">([\s\S]*?)<\/section>/g,
+    ),
+  ];
+  assert.deepEqual(
+    essayBlocks.map(([, id]) => id),
+    essaySections,
   );
 
-  const subtitleIndex = article.indexOf("film-review__brand-mark");
-  assert.ok(article.indexOf("article-subtitle") < subtitleIndex);
-  assert.ok(subtitleIndex < article.indexOf("On the human side of this pipeline"));
-  assert.match(
-    css,
-    /\.film-review__brand-mark\s*{[\s\S]*?max-width:[\s\S]*?margin:[\s\S]*?}/,
-  );
-  assert.match(
-    css,
-    /\.film-review__brand-mark img\s*{[\s\S]*?display: block;[\s\S]*?width: 100%;[\s\S]*?height: auto;[\s\S]*?}/,
-  );
-  assert.match(
-    css,
-    /@media \(prefers-reduced-motion: reduce\)\s*{[\s\S]*?\.film-review__brand-mark img\s*{[\s\S]*?display: none;[\s\S]*?}/,
+  for (const [, id, contents] of essayBlocks) {
+    assert.match(contents, new RegExp(`<h2 id="${escapeRegExp(id)}">[^<]+<\\/h2>`));
+    assert.ok(
+      (contents.match(/<p(?:\s[^>]*)?>/g) ?? []).length >= 2,
+      `${id} must contain at least two paragraphs`,
+    );
+  }
+
+  const allIds = [...article.matchAll(/\sid="([^"]+)"/g)].map(([, id]) => id);
+  assert.equal(new Set(allIds).size, allIds.length, "Article IDs must be unique");
+  assert.ok(
+    article.indexOf('aria-labelledby="why-i-built-it"') > article.indexOf("film-review__challenges"),
+    "The personal introduction must precede the essay",
   );
 });
 
-test("selects a storage-free effective layout only for the review route", () => {
+test("mounts four live demos from one self-contained module bundle", () => {
+  const article = readRequired(articleRelativePath);
+  assert.deepEqual(
+    [...article.matchAll(/<div class="rn-demo-slot" data-rn-demo="([a-z]+)"><\/div>/g)].map(
+      ([, demo]) => demo,
+    ),
+    demos,
+  );
+  assert.deepEqual(
+    [...article.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/g)].map(([tag]) => tag),
+    [demoScript],
+    "The demo bundle must be the article's only script",
+  );
+  assert.ok(article.trim().endsWith(demoScript), "The demo script must load after the article");
+
+  const scripts = bundleScripts();
+  assert.ok(scripts.includes("demos.js"), "Missing the built demo entry");
+  assert.ok(existsSync(absolutePath(`${demosRelativeDirectory}/demos.css`)));
+  assert.match(
+    readRequired(`${demosRelativeDirectory}/demos.js`).split("\n")[0],
+    /built from reword-nerd [0-9a-f]{7,40} by tools\/reword-nerd-demos\. Rebuild; don't edit\./,
+  );
+
+  const referenced = new Set(["demos.js"]);
+  for (const file of scripts) {
+    const code = readRequired(`${demosRelativeDirectory}/${file}`);
+    assert.doesNotMatch(code, /\b(?:from|import)\s*\(?\s*["']https?:/, `${file} must not load remote code`);
+    for (const [, target] of code.matchAll(/\b(?:from\s*|import\s*\(\s*)["']\.\/([^"']+)["']/g)) {
+      assert.ok(scripts.includes(target), `${file} imports a missing chunk: ${target}`);
+      referenced.add(target);
+    }
+  }
+  assert.deepEqual([...referenced].sort(), [...scripts].sort(), "The bundle holds an unused chunk");
+
+  for (const file of ["demos.ts", "demos.css", "vite.config.mjs"]) {
+    assert.ok(existsSync(absolutePath(`${demosSourceDirectory}/${file}`)), `Missing demo source ${file}`);
+  }
+  assert.match(readRequired("_config.yml"), /^  - tools\/$/m, "Demo sources must stay off the site");
+});
+
+test("retires the August films, icon, and tutorial placeholder", () => {
+  const article = readRequired(articleRelativePath);
+  for (const path of retiredMedia) {
+    assert.equal(existsSync(absolutePath(path)), false, `${path} should be gone`);
+  }
+  assert.doesNotMatch(
+    article,
+    /<video\b|<iframe\b|\bautoplay\b|youtube\.com|youtu\.be|Coming soon|film-review__placeholder|film-review__brand-mark/i,
+  );
+  assert.doesNotMatch(article, /id="building-with-ai"|id="what-comes-next"|id="youtube-tutorial"/);
+  assert.doesNotMatch(
+    readRequired("assets/css/site.css"),
+    /film-review__brand-mark|film-review__placeholder/,
+  );
+
+  const pages = [
+    "index.md",
+    ...readdirSync(absolutePath("articles")).map((file) => `articles/${file}`),
+    ...readdirSync(absolutePath("assets/css")).map((file) => `assets/css/${file}`),
+  ];
+  for (const page of pages) {
+    assert.doesNotMatch(readRequired(page), /2026-08-14-r1|reword-nerd-icon/, `${page} uses retired media`);
+  }
+});
+
+test("keeps the reword_nerd post storage-free, with no theme script", () => {
   const layout = readRequired("_layouts/default.html");
   const reviewArticle = readRequired(articleRelativePath);
   const ordinaryArticle = readRequired("index.md");
@@ -628,7 +492,14 @@ test("selects a storage-free effective layout only for the review route", () => 
   assert.equal(reviewLayout.themeControls.length, 0);
   assert.doesNotMatch(reviewLayout.html, /assets\/js\/theme\.js|name="theme"/);
   assert.doesNotMatch(reviewLayout.html, /localStorage|sessionStorage/i);
-  assert.doesNotMatch(reviewArticle, /<script\b|localStorage|sessionStorage/i);
+  assert.doesNotMatch(reviewArticle, /localStorage|sessionStorage|indexedDB/i);
+  for (const file of bundleScripts()) {
+    assert.doesNotMatch(
+      readRequired(`${demosRelativeDirectory}/${file}`),
+      /\.setItem\(|sessionStorage|indexedDB/,
+      `${file} must not write browser storage`,
+    );
+  }
 
   const ordinaryLayout = traceEffectiveLayout(layout, ordinaryPage);
   assert.doesNotMatch(ordinaryLayout.html, /data-storage-free-theme=/);
@@ -662,16 +533,8 @@ test("resolves the storage-free system theme to light and the existing dark toke
   assert.deepEqual(themeProperties(storageFreeDarkBlock), expectedDarkTheme);
 });
 
-test("uses a request-free tutorial placeholder, exact project links, and exact final CTA", () => {
+test("uses exact project links and the exact final call to action", () => {
   const article = readRequired(articleRelativePath);
-  const placeholder = article.match(
-    /<section class="film-review__placeholder"[\s\S]*?<\/section>/,
-  )?.[0];
-  assert.ok(placeholder, "Missing YouTube tutorial placeholder");
-  assert.match(placeholder, /<h2 id="youtube-tutorial">YouTube tutorial<\/h2>/);
-  assert.match(placeholder, /<strong>Coming soon<\/strong>/);
-  assert.doesNotMatch(placeholder, /<(?:iframe|a)\b|\b(?:href|src)=/i);
-
   for (const [label, href] of projectLinks) {
     assert.match(
       article,
@@ -681,16 +544,11 @@ test("uses a request-free tutorial placeholder, exact project links, and exact f
 
   assert.equal((article.match(/Try reword_nerd\./g) ?? []).length, 1);
   assert.match(
-    article.trim(),
-    /<p class="film-review__cta"><a href="https:\/\/ryanjosephkamp\.github\.io\/reword-nerd\/">Try reword_nerd\.<\/a><\/p>$/,
+    article,
+    /<p class="film-review__cta"><a href="https:\/\/ryanjosephkamp\.github\.io\/reword-nerd\/">Try reword_nerd\.<\/a><\/p>/,
   );
-
-  assert.doesNotMatch(article, /<iframe\b|\bautoplay\b|\bloop\b|youtube\.com|youtu\.be/i);
-  assert.doesNotMatch(article, /localStorage|sessionStorage|analytics|dataLayer|gtag\s*\(/i);
-  for (const [, source] of article.matchAll(/<(?:source|video)\b[^>]*\b(?:src|poster)="([^"]+)"/g)) {
-    assert.match(source, /^{{ '\/assets\/media\/reword-nerd\/2026-08-14-r1\//);
-    assert.doesNotMatch(source, /^https?:\/\//i);
-  }
+  assert.ok(article.indexOf("film-review__cta") > article.indexOf('aria-labelledby="project-links"'));
+  assert.doesNotMatch(article, /analytics|dataLayer|gtag\s*\(/i);
 });
 
 test("contains film media responsively with styles scoped to this review", () => {
@@ -727,9 +585,9 @@ test("keeps private paths, evidence, credentials, and non-public artifact names 
     "_layouts/default.html",
     "assets/css/site.css",
     "_config.yml",
-    ...expectedMedia
-      .filter(({ role }) => role === "transcript")
-      .map(({ file }) => `${mediaRelativeDirectory}/${file}`),
+    `${demosRelativeDirectory}/demos.js`,
+    `${demosRelativeDirectory}/demos.css`,
+    ...["demos.ts", "demos.css", "vite.config.mjs"].map((file) => `${demosSourceDirectory}/${file}`),
   ];
   const forbidden = [
     /\/Users\/[^/\s]+\//,
@@ -747,9 +605,5 @@ test("keeps private paths, evidence, credentials, and non-public artifact names 
     for (const pattern of forbidden) {
       assert.doesNotMatch(contents, pattern, `${relativePath} exposes ${pattern}`);
     }
-  }
-
-  for (const { file } of expectedMedia) {
-    assert.doesNotMatch(file, /(?:master|captions|contact-sheet|ledger|receipt|manifest|\.srt$|\.vtt$)/i);
   }
 });

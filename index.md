@@ -20,6 +20,11 @@ description: Writing and project notes by Ryan Kamp
       <p>A free list of 345,162 English words, lowercase a to z, with a record of how each word got on and a nightly run that checks new candidates against dictionaries.</p>
     </li>
     <li>
+      <h3><a href="{{ '/articles/reword-nerd/' | relative_url }}">reword_nerd: Rewrite anything with the model you already use</a></h3>
+      <p class="article-date">Published <time datetime="2026-10-31">2026-10-31</time></p>
+      <p>A browser workbench that hands documents, projects, and images to the AI model you already use, in one paste, and brings the result back for review.</p>
+    </li>
+    <li>
       <h3><a href="{{ '/articles/aqrobat/' | relative_url }}">Aqrobat: QR codes, in character</a></h3>
       <p class="article-date">Published <time datetime="2026-10-31">2026-10-31</time></p>
       <p>A free generator that draws working QR codes with emoji and text, then shapes each copy for the app you paste it into.</p>
@@ -28,11 +33,6 @@ description: Writing and project notes by Ryan Kamp
       <h3><a href="{{ '/articles/amordle/' | relative_url }}">Amordle: the Lichess of Wordle</a></h3>
       <p class="article-date">Published <time datetime="2026-08-17">2026-08-17</time></p>
       <p>A free Wordle&ndash;Hurdle hybrid with ranked multiplayer, any word length from 2 to 35, and no ads.</p>
-    </li>
-    <li>
-      <h3><a href="{{ '/articles/reword-nerd/' | relative_url }}">reword_nerd: Local prompt packages for text and images</a></h3>
-      <p class="article-date">Published <time datetime="2026-08-15">2026-08-15</time></p>
-      <p>A local-first browser workbench for text rewording and image regeneration prompt packages.</p>
     </li>
     <li>
       <h3><a href="{{ '/articles/s26-airp/' | relative_url }}">Spring 2026 AI Research Prototype Portfolio</a></h3>

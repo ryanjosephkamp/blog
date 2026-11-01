@@ -16,3 +16,4 @@ exclude:
   - docs/
   - templates/
   - tests/
+  - tools/
