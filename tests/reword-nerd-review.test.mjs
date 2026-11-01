@@ -20,6 +20,12 @@ const retiredMedia = ["assets/media/reword-nerd/2026-08-14-r1", "assets/images/r
 // Newest first, in the order both indexes list them.
 const publishedArticles = [
   {
+    path: "articles/mermaidify.md",
+    href: "/articles/mermaidify/",
+    title: "mermaidify: a whiteboard that writes Mermaid",
+    date: "2026-11-01",
+  },
+  {
     path: "articles/english-openlist.md",
     href: "/articles/english-openlist/",
     title: "The English OpenList: a word list that keeps itself up to date",
