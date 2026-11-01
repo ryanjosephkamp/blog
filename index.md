@@ -20,6 +20,11 @@ description: Writing and project notes by Ryan Kamp
       <p>Workflow diagrams for AI agents and the people who work with them: who does the work, who checks it, where a person decides, and when it all stops, in 2D and 3D.</p>
     </li>
     <li>
+      <h3><a href="{{ '/articles/ceol-universe/' | relative_url }}">The CEOL Universe: a word list you define yourself</a></h3>
+      <p class="article-date">Published <time datetime="2026-11-01">2026-11-01</time></p>
+      <p>A free dataset of 10,020,150 candidate English strings, with which word lists hold each one and how it came in, so you can cut a word list under a definition of your own.</p>
+    </li>
+    <li>
       <h3><a href="{{ '/articles/mermaidify/' | relative_url }}">mermaidify: a whiteboard that writes Mermaid</a></h3>
       <p class="article-date">Published <time datetime="2026-11-01">2026-11-01</time></p>
       <p>A drawing pad that reads a sketched flowchart or state diagram, right in the browser, and writes the Mermaid code for it, with no AI, no account, and no upload.</p>

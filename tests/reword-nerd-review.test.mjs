@@ -26,6 +26,12 @@ const publishedArticles = [
     date: "2026-11-01",
   },
   {
+    path: "articles/ceol-universe.md",
+    href: "/articles/ceol-universe/",
+    title: "The CEOL Universe: a word list you define yourself",
+    date: "2026-11-01",
+  },
+  {
     path: "articles/mermaidify.md",
     href: "/articles/mermaidify/",
     title: "mermaidify: a whiteboard that writes Mermaid",

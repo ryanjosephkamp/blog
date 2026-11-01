@@ -1,0 +1,374 @@
+/* The CEOL Universe post: the site recording and the 3 demos (the list
+   composer, the containment heatmap, and the build stepper). Colors come from
+   the site's tokens; the English OpenList's red marks its part, in both themes. */
+:root {
+  --ceol-eol: #c8332f;
+}
+
+:root[data-resolved-theme="dark"] {
+  --ceol-eol: #ff7b74;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-storage-free-theme="system"] {
+    --ceol-eol: #ff7b74;
+  }
+}
+
+.ceol-post h1 {
+  max-width: 14ch;
+}
+
+.ceol-post li {
+  color: var(--muted);
+}
+
+.ceol-post li + li {
+  margin-top: 0.35rem;
+}
+
+.ceol-post pre {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 1rem 0 1.4rem;
+  padding: 0.85rem 1rem;
+  border-left: 2px solid var(--line-strong);
+  background: color-mix(in srgb, var(--line) 28%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.ceol-post pre code {
+  padding: 0;
+  background: none;
+  font-size: inherit;
+}
+
+.ceol-post h3 {
+  margin-top: 2rem;
+}
+
+/* The site recording */
+.ceol-film {
+  margin: 2rem 0 2.4rem;
+}
+
+.ceol-film video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.ceol-film figcaption {
+  max-width: 66ch;
+  margin-top: 0.6rem;
+  color: var(--faint);
+  font-size: 0.9rem;
+}
+
+/* The demos */
+.ceol-demo {
+  margin: 2rem 0 2.6rem;
+  padding: 1.2rem 1.2rem 1.3rem;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.ceol-demo,
+.ceol-demo * {
+  min-width: 0;
+}
+
+.ceol-demo h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.ceol-demo__label {
+  margin: 0 0 0.25rem;
+  color: var(--faint);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ceol-demo__lede {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+}
+
+.ceol-demo__note {
+  margin: 0.9rem 0 0;
+  color: var(--faint);
+  font-size: 0.86rem;
+}
+
+.ceol-demo__fallback {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.ceol-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 0.9rem;
+  padding: 0;
+  list-style: none;
+}
+
+.ceol-post .ceol-chips li + li,
+.ceol-post .ceol-steps li + li {
+  margin-top: 0;
+}
+
+.ceol-chip,
+.ceol-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.1rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.92rem;
+}
+
+.ceol-chip:hover,
+.ceol-btn:hover {
+  border-color: var(--accent);
+}
+
+.ceol-demo button:focus-visible,
+.ceol-demo input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.ceol-chip[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.ceol-chip svg {
+  flex: none;
+}
+
+.ceol-swatch {
+  display: inline-block;
+  flex: none;
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.ceol-range {
+  display: grid;
+  gap: 0.25rem;
+  max-width: 30rem;
+  margin: 0 0 0.9rem;
+}
+
+.ceol-range label {
+  color: var(--ink);
+  font-size: 0.92rem;
+}
+
+.ceol-range input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.ceol-readout {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.ceol-readout strong {
+  font-size: 1.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ceol-composer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.2rem 1.6rem;
+  align-items: start;
+}
+
+@media (max-width: 720px) {
+  .ceol-composer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.ceol-squares {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 1;
+}
+
+.ceol-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  align-items: center;
+  color: var(--faint);
+  font-size: 0.84rem;
+}
+
+.ceol-legend .ramp {
+  display: inline-block;
+  width: 8rem;
+  height: 0.6rem;
+}
+
+.ceol-tabs {
+  display: flex;
+  gap: 0.9rem;
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+}
+
+.ceol-tabs button {
+  padding: 0.1rem 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: none;
+  color: var(--faint);
+  cursor: pointer;
+  font: inherit;
+}
+
+.ceol-tabs button[aria-pressed="true"] {
+  border-color: currentColor;
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.ceol-code {
+  position: relative;
+}
+
+.ceol-post .ceol-code pre {
+  max-height: 19rem;
+  margin: 0;
+  padding-top: 2.4rem;
+}
+
+.ceol-copy {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  min-height: 1.7rem;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+.ceol-heat {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  max-width: 560px;
+  margin: 0.2rem 0 0.4rem;
+}
+
+.ceol-heat .hd {
+  display: grid;
+  place-items: center;
+  color: var(--faint);
+  font-size: 0.74rem;
+  font-weight: 650;
+  text-align: center;
+}
+
+.ceol-heat .rh {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-right: 0.3rem;
+}
+
+.ceol-cell {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.76rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ceol-cell[aria-pressed="true"] {
+  outline: 2px solid var(--ink);
+  outline-offset: -2px;
+}
+
+.ceol-steps {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.4rem 0 0.9rem;
+  padding: 0;
+  list-style: none;
+}
+
+.ceol-steps button {
+  display: grid;
+  grid-template-columns: 1.6rem minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  align-items: center;
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.ceol-steps button[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
+}
+
+.ceol-steps .n {
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.ceol-steps .t {
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.ceol-steps .d {
+  color: var(--faint);
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.ceol-step-detail {
+  padding: 0.2rem 0 0.2rem 0.9rem;
+  border-left: 2px solid var(--accent);
+}
+
+.ceol-step-detail p {
+  margin: 0 0 0.4rem;
+}

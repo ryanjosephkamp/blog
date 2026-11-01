@@ -103,12 +103,12 @@ scripts:
 <tr><td>The official tournament lists</td><td class="num">&ndash;</td><td>proprietary</td><td>the word, under license</td></tr>
 </tbody>
 </table>
-<p>Bigger isn&rsquo;t the point. Some of those counts include entries with spaces, capitals, or hyphens, and none of them can tell you how a given word got in.</p>
+<p>Bigger isn&rsquo;t the point. Some of those counts include entries with spaces, capitals, or hyphens, and none of them can tell you how a given word got in. If you want every candidate English string with the evidence for each, that&rsquo;s a different project: the CEOL Universe, below.</p>
 
 <h2 id="the-catch">The catch</h2>
 <p>A list like this is only useful if you know where it falls short, so here it is up front.</p>
 <ul>
-<li><strong>Lowercase a to z, nothing else.</strong> No hyphenated compounds, accented loanwords, contractions, or multiword terms. That&rsquo;s by design.</li>
+<li><strong>Lowercase a to z, nothing else.</strong> No hyphenated compounds, accented loanwords, contractions, or multiword terms. That&rsquo;s by design; the CEOL Universe, below, has them.</li>
 <li><strong>Not a tournament list.</strong> It holds words that tournament lists leave out, so it won&rsquo;t settle a game of Scrabble.</li>
 <li><strong>Some words rest on a model, and some were made by rule.</strong> 137,697 words were decided with a language model, 6,471 of them by the model&rsquo;s call alone, and 31,243 came from the synthetic engine. Every one is marked, so you can leave them out.</li>
 <li><strong>It changes every night.</strong> If you need a list that holds still, pin a revision of the dataset.</li>
@@ -154,6 +154,9 @@ print(len(words))  # 345,162, as of this post</code></pre>
 </ul>
 <p>Every pull request runs the Python tests and the site&rsquo;s tests and type checks on GitHub Actions.</p>
 
+<h2 id="and-the-ceol-universe">And the CEOL Universe</h2>
+<p>The English OpenList is one answer to &ldquo;which words count?&rdquo; Its sibling, the <a href="https://review.common-english-openlist.pages.dev/">CEOL Universe</a>, keeps about 10 million candidates (everything the English OpenList took in, and more) with the evidence for each, so you can cut a list under a definition of your own. I wrote about it in <a href="https://ryanjosephkamp.github.io/blog/articles/ceol-universe/">its own post</a>.</p>
+
 <h2 id="project-links">Project links</h2>
 <ul>
 <li><a href="https://english-openlist.pages.dev/">Search the English OpenList</a></li>
@@ -161,6 +164,7 @@ print(len(words))  # 345,162, as of this post</code></pre>
 <li><a href="https://english-openlist.pages.dev/blog/">The daily log</a></li>
 <li><a href="https://huggingface.co/datasets/ryanjosephkamp/english-openlist">The dataset on Hugging Face</a></li>
 <li><a href="https://github.com/ryanjosephkamp/english-openlist">The code on GitHub</a></li>
+<li><a href="https://review.common-english-openlist.pages.dev/">The CEOL Universe</a></li>
 </ul>
 
 </div>
