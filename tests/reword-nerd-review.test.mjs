@@ -20,6 +20,12 @@ const retiredMedia = ["assets/media/reword-nerd/2026-08-14-r1", "assets/images/r
 // Newest first, in the order both indexes list them.
 const publishedArticles = [
   {
+    path: "articles/link-meteor.md",
+    href: "/articles/link-meteor/",
+    title: "Link Meteor: grab links, keep their words",
+    date: "2026-11-01",
+  },
+  {
     path: "articles/grooph.md",
     href: "/articles/grooph/",
     title: "grooph: a whiteboard for AI agent workflows",
