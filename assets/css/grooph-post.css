@@ -1,0 +1,148 @@
+/* The grooph post: the GIF, the two demos drawn by grooph's own page script, and the live app in a frame. They keep
+   the site's look: thin rules, square corners, and one accent. */
+.grooph-gif {
+  max-width: 820px;
+  margin: 0 0 2.5rem;
+}
+
+.grooph-gif img {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  border: 1px solid var(--line);
+}
+
+.grooph-gif figcaption,
+.grooph-live figcaption {
+  max-width: 66ch;
+  margin-top: 0.5rem;
+  color: var(--faint);
+  font-size: 0.9rem;
+}
+
+.grooph-demo {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 820px;
+  margin: 1.6rem 0 1.9rem;
+  padding: clamp(14px, 3vw, 22px);
+  border: 1px solid var(--line);
+  background: var(--accent-soft);
+}
+
+.grooph-demo p,
+.grooph-demo pre {
+  max-width: none;
+}
+
+.grooph-fallback {
+  margin: 0;
+  color: var(--muted);
+}
+
+.grooph-demo .demo-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: end;
+}
+
+.grooph-demo .demo-bar button {
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--line-strong);
+  background: var(--page);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.grooph-demo .demo-pick {
+  display: grid;
+  gap: 0.2rem;
+  color: var(--faint);
+  font-size: 0.9rem;
+}
+
+.grooph-demo .demo-pick select {
+  min-width: 9rem;
+  padding: 0.3rem 0.4rem;
+  border: 1px solid var(--line-strong);
+  background: var(--page);
+  color: var(--ink);
+}
+
+.grooph-demo .demo-diagram {
+  min-height: 3rem;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  background: var(--page);
+  overflow-x: auto;
+}
+
+.grooph-demo .demo-diagram svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.grooph-demo .demo-note {
+  margin: 0;
+  color: var(--faint);
+  font-size: 0.9rem;
+}
+
+.grooph-demo .demo-more summary {
+  color: var(--muted);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.grooph-demo .demo-code {
+  margin: 0.5rem 0 0;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  background: var(--page);
+  font: 0.8rem/1.5 var(--font-mono);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.grooph-demo .demo-doc {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 760px) {
+  .grooph-demo .demo-doc {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.grooph-demo .demo-json {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 18rem;
+  padding: 0.6rem;
+  border: 1px solid var(--line);
+  background: var(--page);
+  color: var(--ink);
+  font: 0.8rem/1.5 var(--font-mono);
+  resize: vertical;
+}
+
+/* The app itself, in a frame: the same diagram a link opens, with Picture and 3D. */
+.grooph-live {
+  max-width: 820px;
+  margin: 1.6rem 0 1.9rem;
+}
+
+.grooph-live iframe {
+  display: block;
+  width: 100%;
+  height: min(78vh, 680px);
+  border: 1px solid var(--line);
+  background: var(--page);
+}

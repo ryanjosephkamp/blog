@@ -15,6 +15,11 @@ description: Writing and project notes by Ryan Kamp
   </div>
   <ul class="article-list">
     <li>
+      <h3><a href="{{ '/articles/grooph/' | relative_url }}">grooph: a whiteboard for AI agent workflows</a></h3>
+      <p class="article-date">Published <time datetime="2026-11-01">2026-11-01</time></p>
+      <p>Workflow diagrams for AI agents and the people who work with them: who does the work, who checks it, where a person decides, and when it all stops, in 2D and 3D.</p>
+    </li>
+    <li>
       <h3><a href="{{ '/articles/mermaidify/' | relative_url }}">mermaidify: a whiteboard that writes Mermaid</a></h3>
       <p class="article-date">Published <time datetime="2026-11-01">2026-11-01</time></p>
       <p>A drawing pad that reads a sketched flowchart or state diagram, right in the browser, and writes the Mermaid code for it, with no AI, no account, and no upload.</p>
