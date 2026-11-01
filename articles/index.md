@@ -10,6 +10,11 @@ Project notes, portfolio writing, and longer reflections collected in one place.
 
 <ul class="article-list">
   <li>
+    <h2><a href="{{ '/articles/link-meteor/' | relative_url }}">Link Meteor: grab links, keep their words</a></h2>
+    <p class="article-date">Published <time datetime="2026-11-01">2026-11-01</time></p>
+    <p>A free Chrome extension that saves links with their real anchor text, exact URLs, and source pages, and exports them to Excel, CSV, Markdown, BibTeX, and more.</p>
+  </li>
+  <li>
     <h2><a href="{{ '/articles/grooph/' | relative_url }}">grooph: a whiteboard for AI agent workflows</a></h2>
     <p class="article-date">Published <time datetime="2026-11-01">2026-11-01</time></p>
     <p>Workflow diagrams for AI agents and the people who work with them: who does the work, who checks it, where a person decides, and when it all stops, in 2D and 3D.</p>
