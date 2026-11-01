@@ -69,7 +69,7 @@
     window.mermaid.initialize({ startOnLoad: false, securityLevel: "strict", theme: dark() ? "dark" : "neutral", fontFamily: css("--font-body") });
     try {
       const { svg } = await window.mermaid.render("mfy-mmd-" + mine, code);
-      box.innerHTML = svg;
+      if (mine === renders) box.innerHTML = svg;
     } catch {
       document.getElementById("mfy-mmd-" + mine)?.remove();
       document.getElementById("dmfy-mmd-" + mine)?.remove();
@@ -113,6 +113,7 @@
   }
 
   const WORDS = { rect: "box", stadium: "oval", circle: "circle", diamond: "diamond", hexagon: "hexagon", trapezoid: "trapezoid", "inv-trapezoid": "trapezoid", "lean-right": "parallelogram", "lean-left": "parallelogram", triangle: "triangle", "flip-triangle": "triangle", double: "double circle", subroutine: "box in a box", dot: "filled dot", bullseye: "ring around a dot" };
+  const MANY = { box: "boxes", "box in a box": "boxes in boxes", "ring around a dot": "rings around dots" };
   const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
   function readLine(m) {
     if (m.diagram === "state") {
@@ -121,13 +122,13 @@
     }
     const kinds = {};
     for (const n of m.nodes) kinds[WORDS[n.kind] || n.kind] = (kinds[WORDS[n.kind] || n.kind] || 0) + 1;
-    const shapes = Object.entries(kinds).map(([k, n]) => `${n} ${k}${n > 1 ? (k.endsWith("x") ? "es" : "s") : ""}`).join(", ");
+    const shapes = Object.entries(kinds).map(([k, n]) => plural(n, k, MANY[k] || k + "s")).join(", ");
     return `Read ${plural(m.nodes.length, "shape", "shapes")}${shapes ? ` (${shapes})` : ""} and ${plural(m.edges.length, "arrow", "arrows")}` + (m.unused.length ? `; ${plural(m.unused.length, "mark", "marks")} left out, in amber.` : ".");
   }
 
   // ─── 1. Draw it yourself ────────────────────────────────────────────────────
   function drawDemo(root) {
-    const canvas = el("canvas", { class: "mfy-pad", "aria-label": "Drawing pad. Draw boxes, ovals, diamonds, and circles, and lines with heads between them." });
+    const canvas = el("canvas", { class: "mfy-pad", role: "img", "aria-label": "Drawing pad. Draw boxes, ovals, diamonds, and circles, and lines with heads between them." });
     const read = el("p", { class: "mfy-read", "aria-live": "polite" }, "Draw a box, another box, and an arrow between them.");
     const out = el("div", { class: "mfy-diagram" });
     const code = el("pre", { class: "mfy-code" });
@@ -143,7 +144,7 @@
     root.append(bar, canvas, read, el("div", { class: "mfy-out" }, out, code));
     const { ctx, fit, trace } = surface(canvas);
     // Each stroke is its points and its ink; the reader reads the ink too, so colors come through into Mermaid.
-    let strokes = [], cur = null, anchor = 0, holdTimer = 0, still = null, frozen = false, size = { w: 0, h: 0 }, m = null;
+    let strokes = [], cur = null, pointer = null, anchor = 0, holdTimer = 0, still = null, frozen = false, size = { w: 0, h: 0 }, m = null;
 
     function paint() {
       ctx.clearRect(0, 0, size.w, size.h);
@@ -164,8 +165,10 @@
     function update() {
       m = strokes.length ? R.recognize(strokes.map((s) => ({ pts: s.pts, color: s.color, zoom: s.zoom })), { diagram: kind.value }) : null;
       paint();
-      if (!m) {
-        read.textContent = "Draw a box, another box, and an arrow between them.";
+      clearTimeout(wait);
+      if (!m || !m.nodes.length) {
+        renders++;
+        read.textContent = m ? readLine(m) + " Draw a shape for a line to join." : "Draw a box, another box, and an arrow between them.";
         code.textContent = "";
         out.textContent = "";
         return;
@@ -173,7 +176,6 @@
       read.textContent = readLine(m) + ` ${m.ms.toFixed(1)} ms.`;
       const text = kind.value === "state" ? R.toStateMermaid(m) : R.toMermaid(m);
       code.textContent = text;
-      clearTimeout(wait);
       wait = setTimeout(() => drawMermaid(out, text), 250);
     }
     function load() {
@@ -221,6 +223,7 @@
     canvas.addEventListener("pointerdown", (e) => {
       if (cur || (e.pointerType === "mouse" && e.button !== 0)) return;
       canvas.setPointerCapture(e.pointerId);
+      pointer = e.pointerId;
       cur = [at(e)];
       still = at(e);
       anchor = 0;
@@ -230,7 +233,7 @@
       paint();
     });
     canvas.addEventListener("pointermove", (e) => {
-      if (!cur || frozen) return;
+      if (!cur || frozen || e.pointerId !== pointer) return;
       const events = e.getCoalescedEvents?.() ?? [];
       for (const ev of events.length ? events : [e]) {
         const p = at(ev);
@@ -243,15 +246,20 @@
       }
       paint();
     });
-    const end = () => {
+    const end = (e) => {
+      if (!cur || e.pointerId !== pointer) return;
       clearTimeout(holdTimer);
-      if (!cur) return;
       if (pathLength(cur) >= 8) strokes.push({ pts: cur, color: "ink" });
       cur = null;
       update();
     };
     canvas.addEventListener("pointerup", end);
-    canvas.addEventListener("pointercancel", () => ((cur = null), clearTimeout(holdTimer), paint()));
+    canvas.addEventListener("pointercancel", (e) => {
+      if (e.pointerId !== pointer) return;
+      cur = null;
+      clearTimeout(holdTimer);
+      paint();
+    });
     kind.addEventListener("change", update);
     // One quiet reading first, so the time the pad shows is the reader's usual speed, not its first, slower run.
     R.recognize(R.exampleStrokes(420));
@@ -264,7 +272,7 @@
 
   // ─── 2. What the reader sees ───────────────────────────────────────────────
   const STEPS = [
-    ["The strokes, as drawn", "Nine strokes, five in black and four in color, as a person might draw them on a phone. Nothing else goes in: no photo, and no names yet."],
+    ["The strokes, as drawn", "Nine strokes, five in plain ink and four in color, as a person might draw them on a phone. Nothing else goes in: no photo, and no names yet."],
     ["Strokes that come back to their start are shapes", "Each closed stroke is matched against the outlines Mermaid can draw, and the nearest one wins: an oval, a box, a diamond, and a circle drawn inside a circle, which is a double circle."],
     ["The rest are lines, and a hook is a head", "A line that doubles back at one end has its head there; the hook is cut off, and what’s left is the line. A head can also be a V or a triangle drawn apart, or a filled knot."],
     ["Each line joins the shapes at its ends", "An end reaches for the nearest shape it points into. The line from the diamond back to the box makes a loop, and its green ink comes along into Mermaid."],
@@ -273,10 +281,11 @@
   function xrayDemo(root) {
     const canvas = el("canvas", { class: "mfy-pad mfy-xray", role: "img", "aria-label": "The example drawing, as the reader sees it at this step." });
     const title = el("h3", { class: "mfy-step-title" }), text = el("p", { class: "mfy-step-text" }), count = el("span", { class: "mfy-count" });
+    const said = el("div", { "aria-live": "polite" }, title, text);
     const code = el("pre", { class: "mfy-code" });
     let step = 0;
     const back = el("button", { type: "button", onclick: () => go(step - 1) }, "Back"), next = el("button", { type: "button", onclick: () => go(step + 1) }, "Next");
-    root.append(el("div", { class: "mfy-xray-wrap" }, canvas, el("div", { class: "mfy-xray-side" }, el("div", { class: "mfy-bar" }, back, count, next), title, text, code)));
+    root.append(el("div", { class: "mfy-xray-wrap" }, canvas, el("div", { class: "mfy-xray-side" }, el("div", { class: "mfy-bar" }, back, count, next), said, code)));
     const { ctx, fit, trace } = surface(canvas);
     let size = { w: 0, h: 0 }, strokes = [], colors = [], m = null;
     function layout() {
@@ -286,7 +295,8 @@
       const k = Math.min((size.w - 32) / (x1 - x0), (size.h - 32) / (y1 - y0), 1.2), dx = (size.w - (x1 - x0) * k) / 2, dy = (size.h - (y1 - y0) * k) / 2;
       strokes = ex.map((s) => s.pts.map(([x, y]) => [dx + (x - x0) * k, dy + (y - y0) * k]));
       colors = ex.map((s) => s.color || "ink");
-      m = R.recognize(strokes.map((pts) => ({ pts })));
+      // Shrunk to fit, the example is read at the size it was drawn, with its ink, as the app reads a drawing at its zoom.
+      m = R.recognize(strokes.map((pts, i) => ({ pts, color: colors[i], zoom: 1 / k })));
       paint();
     }
     const ink = (c) => css("--mfy-ink-" + c) || css("--ink");
@@ -353,8 +363,11 @@
       title.textContent = STEPS[step][0];
       text.textContent = STEPS[step][1];
       count.textContent = `${step + 1} of ${STEPS.length}`;
+      // A button that turns off with the keyboard on it hands the focus to the other one.
+      const had = document.activeElement;
       back.disabled = step === 0;
       next.disabled = step === STEPS.length - 1;
+      if (had?.disabled) (had === back ? next : back).focus();
       code.hidden = step !== STEPS.length - 1;
       code.textContent = R.toMermaid(m);
       paint();
@@ -363,6 +376,7 @@
       layout();
       go(step);
     }).observe(canvas);
+    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paint);
   }
 
   // ─── 3. How well it reads ──────────────────────────────────────────────────
@@ -384,11 +398,11 @@
     },
   };
   function accuracyDemo(root) {
-    const tabs = el("div", { class: "mfy-tabs", role: "tablist", "aria-label": "Which drawings" });
-    const chart = el("div", { class: "mfy-chart", role: "tabpanel" }), note = el("p", { class: "mfy-note" });
+    const tabs = el("div", { class: "mfy-tabs", role: "group", "aria-label": "Which drawings" });
+    const chart = el("div", { class: "mfy-chart" }), note = el("p", { class: "mfy-note" });
     root.append(tabs, chart, note);
     const show = (key) => {
-      for (const b of tabs.children) b.setAttribute("aria-selected", String(b.dataset.key === key));
+      for (const b of tabs.children) b.setAttribute("aria-pressed", String(b.dataset.key === key));
       const set = SETS[key];
       chart.replaceChildren(
         ...set.bars.map(([name, n, of]) => {
@@ -400,7 +414,7 @@
       );
       note.textContent = set.note;
     };
-    for (const [key, set] of Object.entries(SETS)) tabs.append(el("button", { type: "button", role: "tab", "data-key": key, onclick: () => show(key) }, set.label));
+    for (const [key, set] of Object.entries(SETS)) tabs.append(el("button", { type: "button", "data-key": key, onclick: () => show(key) }, set.label));
     show("people");
   }
 

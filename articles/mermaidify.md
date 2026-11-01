@@ -30,7 +30,7 @@ scripts:
 </section>
 
 <figure class="mfy-gif">
-<img src="{{ '/assets/media/mermaidify/demo.gif' | relative_url }}" width="1040" height="640" alt="A flowchart sketched on mermaidify’s drawing surface: an oval, a box, an amber diamond that loops back to the box in green, and a red double circle. Mermaidify outlines each shape it read and draws the Mermaid flowchart beside it; then the box is tapped and named Write the draft.">
+<img src="{{ '/assets/media/mermaidify/demo.gif' | relative_url }}" width="1040" height="640" alt="A flowchart sketched on mermaidify’s drawing surface: an oval, a box, an amber diamond that loops back to the box in green, and a red double circle. mermaidify outlines each shape it read and draws the Mermaid flowchart beside it; then the box is tapped and named Write the draft.">
 <figcaption>The example drawing: read, drawn by Mermaid beside it, and a shape named.</figcaption>
 </figure>
 
@@ -38,7 +38,7 @@ scripts:
 <h2 id="try-it">Try it right here</h2>
 <p>This is mermaidify’s real reader, the same code the app runs, working inside this page. Draw two boxes and an arrow between them, or load the example. Hold still for half a second at the end of a shape or an arrow, and it snaps clean.</p>
 <div class="mfy-demo" data-demo="draw" role="group" aria-label="Draw a diagram and see its Mermaid code"><p class="mfy-fallback">This demo needs JavaScript. You can <a href="https://ryanjosephkamp.github.io/mermaidify/">draw in the app</a> instead.</p></div>
-<p>The full app at <a href="https://ryanjosephkamp.github.io/mermaidify/">ryanjosephkamp.github.io/mermaidify</a> adds everything this little pad leaves out: names, colors, undo, choosing and moving strokes, templates, zooming, and saving.</p>
+<p>The full app at <a href="https://ryanjosephkamp.github.io/mermaidify/">ryanjosephkamp.github.io/mermaidify</a> adds everything this little pad leaves out: names, colors, choosing and moving strokes, templates, zooming, and saving.</p>
 </section>
 
 <section class="film-review__essay" aria-labelledby="why-i-built-it">
