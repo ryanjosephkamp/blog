@@ -20,6 +20,12 @@ const retiredMedia = ["assets/media/reword-nerd/2026-08-14-r1", "assets/images/r
 // Newest first, in the order both indexes list them.
 const publishedArticles = [
   {
+    path: "articles/grooph.md",
+    href: "/articles/grooph/",
+    title: "grooph: a whiteboard for AI agent workflows",
+    date: "2026-11-01",
+  },
+  {
     path: "articles/ceol-universe.md",
     href: "/articles/ceol-universe/",
     title: "The CEOL Universe: a word list you define yourself",
