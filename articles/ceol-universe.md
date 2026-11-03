@@ -32,7 +32,7 @@ scripts:
 <p>So, if you want to know whether a word is legit, where do you look? Is finding it on a single source enough, or must the string be attested by more than one platform? Which sources are the most credible?</p>
 <p>I won&rsquo;t pretend to have an answer to any of these questions.</p>
 <p>But in case somebody does, it might be necessary to know which words are on which sources at a given time, where the platforms agree and disagree, and other metadata about English strings, and <em>that</em> is something that I can help with.</p>
-<p>The <a href="https://review.common-english-openlist.pages.dev/">CEOL Universe</a> (the Common English OpenList Universe) is a free dataset of 10,020,150 strings that might be English words: single words and their forms, hyphenated compounds, accented loanwords, contractions, and multiword terms. For each one, it records which of 8 published word lists include it, whether it turns up in a large corpus of books, and how it got into the dataset in the first place.</p>
+<p>The <a href="https://common-english-openlist.pages.dev/">CEOL Universe</a> (the Common English OpenList Universe) is a free dataset of 10,020,150 strings that might be English words: single words and their forms, hyphenated compounds, accented loanwords, contractions, and multiword terms. For each one, it records which of 8 published word lists include it, whether it turns up in a large corpus of books, and how it got into the dataset in the first place.</p>
 <p>But the CEOL Universe is <strong>not</strong> another word list. It never decides what counts as a word. <strong>You</strong> do:</p>
 <ul>
 <li><strong>Evidence, not verdicts:</strong> Every row says which sources list the string, which sources couldn&rsquo;t have listed it, and which never measured it. No row claims that a string is a word.</li>
@@ -44,7 +44,7 @@ scripts:
 
 <figure class="ceol-film">
 <video data-ceol-film src="{{ '/assets/media/ceol-universe/2026-11-01-r1/ceol-universe-compose.mp4' | relative_url }}" poster="{{ '/assets/media/ceol-universe/2026-11-01-r1/ceol-universe-compose-poster.png' | relative_url }}" width="960" height="534" autoplay muted loop playsinline controls preload="metadata" aria-label="Composing a list on the CEOL site: criteria chosen, the count and the charts following, the code copied, and the list's datasheet opened" aria-describedby="ceol-film-caption"></video>
-<figcaption id="ceol-film-caption">Composing a list on the <a href="https://review.common-english-openlist.pages.dev/compose/">CEOL site</a>: choose the criteria, watch the count and the charts follow over every row, copy the code, and open the list&rsquo;s datasheet.</figcaption>
+<figcaption id="ceol-film-caption">Composing a list on the <a href="https://common-english-openlist.pages.dev/compose/">CEOL site</a>: choose the criteria, watch the count and the charts follow over every row, copy the code, and open the list&rsquo;s datasheet.</figcaption>
 </figure>
 
 <h2 id="why-i-built-it">Why I built it</h2>
@@ -72,19 +72,19 @@ scripts:
 <li><strong>Models and generators, marked:</strong> The rows the English OpenList decided with a language model, and the rows its synthetic engine made, are marked, so a list can keep them or drop them.</li>
 </ul>
 
-<div class="ceol-demo" data-ceol-demo="composer"><p class="ceol-demo__fallback">This demo needs JavaScript. You can compose a list on the <a href="https://review.common-english-openlist.pages.dev/compose/">CEOL site</a>.</p></div>
+<div class="ceol-demo" data-ceol-demo="composer"><p class="ceol-demo__fallback">This demo needs JavaScript. You can compose a list on the <a href="https://common-english-openlist.pages.dev/compose/">CEOL site</a>.</p></div>
 
 <h2 id="how-the-lists-compare">How the lists compare</h2>
 <p>Because every candidate is checked against every list, the lists can finally be measured against each other. Of the 9,725,285 single-token rows, 1,089,968 (11.2%) are listed by at least 1 of the 8 lists. Most of those are listed by a single family of lists, and 43.7% of them by Wiktionary and nothing else. The consensus core, the rows listed by 2 or more independent families, is 417,864 rows.</p>
 
-<div class="ceol-demo" data-ceol-demo="overlap"><p class="ceol-demo__fallback">This chart needs JavaScript. The <a href="https://review.common-english-openlist.pages.dev/research/report/">technical report</a> has the same figures.</p></div>
+<div class="ceol-demo" data-ceol-demo="overlap"><p class="ceol-demo__fallback">This chart needs JavaScript. The <a href="https://common-english-openlist.pages.dev/research/report/">technical report</a> has the same figures.</p></div>
 
 <p>Some of it is what you&rsquo;d expect: of ENABLE&rsquo;s words that Wiktionary could hold, Wiktionary holds 96%. Some of it isn&rsquo;t: WordNet holds only 8% of what Wiktionary holds, because Wiktionary is about 10 times bigger, inflected forms included, and WordNet lists base forms.</p>
 
 <h2 id="how-it-was-built">How it was built</h2>
 <p>Version 1.0 starts from the English OpenList&rsquo;s whole intake, the 9,653,999 strings it took in, whichever way it ruled. Then the sources are read again under the spelling grammar, every source&rsquo;s coverage is reconciled until nothing a source lists is missing, and multiword terms come in from WordNet and Wiktionary. Every step has its own committed record, and the release build checks the result before anything ships.</p>
 
-<div class="ceol-demo" data-ceol-demo="build"><p class="ceol-demo__fallback">This demo needs JavaScript. <a href="https://review.common-english-openlist.pages.dev/built/">How it was built</a> has the same steps.</p></div>
+<div class="ceol-demo" data-ceol-demo="build"><p class="ceol-demo__fallback">This demo needs JavaScript. <a href="https://common-english-openlist.pages.dev/built/">How it was built</a> has the same steps.</p></div>
 
 <h2 id="the-catch">The catch</h2>
 <p>A dataset like this is only useful if you know its weak spots, so here they are up front. (The dataset&rsquo;s card puts them first, too.)</p>
@@ -109,7 +109,7 @@ print(rows.num_rows)  # 10,020,150</code></pre>
 <p>Or, query it straight from the hub with DuckDB:</p>
 <pre><code>SELECT count(*)
 FROM 'hf://datasets/ryanjosephkamp/ceol-universe@v1.0/data/universe.parquet';</code></pre>
-<p>Or, skip the code entirely. On the <a href="https://review.common-english-openlist.pages.dev/">site</a>, you can look a string up and read its record, compose a list and take its code, chart every dimension of every row, and read the dataset&rsquo;s documentation, limitations first. A list you compose there comes with a datasheet, so whatever you ship says what&rsquo;s in it.</p>
+<p>Or, skip the code entirely. On the <a href="https://common-english-openlist.pages.dev/">site</a>, you can look a string up and read its record, compose a list and take its code, chart every dimension of every row, and read the dataset&rsquo;s documentation, limitations first. A list you compose there comes with a datasheet, so whatever you ship says what&rsquo;s in it.</p>
 <p>For research, the site also carries a technical report with the method and every figure, a review of comparable resources, and a study kit for drawing a reproducible sample of candidates and labeling it under a definition of your own.</p>
 
 <h2 id="under-the-hood">Under the hood</h2>
@@ -140,9 +140,9 @@ FROM 'hf://datasets/ryanjosephkamp/ceol-universe@v1.0/data/universe.parquet';</c
 
 <h2 id="project-links">Project links</h2>
 <ul>
-<li><a href="https://review.common-english-openlist.pages.dev/">The CEOL Universe&rsquo;s site</a></li>
-<li><a href="https://review.common-english-openlist.pages.dev/compose/">Compose a list</a></li>
-<li><a href="https://review.common-english-openlist.pages.dev/dataset/limitations/">The dataset&rsquo;s limitations</a></li>
+<li><a href="https://common-english-openlist.pages.dev/">The CEOL Universe&rsquo;s site</a></li>
+<li><a href="https://common-english-openlist.pages.dev/compose/">Compose a list</a></li>
+<li><a href="https://common-english-openlist.pages.dev/dataset/limitations/">The dataset&rsquo;s limitations</a></li>
 <li><a href="https://huggingface.co/datasets/ryanjosephkamp/ceol-universe">The dataset on Hugging Face</a></li>
 <li><a href="https://github.com/ryanjosephkamp/ceol-universe">The code on GitHub</a></li>
 <li><a href="https://english-openlist.pages.dev/">The English OpenList</a></li>
