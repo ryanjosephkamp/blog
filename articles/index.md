@@ -10,6 +10,11 @@ Project notes, portfolio writing, and longer reflections collected in one place.
 
 <ul class="article-list">
   <li>
+    <h2><a href="{{ '/articles/resmon/' | relative_url }}">resmon: a research monitor for the people</a></h2>
+    <p class="article-date">Published <time datetime="2026-11-04">2026-11-04</time></p>
+    <p>A free, open-source desktop app that watches the research literature for you, keeps every paper on your own computer, and records what every source did on every run.</p>
+  </li>
+  <li>
     <h2><a href="{{ '/articles/link-meteor/' | relative_url }}">Link Meteor: grab links, keep their words</a></h2>
     <p class="article-date">Published <time datetime="2026-11-01">2026-11-01</time></p>
     <p>A free Chrome extension that saves links with their real anchor text, exact URLs, and source pages, and exports them to Excel, CSV, Markdown, BibTeX, and more.</p>
